@@ -1,21 +1,16 @@
 VERSI 1: BacMan Begins
 
 MODEL
-1. Sprite [INTERFACE]
+1. GameElement [ABSTRACT]
   - Attributes:
-      BufferedImage Image
+      Point position
 
-2. GameElement [INTERFACE]
-  - Attributes:
-      Point pixelPosition
-      Point logicalPosition
-
-3i1i2. Player
+2e1. Player
   - Method:
       Player()
       setter / getter
 
-3i1i2. Ghost [ABSTRACT]
+3e1. Ghost [ABSTRACT]
   - Attributes:
       int state;
         ~ NORMAl = 0
@@ -55,11 +50,11 @@ MODEL
   - Attributes:
       final int value
 
-8i1i2. Grid
+8e1. Grid
   - Attributes:
       Cookie c
 
-9e8i1. Wall
+9e8. Wall
   - Attributes:
       
       
