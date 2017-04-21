@@ -1,4 +1,4 @@
-package model;
+package model.structure;
 
 /**
  * Kelas berisi Arena dari Game BacMan.

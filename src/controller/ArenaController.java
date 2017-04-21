@@ -1,6 +1,6 @@
 package controller;
 
-import model.Arena;
+import model.structure.Arena;
 
 /**
  * Kelas controller untuk arena.

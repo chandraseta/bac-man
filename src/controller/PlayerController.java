@@ -1,6 +1,6 @@
 package controller;
 
-import model.Player;
+import model.character.Player;
 
 /**
  * Kelas controller untuk Player.
@@ -8,27 +8,24 @@ import model.Player;
 public class PlayerController {
   private Player player;
 
-  public int getMovement() {
+  public int getDirection() {
     // TODO: Read from keyboard (WASD, UpLeftDownRight)
   }
 
-  /**
-   *
-   */
   public void move() {
-    int movement = getMovement();
+    int direction = getDirection();
     // TODO: Check if the targeted location is a wall, null movement if true
-    if (movement == 1) {
-      player.setPosition(player.getX(), player.getY()-1);
+    if (direction == 1) {
+      player.moveUp();
     }
-    else if (movement == 2) {
-      player.setPosition(player.getX()+1, player.getY());
+    else if (direction == 2) {
+      player.moveRight();
     }
-    else if (movement == 3) {
-      player.setPosition(player.getX(), player.getY()+1);
+    else if (direction == 3) {
+      player.moveDown();
     }
     else {
-      player.setPosition(player.getX()-1, player.getY());
+      player.moveLeft();
     }
   }
 }

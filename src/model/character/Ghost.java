@@ -1,9 +1,11 @@
-package model;
+package model.character;
+
+import model.GameCharacter;
 
 /**
- * Kelas berisi Ghost yang merupakan musuh dari Player
+ * Kelas abstract Ghost yang menjadi dasar berbagai tipe Ghost.
  */
-public abstract class Ghost extends GameElement {
+public abstract class Ghost extends GameCharacter {
 
   /**
    * Berisi informasi status Ghost
@@ -12,6 +14,11 @@ public abstract class Ghost extends GameElement {
    * 2 = Dead
    */
   protected int state;
+
+  public Ghost(int x, int y, String sprite) {
+    super(x, y, sprite);
+    state = 0;
+  }
 
   /**
    * Setter nilai state.
@@ -23,10 +30,6 @@ public abstract class Ghost extends GameElement {
     state = _state;
   }
 
-  /**
-   *
-   * @return
-   */
   public boolean isNormal() {
     return state == 0;
   }
@@ -41,12 +44,14 @@ public abstract class Ghost extends GameElement {
 
   /**
    * Menggerakkan Ghost menuju Player saat kondisi normal.
+   *
    * @return Nilai integer yang menentukan arah gerak Ghost pada status normal.
    */
   public abstract int moveTowardsPlayer();
 
   /**
    * Menggerakkan Ghost menjauhi Player saat Player dalam mode Super.
+   *
    * @return Nilai integer yang menentukan arah gerak Ghost pada status vulnerable.
    */
   public int moveAwayFromPlayer() {
@@ -55,6 +60,7 @@ public abstract class Ghost extends GameElement {
 
   /**
    * Menggerakkan Ghost menuju Base setelah dimakan oleh Player.
+   *
    * @return Nilai integer yang menentukan arah gerak Ghost pada status dead.
    */
   public int returnToBase() {

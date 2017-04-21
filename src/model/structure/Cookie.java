@@ -1,13 +1,16 @@
-package model;
+package model.structure;
+
+import model.GameElement;
 
 /**
  * Kelas berisi Cookie yang tersebar pada Grid dalam Arena.
  */
-public class Cookie {
+public class Cookie extends GameElement {
   private boolean available;
   private int value;
 
-  public Cookie() {
+  public Cookie(String sprite) {
+    super(sprite);
     available = true;
     value = 10;
   }
@@ -20,7 +23,7 @@ public class Cookie {
     return value;
   }
 
-  public void eatCookie() {
+  public void remove() {
     available = false;
   }
 

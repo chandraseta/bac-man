@@ -1,4 +1,4 @@
-package model;
+package model.structure;
 
 /**
  * Kelas berisi Wall yang merupakan Grid yang secara normal
@@ -6,4 +6,8 @@ package model;
  */
 public class Wall extends Grid {
   private final boolean accessible = false;
+
+  public Wall(int x, int y, String sprite) {
+    super(x, y, sprite);
+  }
 }

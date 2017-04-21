@@ -7,16 +7,17 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Interface untuk semua game element yang memiliki lokasi.
+ * Kelas abstrak GameElement berisi dasar dari semua elemen game.
  */
 public abstract class GameElement {
 
-    public GameElement(int x, int y, String img_path) {
-        position.setLocation(x,y);
-        try {
-            Image = ImageIO.read(new File(img_path));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+  private final BufferedImage Image;
+
+  public GameElement(String img_path) {
+    try {
+      Image = ImageIO.read(new File(img_path));
+    } catch (IOException e) {
+      e.printStackTrace();
     }
+  }
 }

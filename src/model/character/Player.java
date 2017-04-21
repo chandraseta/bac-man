@@ -1,9 +1,11 @@
-package model;
+package model.character;
+
+import model.GameCharacter;
 
 /**
  * Kelas berisi karakter Player yang dapat dikendalikan pemain.
  */
-public class Player extends GameElement {
+public class Player extends GameCharacter {
 
   /**
    * Berisi informasi status Player.
@@ -14,6 +16,7 @@ public class Player extends GameElement {
   private int state;
 
   public Player(int x, int y) {
+    // TODO: REPLACE STUB WITH PLAYER SPRITE
     super(x, y, "STUB_Player_Sprite");
     state = 0;
   }
@@ -29,4 +32,5 @@ public class Player extends GameElement {
   public boolean isDead() {
     return state == 2;
   }
+
 }
