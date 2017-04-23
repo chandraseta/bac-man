@@ -7,7 +7,7 @@ package model.element;
 public class Wall extends Grid {
 
   public Wall() {
-    super("src/view/assets/wall.png", false);
+    super("src\\view\\assets\\wall.png", false);
   }
 
   public Wall(String sprite, boolean accessible) {

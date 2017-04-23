@@ -10,13 +10,13 @@ public class Cookie extends GameElement {
   private int value;
 
   public Cookie() {
-    super("src/view/assets/cookie.png");
+    super("src\\view\\assets\\cookie.png");
     available = true;
     value = 10;
   }
 
   public Cookie(boolean available) {
-    super("src/view/assets/cookie.png");
+    super("src\\view\\assets\\cookie.png");
     this.available = available;
     value = 10;
   }

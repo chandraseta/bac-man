@@ -16,7 +16,7 @@ import model.element.Wall;
  */
 public class Arena {
   private static Grid[][] map;
-  private static final String MAP_PATH = "src/view/assets/map.txt";
+  private static final String MAP_PATH = "src\\view\\assets\\map.txt";
   private static int mapLength;
   private static int mapWidth;
 
