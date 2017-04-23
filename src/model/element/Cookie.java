@@ -35,7 +35,7 @@ public class Cookie extends GameElement {
     return value;
   }
 
-  public void remove() {
+  public void removeCookie() {
     available = false;
   }
 

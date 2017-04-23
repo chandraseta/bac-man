@@ -13,7 +13,16 @@ public class Player extends GameCharacter {
    * 1 = Super
    * 2 = Dead
    */
-  private int state;
+  private static int state;
+
+  /**
+   * Berisi informasi orientasi arah gerak Player.
+   * w = Up
+   * d = Right
+   * s = Down
+   * a = Left
+   */
+  private static char orientation;
 
   /**
    *
@@ -51,12 +60,16 @@ public class Player extends GameCharacter {
     return state == 2;
   }
 
-  public static void setPlayerI(int new_i) {
-    playerI = new_i;
+  public static void setPlayerI(int newI) {
+    playerI = newI;
   }
 
-  public static void setPlayerJ(int new_j) {
-    playerJ = new_j;
+  public static void setPlayerJ(int newJ) {
+    playerJ = newJ;
+  }
+
+  public static int getStatus() {
+    return state;
   }
 
   public static int getPlayerI() {

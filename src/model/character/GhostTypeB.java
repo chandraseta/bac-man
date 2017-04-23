@@ -5,8 +5,8 @@ package model.character;
  */
 public class GhostTypeB extends Ghost {
 
-  public GhostTypeB(int x, int y, String sprite) {
-    super(x, y, sprite);
+  public GhostTypeB(int i, int j) {
+    super(i, j, "src/view/assets/ghost_b.png");
   }
 
   public int moveTowardsPlayer() {

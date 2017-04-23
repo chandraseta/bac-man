@@ -1,6 +1,6 @@
 package controller;
 
-import model.Ghost;
+import model.character.Ghost;
 
 /**
  * Kelas controller untuk Ghost.
@@ -30,13 +30,17 @@ public class GhostController {
   public void move() {
     int movement = nextMovement();
     if (movement == 1) {
-      ghost.setPosition(ghost.getX(), ghost.getY() - 1);
+      ghost.moveUp();
     } else if (movement == 2) {
-      ghost.setPosition(ghost.getX() + 1, ghost.getY());
+      ghost.moveRight();
     } else if (movement == 3) {
-      ghost.setPosition(ghost.getX(), ghost.getY() + 1);
+      ghost.moveDown();
     } else {
-      ghost.setPosition(ghost.getX() - 1, ghost.getY());
+      ghost.moveLeft();
     }
+  }
+
+  public Ghost getGhost() {
+    return ghost;
   }
 }

@@ -6,7 +6,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import model.character.GhostTypeA;
+import model.character.GhostTypeB;
 import model.element.Grid;
+import model.element.Wall;
 
 /**
  * Kelas berisi Arena dari Game BacMan.
@@ -38,7 +41,23 @@ public class Arena {
       for (int row = 0; row < mapWidth; row++) {
         line = buffread.readLine();
         for (int col = 0; col < mapLength; col++) {
-          map[row][col] = new Grid()
+          switch (line.charAt(col)) {
+            case '-':
+              map[row][col] = new Wall();
+              break;
+            case 'o':
+              map[row][col] = new Grid(true);
+              break;
+            case ' ':
+              map[row][col] = new Grid(false);
+              break;
+            case 'A':
+              map[row][col] = new GhostTypeA(row, col);
+              break;
+            case 'B':
+              map[row][col] = new GhostTypeB(row, col);
+          }
+          map[row][col] = new Grid();
         }
       }
       buffread.close();

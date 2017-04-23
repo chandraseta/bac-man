@@ -15,8 +15,8 @@ public abstract class Ghost extends GameCharacter {
    */
   protected int state;
 
-  public Ghost(int x, int y, String sprite) {
-    super(x, y, sprite);
+  public Ghost(int i, int j, String sprite) {
+    super(i, j, sprite);
     state = 0;
   }
 
