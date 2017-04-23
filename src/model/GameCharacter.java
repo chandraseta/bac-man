@@ -10,7 +10,7 @@ public class GameCharacter extends GameElement {
 
   public GameCharacter(int i, int j, String imgPath) {
     super(imgPath);
-    position.setLocation(i, j);
+    position = new Point(i, j);
   }
 
   public void teleport(int i, int j) {

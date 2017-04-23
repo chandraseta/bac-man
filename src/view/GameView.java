@@ -1,6 +1,7 @@
 package view;
 
 import model.Arena;
+import model.character.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,17 +12,31 @@ import java.net.URL;
  */
 public class GameView extends JFrame {
   private int scale;
-  protected JPanel gamePanel;
+  protected JLabel[][] mapLabel;
   private static final int DEFAULT_SCALE = 40;
 
-  public GameView(Arena arena) {
+  public GameView(Player bacman) {
     scale = DEFAULT_SCALE;
-    gamePanel = new JPanel();
+    JPanel gamePanel = new JPanel();
     gamePanel.setBackground(Color.black);
-    gamePanel.setLayout(new GridLayout(arena.getMapWidth(), arena.getMapLength()));
-    for (int i = 0; i < arena.getMapWidth(); i++) {
-      for (int j = 0; j < arena.getMapLength(); j++) {
-        gamePanel.add(createLabel(arena.getGrid(i, j).getImgPath()));
+    gamePanel.setLayout(new GridLayout(Arena.getMapWidth(), Arena.getMapLength()));
+    mapLabel = new JLabel[Arena.getMapWidth()][Arena.getMapLength()];
+    for (int i = 0; i < Arena.getMapWidth(); i++) {
+      for (int j = 0; j < Arena.getMapLength(); j++) {
+        if((i == bacman.getI()) && (j == bacman.getJ())) {
+          mapLabel[i][j] = createLabel(bacman.getImgPath());
+          mapLabel[i][j].add(createLabel(Arena.getGrid(i, j).getImgPath()));
+        } else {
+          mapLabel[i][j] = createLabel(Arena.getGrid(i, j).getImgPath());
+        }
+      }
+    }
+
+    mapLabel[bacman.getI()][bacman.getJ()].add(createLabel(bacman.getImgPath()));
+
+    for (int i = 0; i < Arena.getMapWidth(); i++) {
+      for (int j = 0; j < Arena.getMapLength(); j++) {
+        gamePanel.add(mapLabel[i][j]);
       }
     }
     add(gamePanel);
@@ -29,7 +44,7 @@ public class GameView extends JFrame {
   }
 
   public boolean isGIF(String image_path) {
-    return(image_path.indexOf(".gif") != -1);
+    return(image_path.contains(".gif"));
   }
 
   public JLabel createLabel(String image_path) {
@@ -45,7 +60,8 @@ public class GameView extends JFrame {
   }
 
   public static void main(String[] args) {
+    Player bacman = new Player();
     Arena arena = new Arena();
-    GameView gameView = new GameView(arena);
+    GameView gameView = new GameView(bacman);
   }
 }

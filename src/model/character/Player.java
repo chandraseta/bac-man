@@ -44,7 +44,6 @@ public class Player extends GameCharacter {
   }
 
   public Player(int i, int j, String sprite) {
-    // TODO: REPLACE STUB WITH PLAYER SPRITE
     super(i, j, sprite);
     state = 0;
     playerI = i;
