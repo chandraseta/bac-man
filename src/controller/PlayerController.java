@@ -8,13 +8,20 @@ import model.character.Player;
 public class PlayerController {
   private Player player;
 
+  public PlayerController() {
+    player = new Player();
+  }
+
+  public PlayerController(int i, int j, String sprite) {
+    player = new Player(i, j, sprite);
+  }
+
   public int getDirection() {
     // TODO: Read from keyboard (WASD, UpLeftDownRight)
     return 0;
   }
 
-  public void move() {
-    int direction = getDirection();
+  public void move(int direction) {
     // TODO: Check if the targeted location is a wall, null movement if true
     if (direction == 1) {
       player.moveUp();

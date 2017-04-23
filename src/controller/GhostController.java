@@ -1,6 +1,8 @@
 package controller;
 
 import model.character.Ghost;
+import model.character.GhostTypeA;
+import model.character.GhostTypeB;
 
 /**
  * Kelas controller untuk Ghost.
@@ -8,6 +10,15 @@ import model.character.Ghost;
 public class GhostController {
 
   private Ghost ghost;
+
+  public GhostController(int i, int j, char type) {
+    // TODO: CHANGE IF NEW GHOST TYPE IS ADDED
+    if (type == 'a') {
+      ghost = new GhostTypeA(i, j);
+    } else if (type == 'b') {
+      ghost = new GhostTypeB(i, j);
+    }
+  }
 
   /**
    * Fungsi menentukan pergerakan Ghost selanjutnya.

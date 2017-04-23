@@ -40,6 +40,7 @@ public class Player extends GameCharacter {
     state = 0;
     playerI = 20;
     playerJ = 12;
+    orientation = 'e';
   }
 
   public Player(int i, int j, String sprite) {

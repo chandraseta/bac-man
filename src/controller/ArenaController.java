@@ -7,4 +7,8 @@ import model.Arena;
  */
 public class ArenaController {
   private Arena arena;
+
+  public ArenaController() {
+    arena = new Arena();
+  }
 }
