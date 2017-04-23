@@ -1,4 +1,4 @@
-package model.structure;
+package model.element;
 
 import model.GameElement;
 
@@ -9,10 +9,22 @@ public class Cookie extends GameElement {
   private boolean available;
   private int value;
 
-  public Cookie(String sprite) {
-    super(sprite);
+  public Cookie() {
+    super("src/view/assets/cookie.png");
     available = true;
     value = 10;
+  }
+
+  public Cookie(boolean _available) {
+    super("src/view/assets/cookie.png");
+    available = _available;
+    value = 10;
+  }
+
+  public Cookie(String sprite, int _value) {
+    super(sprite);
+    available = true;
+    value = _value;
   }
 
   public boolean isAvailable() {

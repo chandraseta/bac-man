@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public abstract class GameElement {
 
-  private final BufferedImage Image;
+  private BufferedImage Image;
 
   public GameElement(String img_path) {
     try {

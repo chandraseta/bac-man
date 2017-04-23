@@ -1,4 +1,6 @@
-package model.structure;
+package model;
+
+import model.element.Grid;
 
 /**
  * Kelas berisi Arena dari Game BacMan.

@@ -11,5 +11,6 @@ public class GhostTypeA extends Ghost {
 
   public int moveTowardsPlayer() {
     // TODO: IMPLEMENT
+    return 0;
   }
 }

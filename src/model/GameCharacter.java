@@ -8,36 +8,36 @@ import java.awt.Point;
 public class GameCharacter extends GameElement {
   private Point position;
 
-  public GameCharacter(int x, int y, String img_path) {
+  public GameCharacter(int i, int j, String img_path) {
     super(img_path);
-    position.setLocation(x, y);
+    position.setLocation(i, j);
   }
 
-  public void setPosition(int x, int y) {
-    position.setLocation(x, y);
+  public void setPosition(int i, int j) {
+    position.setLocation(i, j);
   }
 
-  public int getX() {
+  public int getI() {
     return (int)position.getX();
   }
 
-  public int getY() {
+  public int getJ() {
     return (int)position.getY();
   }
 
   public void moveUp() {
-    position.setLocation(getX(), getY() - 1);
+    position.setLocation(getI()-1, getJ());
   }
 
   public void moveRight() {
-    position.setLocation(getX()+1, getY());
+    position.setLocation(getI(), getJ()+1);
   }
 
   public void moveDown() {
-    position.setLocation(getX(), getY()+1);
+    position.setLocation(getI()+1, getJ());
   }
 
   public void moveLeft() {
-    position.setLocation(getX()-1, getY());
+    position.setLocation(getI(), getJ()-1);
   }
 }

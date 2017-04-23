@@ -56,6 +56,7 @@ public abstract class Ghost extends GameCharacter {
    */
   public int moveAwayFromPlayer() {
     // TODO: IMPLEMENT
+    return 0;
   }
 
   /**
@@ -65,5 +66,6 @@ public abstract class Ghost extends GameCharacter {
    */
   public int returnToBase() {
     // TODO: IMPLEMENT
+    return 0;
   }
 }
