@@ -1,18 +1,19 @@
 package controller;
 
 import model.Arena;
-import model.character.Blinky;
 import view.GameView;
 
 /**
  * Kelas berisi semua aspek game BacMan.
  */
 public class BacMan {
-
-  private static GameView gameView;
-  private static int score;
-  private static int playerSuperDuration;
-  private static boolean gameEnd;
+  private GameView gameView;
+  private PlayerController bac;
+  private ArenaController gameArena;
+  private GhostController[] ghost;
+  public static int score = 0;
+  private int playerSuperDuration;
+  private boolean gameEnd;
 
   public static void main(String[] args) {
     PlayerController bac = new PlayerController();
