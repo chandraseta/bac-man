@@ -29,7 +29,7 @@ public class Grid extends GameElement {
   }
 
   public Grid(boolean containCookie, boolean isSuperCookie) {
-    super("\\assets\\super_cookie.png");
+    super("\\assets\\super_cookie.gif");
     if (isSuperCookie) {
       cookie = new SuperCookie();
     }
