@@ -53,7 +53,6 @@ public class Arena {
             default:
               map[row][col] = new Grid();
           }
-          map[row][col] = new Grid();
         }
       }
       buffread.close();
