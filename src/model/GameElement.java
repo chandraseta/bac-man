@@ -11,21 +11,17 @@ import java.io.IOException;
  */
 public abstract class GameElement {
 
-  private BufferedImage Image;
+  private String imgPath;
 
   public GameElement(String imgPath) {
-    try {
-      Image = ImageIO.read(new File(imgPath));
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    this.imgPath = imgPath;
   }
 
-  public void setNewImage(String imgPath) {
-    try {
-      Image = ImageIO.read(new File(imgPath));
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+  public void setNewImage(String newImg) {
+    imgPath = newImg;
+  }
+
+  public String getImgPath() {
+    return imgPath;
   }
 }

@@ -74,6 +74,10 @@ public class Arena {
     return mapWidth;
   }
 
+  public static Grid[][] getMap() {
+    return map;
+  }
+
   public static Grid getGrid(int i, int j) {
     return map[i][j];
   }

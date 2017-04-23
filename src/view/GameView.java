@@ -103,9 +103,8 @@ public class GameView {
   }
 
   public void setImageIcon(int row, int col) {
-    BufferedImage bufferedImage = null;
     try {
-      bufferedImage = ImageIO.read(new File(getImagePath(row, col)));
+      BufferedImage bufferedImage = ImageIO.read(new File(getImagePath(row, col)));
       ImageIcon icon = new ImageIcon(bufferedImage);
       Image img = icon.getImage();
       Image new_img = bufferedImage.getScaledInstance(scale, scale, Image.SCALE_SMOOTH);
