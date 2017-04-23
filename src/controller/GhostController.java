@@ -48,14 +48,23 @@ public class GhostController {
     if (movement == 1) {
       ghost.moveUp();
       if (ghost instanceof Blinky) {
-
+        Blinky.setBlinkyI(ghost.getI() - 1);
       }
     } else if (movement == 2) {
       ghost.moveRight();
+      if (ghost instanceof Blinky) {
+        Blinky.setBlinkyJ(ghost.getJ() + 1);
+      }
     } else if (movement == 3) {
       ghost.moveDown();
+      if (ghost instanceof Blinky) {
+        Blinky.setBlinkyI(ghost.getI() + 1);
+      }
     } else {
       ghost.moveLeft();
+      if (ghost instanceof ) {
+        Blinky.setBlinkyJ(ghost.getJ() - 1);
+      }
     }
   }
 
