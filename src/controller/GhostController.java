@@ -1,8 +1,10 @@
 package controller;
 
+import model.character.Blinky;
+import model.character.Clyde;
 import model.character.Ghost;
-import model.character.GhostTypeA;
-import model.character.GhostTypeB;
+import model.character.Inky;
+import model.character.Pinky;
 
 /**
  * Kelas controller untuk Ghost.
@@ -12,11 +14,14 @@ public class GhostController {
   private Ghost ghost;
 
   public GhostController(int i, int j, char type) {
-    // TODO: CHANGE IF NEW GHOST TYPE IS ADDED
     if (type == 'a') {
-      ghost = new GhostTypeA(i, j);
+      ghost = new Blinky(i, j);
     } else if (type == 'b') {
-      ghost = new GhostTypeB(i, j);
+      ghost = new Pinky(i, j);
+    } else if (type == 'c') {
+      ghost = new Inky(i, j);
+    } else {
+      ghost = new Clyde(i, j);
     }
   }
 
@@ -42,6 +47,9 @@ public class GhostController {
     int movement = nextMovement();
     if (movement == 1) {
       ghost.moveUp();
+      if (ghost instanceof Blinky) {
+
+      }
     } else if (movement == 2) {
       ghost.moveRight();
     } else if (movement == 3) {

@@ -17,9 +17,12 @@ public abstract class Ghost extends GameCharacter {
    */
   protected int state;
 
+  protected Point destination;
+
   public Ghost(int i, int j, String sprite) {
     super(i, j, sprite);
     state = 0;
+    destination = new Point(Player.getPlayerI(), Player.getPlayerJ());
   }
 
   /**
@@ -44,12 +47,17 @@ public abstract class Ghost extends GameCharacter {
     return state == 2;
   }
 
+  public abstract void getNextDestination();
+
   /**
    * Menggerakkan Ghost menuju Player saat kondisi normal.
    *
    * @return Nilai integer yang menentukan arah gerak Ghost pada status normal.
    */
-  public abstract int moveTowardsPlayer();
+  public int moveTowardsPlayer() {
+    getNextDestination();
+    return (new PathFinder(this.position, destination)).getMovement();
+  }
 
   /**
    * Menggerakkan Ghost menjauhi Player saat Player dalam mode Super.

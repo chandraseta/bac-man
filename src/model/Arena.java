@@ -1,13 +1,12 @@
 package model;
 
+import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import model.character.GhostTypeA;
-import model.character.GhostTypeB;
 import model.element.Grid;
 import model.element.Wall;
 
@@ -19,6 +18,11 @@ public class Arena {
   private static final String MAP_PATH = "src\\view\\assets\\map.txt";
   private static int mapLength;
   private static int mapWidth;
+  private static Point blinkyPosition;
+  private static Point pinkyPosition;
+  private static Point inkyPosition;
+  private static Point clydePosition;
+  private static Point playerPosition;
 
   public Arena() {
     loadMapFromFile(MAP_PATH);
@@ -50,6 +54,25 @@ public class Arena {
             case 'S':
               map[row][col] = new Grid(true, true);
               break;
+            case 'P':
+              map[row][col] = new Grid();
+              playerPosition = new Point(row, col);
+              break;
+            case 'A':
+              map[row][col] = new Grid();
+              blinkyPosition = new Point(row, col);
+              break;
+            case 'B':
+              map[row][col] = new Grid();
+              pinkyPosition = new Point(row, col);
+              break;
+            case 'C':
+              map[row][col] = new Grid();
+              inkyPosition = new Point(row, col);
+              break;
+            case 'D':
+              map[row][col] = new Grid();
+              clydePosition = new Point(row, col);
             default:
               map[row][col] = new Grid();
           }
@@ -79,5 +102,25 @@ public class Arena {
 
   public static Grid getGrid(int i, int j) {
     return map[i][j];
+  }
+
+  public static Point getBlinkyPosition() {
+    return blinkyPosition;
+  }
+
+  public static Point getPinkyPosition() {
+    return pinkyPosition;
+  }
+
+  public static Point getInkyPosition() {
+    return inkyPosition;
+  }
+
+  public static Point getClydePosition() {
+    return clydePosition;
+  }
+
+  public static Point getPlayerPosition() {
+    return playerPosition;
   }
 }
