@@ -6,7 +6,7 @@ import java.awt.Point;
  * Kelas abstrak GameCharacter sebagai dasar dari semua karakter dalam game.
  */
 public class GameCharacter extends GameElement {
-  private Point position;
+  protected Point position;
 
   public GameCharacter(int i, int j, String imgPath) {
     super(imgPath);

@@ -1,6 +1,10 @@
 package model.character;
 
 import model.GameCharacter;
+import model.VisibilityGraph;
+
+import java.awt.*;
+import java.util.Arrays;
 
 /**
  * Kelas abstract Ghost yang menjadi dasar berbagai tipe Ghost.
@@ -14,6 +18,11 @@ public abstract class Ghost extends GameCharacter {
    * 2 = Dead
    */
   protected int state;
+
+  protected int [] fromGhostDistance;
+  protected int [] fromGhostMovement;
+  protected int [] toPlayerDistance;
+  protected int [] toPlayerMovement;
 
   public Ghost(int i, int j, String sprite) {
     super(i, j, sprite);
@@ -68,4 +77,60 @@ public abstract class Ghost extends GameCharacter {
     // TODO: IMPLEMENT
     return 0;
   }
+
+  protected int checkLineOfSight() {
+    if (this.position.x == Player.getPlayerI()) {
+      if (this.position.y > Player.getPlayerJ()) {
+        return 4;
+      } else {
+        return 2;
+      }
+    } else if (this.position.y == Player.getPlayerJ()) {
+      if (this.position.x > Player.getPlayerI()) {
+        return 1;
+      } else {
+        return 3;
+      }
+    } else {
+      return 0;
+    }
+  }
+
+  protected void addGhostToGraph() {
+    fromGhostDistance = new int[VisibilityGraph.getNumOfLandmarks()];
+    fromGhostMovement = new int[VisibilityGraph.getNumOfLandmarks()];
+    Arrays.fill(fromGhostDistance, Integer.MAX_VALUE);
+    Arrays.fill(fromGhostMovement, 0);
+
+    int n = VisibilityGraph.getLandmarks().indexOf(this.position);
+    if (n != -1) {
+      fromGhostDistance[n] = 0;
+      fromGhostMovement[n] = 0;
+    } else {
+      VisibilityGraph.findNeighbors(this.position, fromGhostDistance, fromGhostMovement);
+    }
+  }
+
+  protected void addPlayerToGraph() {
+    toPlayerDistance = new int[VisibilityGraph.getNumOfLandmarks()];
+    toPlayerMovement = new int[VisibilityGraph.getNumOfLandmarks()];
+    Arrays.fill(toPlayerDistance, Integer.MAX_VALUE);
+    Arrays.fill(toPlayerMovement, 0);
+
+    Point playerPos = new Point(Player.getPlayerI(), Player.getPlayerJ());
+    int n = VisibilityGraph.getLandmarks().indexOf(playerPos);
+    if (n != -1) {
+      toPlayerDistance[n] = 0;
+      toPlayerMovement[n] = 0;
+    } else {
+      VisibilityGraph.findNeighbors(playerPos, toPlayerDistance, toPlayerMovement);
+      for (int movement: toPlayerMovement) {
+        movement += 2;
+        if (movement > 4)
+          movement -= 4;
+      }
+    }
+  
+  }
+
 }
