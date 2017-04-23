@@ -36,20 +36,20 @@ public class Player extends GameCharacter {
   private static int playerJ = 12;
 
   public Player() {
-    super(20, 12, "src/view/assets/player.png");
+    super(20, 12, "\\assets\\bacbac_down.gif");
     state = 0;
     playerI = 20;
     playerJ = 12;
-    orientation = 'e';
+    orientation = 's';
   }
 
   public Player(int i, int j, String sprite) {
     // TODO: REPLACE STUB WITH PLAYER SPRITE
-    super(i, j, "src/view/assets/player.png");
+    super(i, j, sprite);
     state = 0;
     playerI = i;
     playerJ = j;
-    orientation = 'e';
+    orientation = 's';
   }
 
   public boolean isNormal() {

@@ -27,21 +27,25 @@ public class PlayerController {
       player.moveUp();
       Player.setPlayerI(player.getI()-1);
       Player.setOrientation('n');
+      player.setNewImage("\\assets\\bacbac_up.gif");
     }
     else if (direction == 2) {
       player.moveRight();
       Player.setPlayerJ(player.getJ()+1);
       Player.setOrientation('e');
+      player.setNewImage("\\assets\\bacbac_right.gif");
     }
     else if (direction == 3) {
       player.moveDown();
       Player.setPlayerI(player.getI()+1);
       Player.setOrientation('s');
+      player.setNewImage("\\assets\\bacbac_down.gif");
     }
     else {
       player.moveLeft();
       Player.setPlayerJ(player.getJ()-1);
       Player.setOrientation('w');
+      player.setNewImage("\\assets\\bacbac_left.gif");
     }
   }
 }

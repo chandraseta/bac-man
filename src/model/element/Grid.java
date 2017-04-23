@@ -13,14 +13,14 @@ public class Grid extends GameElement {
    * Constructor Grid yang tidak memiliki Cookie
    */
   public Grid() {
-    super("src\\view\\assets\\grid.png");
+    super("\\assets\\cookie.png");
     cookie = new Cookie();
     removeCookie();
     accessible = true;
   }
 
   public Grid(boolean containCookie) {
-    super("src\\view\\assets\\cookie.png");
+    super("\\assets\\cookie.png");
     cookie = new Cookie();
     if (!containCookie) {
       removeCookie();
@@ -29,7 +29,7 @@ public class Grid extends GameElement {
   }
 
   public Grid(boolean containCookie, boolean isSuperCookie) {
-    super("src\\view\\assets\\super_cookie.png");
+    super("\\assets\\super_cookie.png");
     if (isSuperCookie) {
       cookie = new SuperCookie();
     }
@@ -57,6 +57,6 @@ public class Grid extends GameElement {
 
   public void removeCookie() {
     cookie.remove();
-    setNewImage("src\\view\\assets\\grid.png");
+    setNewImage("\\assets\\cookie.png");
   }
 }

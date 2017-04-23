@@ -6,7 +6,7 @@ package model.element;
 public class SuperCookie extends Cookie {
 
   public SuperCookie() {
-    super("src\\view\\assets\\super_cookie.png", 100);
+    super("\\assets\\super_cookie.png", 100);
   }
 
   public SuperCookie(String sprite, int value) {

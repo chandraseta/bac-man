@@ -42,7 +42,7 @@ public class GhostTypeA extends Ghost {
   }
 
   public GhostTypeA(int i, int j) {
-    super(i, j, "src/view/assets/ghost_a.png");
+    super(i, j, "\\assets\\ghost_a.png");
   }
 
   public int moveTowardsPlayer() {
