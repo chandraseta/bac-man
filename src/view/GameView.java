@@ -16,7 +16,7 @@ public class GameView {
   private int width;
   private char[][] asciiMap;
   private JLabel[][] map;
-  private static final String MAP_PATH = "src/view/assets/map.txt";
+  private static final String MAP_PATH = "src\\view\\assets\\map.txt";
   private static final int DEFAULT_SCALE = 30;
 
   public GameView() {
@@ -25,8 +25,8 @@ public class GameView {
     JFrame frame = new JFrame();
     JPanel panel = new JPanel();
     panel.setBackground(Color.black);
-    panel.setLayout(new GridLayout(length, width));
-    map = new JLabel[length][width];
+    panel.setLayout(new GridLayout(width, length));
+    map = new JLabel[width][length];
     for (int i = 0; i < width; i++) {
       for (int j = 0; j < length; j++) {
         setImageIcon(i, j);
@@ -70,31 +70,31 @@ public class GameView {
     String image_path = null;
     switch (asciiMap[row][col]) {
       case '-':
-        image_path = "src/view/assets/wall.png";
+        image_path = "src\\view\\assets\\wall.png";
         break;
       case 'o':
-        image_path = "src/view/assets/cookie.png";
+        image_path = "src\\view\\assets\\cookie.png";
         break;
       case ' ':
-        image_path = "src/view/assets/grid.png";
+        image_path = "src\\view\\assets\\grid.png";
         break;
       case 'A':
-        image_path = "src/view/assets/ghost_a.png";
+        image_path = "src\\view\\assets\\ghost_a.png";
         break;
       case 'B':
-        image_path = "src/view/assets/ghost_b.png";
+        image_path = "src\\view\\assets\\ghost_b.png";
         break;
       case 'C':
-        image_path = "src/view/assets/ghost_c.png";
+        image_path = "src\\view\\assets\\ghost_c.png";
         break;
       case 'D':
-        image_path = "src/view/assets/ghost_d.png";
+        image_path = "src\\view\\assets\\ghost_d.png";
         break;
       case 'P':
-        image_path = "src/view/assets/player.png";
+        image_path = "src\\view\\assets\\player.png";
         break;
       case 'S':
-        image_path = "view/assets/super_cookie.png";
+        image_path = "src\\view\\assets\\super_cookie.png";
         break;
       default:
         break;
