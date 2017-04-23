@@ -10,53 +10,55 @@ import java.io.*;
  * Created by Holy on 20-Apr-17.
  */
 public class GameView {
-    private int scale;
-    private int length;
-    private int width;
-    private char[][] asciiMap;
-    private JLabel[][] map;
-    private static final String MAP_PATH = "src/view/assets/map.txt";
-    private static final int DEFAULT_SCALE = 30;
 
-    public GameView() {
-        scale = DEFAULT_SCALE;
-        readMap();
-        JFrame frame = new JFrame();
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.black);
-        panel.setLayout(new GridLayout(length, width));
-        map = new JLabel[length][width];
-        for (int i = 0; i < length; i++) {
-            for (int j = 0; j < width; j++) {
-                setImageIcon(i, j);
-                panel.add(map[i][j]);
-            }
-        }
-        frame.add(panel);
-        frame.setVisible(true);
+  private int scale;
+  private int length;
+  private int width;
+  private char[][] asciiMap;
+  private JLabel[][] map;
+  private static final String MAP_PATH = "src/view/assets/map.txt";
+  private static final int DEFAULT_SCALE = 30;
+
+  public GameView() {
+    scale = DEFAULT_SCALE;
+    readMap();
+    JFrame frame = new JFrame();
+    JPanel panel = new JPanel();
+    panel.setBackground(Color.black);
+    panel.setLayout(new GridLayout(length, width));
+    map = new JLabel[length][width];
+    for (int i = 0; i < width; i++) {
+      for (int j = 0; j < length; j++) {
+        setImageIcon(i, j);
+        panel.add(map[i][j]);
+      }
     }
+    frame.add(panel);
+    frame.setVisible(true);
+  }
 
+    /*
     public void readMap() {
         try {
             FileInputStream fstream;
-            DataInputStream in;
-            BufferedReader br;
+            DataInputStream instream;
+            BufferedReader buffread;
             fstream = new FileInputStream(String.format("%s", MAP_PATH));
-            in = new DataInputStream(fstream);
-            br = new BufferedReader(new InputStreamReader(in));
-            String[] strSplit = br.readLine().split("\\s+");
+            instream = new DataInputStream(fstream);
+            buffread = new BufferedReader(new InputStreamReader(instream));
+            String[] strSplit = buffread.readLine().split("\\s+");
             length = Integer.parseInt(strSplit[0]);
             width = Integer.parseInt(strSplit[1]);
-            asciiMap = new char[length][width];
-            String line = br.readLine();
-            for (int row = 0; row < length; row++) {
-                line = br.readLine();
-                for (int col = 0; col < width; col++) {
+            asciiMap = new char[width][length];
+            String line = buffread.readLine();
+            for (int row = 0; row < width; row++) {
+                line = buffread.readLine();
+                for (int col = 0; col < length; col++) {
                     asciiMap[row][col] = line.charAt(col);
                 }
             }
-            br.close();
-            in.close();
+            buffread.close();
+            instream.close();
             fstream.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -64,6 +66,7 @@ public class GameView {
             e.printStackTrace();
         }
     }
+    */
 
     public String getImagePath(int row, int col) {
         String image_path = null;

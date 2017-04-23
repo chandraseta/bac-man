@@ -1,6 +1,6 @@
 package controller;
 
-import model.character.Ghost;
+import model.Ghost;
 
 /**
  * Kelas controller untuk Ghost.
@@ -11,6 +11,7 @@ public class GhostController {
 
   /**
    * Fungsi menentukan pergerakan Ghost selanjutnya.
+   *
    * @return Nilai integer yang menentukan arah gerak Ghost berdasarkan kondisi Ghost.
    */
   public int nextMovement() {
@@ -23,19 +24,19 @@ public class GhostController {
     }
   }
 
+  /**
+   * Method untuk menggerakkan Ghost berdasarkan kondisi Ghost.
+   */
   public void move() {
     int movement = nextMovement();
     if (movement == 1) {
-      ghost.moveUp();
-    }
-    else if (movement == 2) {
-      ghost.moveRight();
-    }
-    else if (movement == 3) {
-      ghost.moveDown();
-    }
-    else {
-      ghost.moveLeft();
+      ghost.setPosition(ghost.getX(), ghost.getY() - 1);
+    } else if (movement == 2) {
+      ghost.setPosition(ghost.getX() + 1, ghost.getY());
+    } else if (movement == 3) {
+      ghost.setPosition(ghost.getX(), ghost.getY() + 1);
+    } else {
+      ghost.setPosition(ghost.getX() - 1, ghost.getY());
     }
   }
 }

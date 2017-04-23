@@ -13,7 +13,7 @@ public class GameCharacter extends GameElement {
     position.setLocation(i, j);
   }
 
-  public void setPosition(int i, int j) {
+  public void teleport(int i, int j) {
     position.setLocation(i, j);
   }
 
