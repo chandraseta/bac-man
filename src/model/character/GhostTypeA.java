@@ -2,7 +2,7 @@ package model.character;
 
 import model.VisibilityGraph;
 
-import java.awt.*;
+import java.awt.Point;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -70,7 +70,7 @@ public class GhostTypeA extends Ghost {
     while (currNode.path.getLast() != END) {
       int u = currNode.path.getLast();
       for (int v = 0; v < n; ++v) {
-        if (adjacencyMatrix[u][v] != Integer.MAX_VALUE) {
+        if (adjacencyMatrix[u][v] != Integer.MAX_VALUE && !currNode.path.contains(v)) {
           aliveNodes.add(new Node(currNode, v, adjacencyMatrix[u][v]));
         }
       }
