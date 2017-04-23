@@ -22,7 +22,7 @@ public class GhostTypeB extends Ghost {
       cost = initCost;
     }
 
-    public Node(GhostTypeB.Node parent, int currNode, int addCost) {
+    public Node(Node parent, int currNode, int addCost) {
       path = new LinkedList<>(parent.path);
       cost = parent.cost + addCost;
       path.add(currNode);
