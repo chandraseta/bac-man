@@ -9,15 +9,36 @@ public class Grid extends GameElement {
   private Cookie cookie;
   private boolean accessible;
 
+  /**
+   * Constructor Grid yang tidak memiliki Cookie
+   */
   public Grid() {
     super("src/view/assets/grid.png");
     cookie = new Cookie();
+    removeCookie();
     accessible = true;
   }
 
   public Grid(boolean containCookie) {
-    super("src/view/assets/grid.png");
-    cookie = new Cookie(containCookie);
+    super("src/view/assets/cookie.png");
+    cookie = new Cookie();
+    if (!containCookie) {
+      removeCookie();
+    }
+    accessible = true;
+  }
+
+  public Grid(boolean containCookie, boolean isSuperCookie) {
+    super("src/view/assets/super_cookie.png");
+    if (isSuperCookie) {
+      cookie = new SuperCookie();
+    }
+    else {
+      cookie = new Cookie();
+    }
+    if (!containCookie) {
+      removeCookie();
+    }
     accessible = true;
   }
 
@@ -32,5 +53,10 @@ public class Grid extends GameElement {
 
   public boolean isAccessible() {
     return accessible;
+  }
+
+  public void removeCookie() {
+    cookie.remove();
+    setNewImage("src/view/assets/grid.png");
   }
 }

@@ -22,7 +22,6 @@ public class Arena {
 
   public Arena() {
     loadMapFromFile(MAP_PATH);
-
   }
 
   public void loadMapFromFile(String path) {
@@ -48,14 +47,11 @@ public class Arena {
             case 'o':
               map[row][col] = new Grid(true);
               break;
-            case ' ':
-              map[row][col] = new Grid(false);
+            case 'S':
+              map[row][col] = new Grid(true, true);
               break;
-            case 'A':
-              map[row][col] = new GhostTypeA(row, col);
-              break;
-            case 'B':
-              map[row][col] = new GhostTypeB(row, col);
+            default:
+              map[row][col] = new Grid();
           }
           map[row][col] = new Grid();
         }

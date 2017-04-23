@@ -17,10 +17,10 @@ public class Player extends GameCharacter {
 
   /**
    * Berisi informasi orientasi arah gerak Player.
-   * w = Up
-   * d = Right
+   * n = Up
+   * e = Right
    * s = Down
-   * a = Left
+   * w = Left
    */
   private static char orientation;
 
@@ -46,6 +46,7 @@ public class Player extends GameCharacter {
     state = 0;
     playerI = i;
     playerJ = j;
+    orientation = 'e';
   }
 
   public boolean isNormal() {
@@ -60,16 +61,12 @@ public class Player extends GameCharacter {
     return state == 2;
   }
 
-  public static void setPlayerI(int newI) {
-    playerI = newI;
-  }
-
-  public static void setPlayerJ(int newJ) {
-    playerJ = newJ;
-  }
-
   public static int getStatus() {
     return state;
+  }
+
+  public static char getOrientation() {
+    return orientation;
   }
 
   public static int getPlayerI() {
@@ -80,4 +77,19 @@ public class Player extends GameCharacter {
     return playerJ;
   }
 
+  public static void setStatus(int newState) {
+    state = newState;
+  }
+
+  public static void setOrientation(char newOrientation) {
+    orientation = newOrientation;
+  }
+
+  public static void setPlayerI(int newI) {
+    playerI = newI;
+  }
+
+  public static void setPlayerJ(int newJ) {
+    playerJ = newJ;
+  }
 }

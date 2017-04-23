@@ -20,4 +20,12 @@ public abstract class GameElement {
       e.printStackTrace();
     }
   }
+
+  public void setNewImage(String imgPath) {
+    try {
+      Image = ImageIO.read(new File(imgPath));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 }

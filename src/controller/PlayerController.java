@@ -19,18 +19,22 @@ public class PlayerController {
     if (direction == 1) {
       player.moveUp();
       Player.setPlayerI(player.getI()-1);
+      Player.setOrientation('n');
     }
     else if (direction == 2) {
       player.moveRight();
       Player.setPlayerJ(player.getJ()+1);
+      Player.setOrientation('e');
     }
     else if (direction == 3) {
       player.moveDown();
       Player.setPlayerI(player.getI()+1);
+      Player.setOrientation('s');
     }
     else {
       player.moveLeft();
       Player.setPlayerJ(player.getJ()-1);
+      Player.setOrientation('w');
     }
   }
 }
