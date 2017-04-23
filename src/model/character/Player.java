@@ -2,6 +2,8 @@ package model.character;
 
 import model.GameCharacter;
 
+import java.awt.*;
+
 /**
  * Kelas berisi karakter Player yang dapat dikendalikan pemain.
  */
@@ -75,6 +77,10 @@ public class Player extends GameCharacter {
 
   public static int getPlayerJ() {
     return playerJ;
+  }
+
+  public static Point getPosition() {
+    return new Point(playerI, playerJ);
   }
 
   public static void setStatus(int newState) {

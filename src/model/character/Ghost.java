@@ -10,6 +10,8 @@ import java.util.Arrays;
  * Kelas abstract Ghost yang menjadi dasar berbagai tipe Ghost.
  */
 public abstract class Ghost extends GameCharacter {
+  protected final int START = -1;
+  protected final int END = -2;
 
   /**
    * Berisi informasi status Ghost
@@ -130,7 +132,5 @@ public abstract class Ghost extends GameCharacter {
           movement -= 4;
       }
     }
-  
   }
-
 }
