@@ -8,8 +8,8 @@ import java.awt.Point;
 public class GameCharacter extends GameElement {
   private Point position;
 
-  public GameCharacter(int i, int j, String img_path) {
-    super(img_path);
+  public GameCharacter(int i, int j, String imgPath) {
+    super(imgPath);
     position.setLocation(i, j);
   }
 

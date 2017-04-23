@@ -15,16 +15,16 @@ public class Cookie extends GameElement {
     value = 10;
   }
 
-  public Cookie(boolean _available) {
+  public Cookie(boolean available) {
     super("src/view/assets/cookie.png");
-    available = _available;
+    this.available = available;
     value = 10;
   }
 
-  public Cookie(String sprite, int _value) {
+  public Cookie(String sprite, int value) {
     super(sprite);
     available = true;
-    value = _value;
+    this.value = value;
   }
 
   public boolean isAvailable() {
@@ -39,7 +39,7 @@ public class Cookie extends GameElement {
     available = false;
   }
 
-  public void setValue(int _val) {
-    value = _val;
+  public void setValue(int value) {
+    this.value = value;
   }
 }

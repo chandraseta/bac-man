@@ -13,9 +13,9 @@ public class Grid extends GameElement {
     accessible = true;
   }
 
-  public Grid(String sprite, boolean _accessible) {
+  public Grid(String sprite, boolean accessible) {
     super(sprite);
-    accessible = _accessible;
+    this.accessible = accessible;
   }
 
   public boolean isAccessible() {

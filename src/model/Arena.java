@@ -12,10 +12,10 @@ import model.element.Grid;
  * Kelas berisi Arena dari Game BacMan.
  */
 public class Arena {
-  private Grid[][] map;
+  private static Grid[][] map;
   private static final String MAP_PATH = "src/view/assets/map.txt";
-  private int map_length;
-  private int map_width;
+  private static int mapLength;
+  private static int mapWidth;
 
   public Arena() {
     loadMapFromFile(MAP_PATH);
@@ -31,13 +31,13 @@ public class Arena {
       instream = new DataInputStream(fstream);
       buffread = new BufferedReader(new InputStreamReader(instream));
       String[] strSplit = buffread.readLine().split("\\s+");
-      map_length = Integer.parseInt(strSplit[0]);
-      map_width = Integer.parseInt(strSplit[1]);
-      map = new Grid[map_width][map_length];
+      mapLength = Integer.parseInt(strSplit[0]);
+      mapWidth = Integer.parseInt(strSplit[1]);
+      map = new Grid[mapWidth][mapLength];
       String line;
-      for (int row = 0; row < map_width; row++) {
+      for (int row = 0; row < mapWidth; row++) {
         line = buffread.readLine();
-        for (int col = 0; col < map_length; col++) {
+        for (int col = 0; col < mapLength; col++) {
           map[row][col] = new Grid()
         }
       }
@@ -51,15 +51,15 @@ public class Arena {
     }
   }
 
-  public int getMapLength() {
-    return map_length;
+  public static int getMapLength() {
+    return mapLength;
   }
 
-  public int getMapWidth() {
-    return map_width;
+  public static int getMapWidth() {
+    return mapWidth;
   }
 
-  public Grid getGrid(int i, int j) {
+  public static Grid getGrid(int i, int j) {
     return map[i][j];
   }
 }

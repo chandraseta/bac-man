@@ -13,9 +13,9 @@ public abstract class GameElement {
 
   private BufferedImage Image;
 
-  public GameElement(String img_path) {
+  public GameElement(String imgPath) {
     try {
-      Image = ImageIO.read(new File(img_path));
+      Image = ImageIO.read(new File(imgPath));
     } catch (IOException e) {
       e.printStackTrace();
     }
