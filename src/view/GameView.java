@@ -19,44 +19,6 @@ public class GameView extends JFrame {
   private static final int DEFAULT_SCALE = 40;
 
   public GameView(Player bacman) {
-    JFrame loadingFrame = new JFrame();
-    JPanel loadingPanel = new JPanel();
-    loadingPanel.setPreferredSize(new Dimension(1600, 950));
-    loadingPanel.setBackground(new Color(180, 180, 180));
-    GridBagLayout loadingLayout = new GridBagLayout();
-    loadingPanel.setLayout(loadingLayout);
-    GridBagConstraints loadingConstraints = new GridBagConstraints();
-    loadingConstraints.fill = GridBagConstraints.BOTH;
-
-    loadingConstraints.gridx = 0;
-    loadingConstraints.gridy = 1;
-    URL sleeping_bacbac_path = getClass().getResource("\\assets\\loading.gif");
-    JLabel sleepingBacbac = new JLabel(new ImageIcon(sleeping_bacbac_path), JLabel.CENTER);
-    sleepingBacbac.setBorder(new EmptyBorder(10, 10, 40, 10));
-    loadingLayout.setConstraints(sleepingBacbac, loadingConstraints);
-    loadingPanel.add(sleepingBacbac);
-
-    loadingConstraints.gridx = 0;
-    loadingConstraints.gridy = 0;
-    JLabel loadingText = new JLabel("Loading...", JLabel.CENTER);
-    loadingText.setFont(new Font("Arial", Font.CENTER_BASELINE, 100));
-    loadingText.setForeground(Color.WHITE);
-    loadingText.setBorder(new EmptyBorder(90, 10, 10, 10));
-    loadingLayout.setConstraints(loadingText, loadingConstraints);
-    loadingPanel.add(loadingText);
-
-    loadingConstraints.gridx = 0;
-    loadingConstraints.gridy = 2;
-    URL loading_balls_path = getClass().getResource("\\assets\\loading-bar.gif");
-    JLabel loadingBalls = new JLabel(new ImageIcon(loading_balls_path), JLabel.CENTER);
-    //loadingBalls.setBorder(new EmptyBorder(240, 10, 10, 10));
-    loadingLayout.setConstraints(loadingBalls, loadingConstraints);
-    loadingPanel.add(loadingBalls);
-    loadingFrame.add(loadingPanel);
-    loadingFrame.pack();
-    loadingFrame.setVisible(true);
-
-
     scale = DEFAULT_SCALE;
     setTitle("Game Screen");
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -81,9 +43,6 @@ public class GameView extends JFrame {
 
     add(gamePanel);
     pack();
-
-    loadingFrame.setVisible(false);
-    setVisible(true);
   }
 
   public JPanel setMapPanel(Player bacman) {
@@ -171,6 +130,10 @@ public class GameView extends JFrame {
   public static void main(String[] args) {
     Player bacman = new Player();
     Arena arena = new Arena();
+    LoadingView loadingView = new LoadingView();
+    loadingView.setVisible(true);
     GameView gameView = new GameView(bacman);
+    loadingView.setVisible(false);
+    gameView.setVisible(true);
   }
 }
