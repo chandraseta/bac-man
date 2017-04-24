@@ -15,6 +15,7 @@ public class Arena {
   private static final String MAP_PATH = "src\\view\\assets\\map.txt";
   private static int mapLength;
   private static int mapWidth;
+  private static int tunnelRow;
   private static Point blinkyInitPos;
   private static Point pinkyInitPos;
   private static Point inkyInitPos;
@@ -47,6 +48,9 @@ public class Arena {
               break;
             case 'o':
               map[row][col] = new Grid(true);
+              if (col==0 || col==mapLength-1) {
+                tunnelRow = row;
+              }
               break;
             case 'S':
               map[row][col] = new Grid(true, true);
@@ -91,6 +95,10 @@ public class Arena {
 
   public static int getMapWidth() {
     return mapWidth;
+  }
+
+  public static int getTunnelRow() {
+    return tunnelRow;
   }
 
   public static Grid[][] getMap() {

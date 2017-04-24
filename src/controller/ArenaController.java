@@ -8,6 +8,9 @@ import model.Arena;
 public class ArenaController {
   private Arena arena;
 
+  /**
+   * Constructor
+   */
   public ArenaController() {
     arena = new Arena();
   }

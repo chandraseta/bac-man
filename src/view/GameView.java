@@ -1,6 +1,8 @@
 package view;
 
 import controller.BacMan;
+import controller.PlayerController;
+import java.awt.event.ActionEvent;
 import model.Arena;
 import model.character.*;
 
@@ -13,20 +15,48 @@ import java.net.URL;
 /**
  * Created by Holy on 20-Apr-17.
  */
-public class GameView extends JFrame {
+public class GameView extends JFrame implements Runnable {
+
   private int scale;
   protected JLabel[][] mapLabel;
   private static final int DEFAULT_SCALE = 40;
+  private Thread thread;
+  private String threadName;
+  private PlayerController bacman;
+  private Blinky blinky;
+  private Pinky pinky;
+  private Inky inky;
+  private Clyde clyde;
+  private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
+  private static final String MOVE_UP = "move up";
+  private static final String MOVE_RIGHT = "move right";
+  private static final String MOVE_DOWN = "move down";
+  private static final String MOVE_LEFT = "move left";
+  private static JLabel keyInput = new JLabel();
 
-  public GameView(Player bacman, Blinky blinky, Inky inky, Pinky pinky, Clyde clyde) {
+  public GameView(PlayerController bacman, Blinky blinky, Inky inky, Pinky pinky, Clyde clyde) {
     updateGameView(bacman, blinky, inky, pinky, clyde);
+    threadName = "ViewThread";
+    this.bacman = bacman;
+    this.blinky = blinky;
+    this.inky = inky;
+    this.pinky = pinky;
+    this.clyde = clyde;
+    keyInput.getInputMap(IFW).put(KeyStroke.getKeyStroke("UP"), MOVE_UP);
+    keyInput.getInputMap(IFW).put(KeyStroke.getKeyStroke("RIGHT"), MOVE_RIGHT);
+    keyInput.getInputMap(IFW).put(KeyStroke.getKeyStroke("DOWN"), MOVE_DOWN);
+    keyInput.getInputMap(IFW).put(KeyStroke.getKeyStroke("LEFT"), MOVE_LEFT);
+    keyInput.getActionMap().put(MOVE_UP, new MoveAction(1, bacman));
+    keyInput.getActionMap().put(MOVE_RIGHT, new MoveAction(2, bacman));
+    keyInput.getActionMap().put(MOVE_DOWN, new MoveAction(3, bacman));
+    keyInput.getActionMap().put(MOVE_LEFT, new MoveAction(4, bacman));
   }
 
-  public void updateGameView(Player bacman, Blinky blinky, Inky inky, Pinky pinky, Clyde clyde) {
+  public void updateGameView(PlayerController bacman, Blinky blinky, Inky inky, Pinky pinky, Clyde clyde) {
     scale = DEFAULT_SCALE;
     setTitle("Game Screen");
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    JPanel mapPanel = setMapPanel(bacman, blinky, inky, pinky, clyde);
+    JPanel mapPanel = setMapPanel(bacman.getPlayer(), blinky, inky, pinky, clyde);
     JPanel infoPanel = setInfoPanel();
     JPanel gamePanel = new JPanel();
 
@@ -57,19 +87,19 @@ public class GameView extends JFrame {
     mapLabel = new JLabel[Arena.getMapWidth()][Arena.getMapLength()];
     for (int i = 0; i < Arena.getMapWidth(); i++) {
       for (int j = 0; j < Arena.getMapLength(); j++) {
-        if((i == bacman.getI()) && (j == bacman.getJ())) {
+        if ((i == bacman.getI()) && (j == bacman.getJ())) {
           mapLabel[i][j] = createLabel(bacman.getImgPath());
           mapLabel[i][j].add(createLabel(Arena.getGrid(i, j).getImgPath()));
-        } else if((i == blinky.getI()) && (j == blinky.getJ())) {
+        } else if ((i == blinky.getI()) && (j == blinky.getJ())) {
           mapLabel[i][j] = createLabel(blinky.getImgPath());
           mapLabel[i][j].add(createLabel(Arena.getGrid(i, j).getImgPath()));
-        } else if((i == inky.getI()) && (j == inky.getJ())) {
+        } else if ((i == inky.getI()) && (j == inky.getJ())) {
           mapLabel[i][j] = createLabel(inky.getImgPath());
           mapLabel[i][j].add(createLabel(Arena.getGrid(i, j).getImgPath()));
-        } else if((i == pinky.getI()) && (j == pinky.getJ())) {
+        } else if ((i == pinky.getI()) && (j == pinky.getJ())) {
           mapLabel[i][j] = createLabel(pinky.getImgPath());
           mapLabel[i][j].add(createLabel(Arena.getGrid(i, j).getImgPath()));
-        } else if((i == clyde.getI()) && (j == clyde.getJ())) {
+        } else if ((i == clyde.getI()) && (j == clyde.getJ())) {
           mapLabel[i][j] = createLabel(clyde.getImgPath());
           mapLabel[i][j].add(createLabel(Arena.getGrid(i, j).getImgPath()));
         } else {
@@ -89,7 +119,8 @@ public class GameView extends JFrame {
   public JPanel setInfoPanel() {
     Font scoreFont = null;
     try {
-      scoreFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("\\assets\\font\\game_over.ttf").openStream());
+      scoreFont = Font.createFont(Font.TRUETYPE_FONT,
+          getClass().getResource("\\assets\\font\\game_over.ttf").openStream());
     } catch (FontFormatException e) {
       e.printStackTrace();
     } catch (IOException e) {
@@ -128,12 +159,12 @@ public class GameView extends JFrame {
   }
 
   public boolean isGIF(String image_path) {
-    return(image_path.contains(".gif"));
+    return (image_path.contains(".gif"));
   }
 
   public JLabel createLabel(String image_path) {
     URL img_path = getClass().getResource(image_path);
-    if(isGIF(image_path)) {
+    if (isGIF(image_path)) {
       return new JLabel(new ImageIcon(img_path));
     } else {
       ImageIcon imageIcon = new ImageIcon(img_path);
@@ -143,23 +174,60 @@ public class GameView extends JFrame {
     }
   }
 
+  public void run() {
+    try {
+      while (true) {
+        updateGameView(bacman, blinky, inky, pinky, clyde);
+        Thread.sleep(200);
+      }
+    }
+    catch(InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void start() {
+    if (thread == null) {
+      thread = new Thread (this, threadName);
+      thread.start();
+    }
+  }
+
   public static void main(String[] args) {
-    Player bacman = new Player();
+    PlayerController bacman = new PlayerController();
     Arena arena = new Arena();
     Blinky blinky = new Blinky();
     Inky inky = new Inky();
     Pinky pinky = new Pinky();
     Clyde clyde = new Clyde();
     TitleView titleView = new TitleView();
-    while(TitleView.visibility);
+    while (TitleView.visibility) {
+      System.out.println();
+    }
     LoadingView loadingView = new LoadingView();
     loadingView.setVisible(true);
     GameView gameView = new GameView(bacman, blinky, inky, pinky, clyde);
-    gameView.updateGameView(bacman, blinky, inky, pinky, clyde);
     loadingView.setVisible(false);
     gameView.setVisible(true);
-    while(!BacMan.isGameEnd()) {
-      gameView.updateGameView(bacman, blinky, inky, pinky, clyde);
+    while (!BacMan.isGameEnd()) {
+      //bacman.start();
+      //gameView.start();
+    }
+  }
+
+  public class MoveAction extends AbstractAction {
+    int direction;
+    PlayerController playerController;
+
+    MoveAction(int direction, PlayerController playerController) {
+      this.direction = direction;
+      this.playerController = playerController;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      playerController.setDirection(direction);
+      playerController.move();
     }
   }
 }

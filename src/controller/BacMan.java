@@ -12,13 +12,11 @@ public class BacMan {
   private ArenaController gameArena;
   private GhostController[] ghost;
   public static int score;
-  private static int playerSuperDuration;
   private static boolean gameEnd;
 
   public static void main(String[] args) {
     ArenaController gameArena = new ArenaController();
     gameEnd = false;
-    playerSuperDuration = 0;
     score = 0;
     PlayerController bac = new PlayerController();
     GhostController[] ghostList = new GhostController[4];
@@ -32,11 +30,11 @@ public class BacMan {
     return score;
   }
 
-  public static int getPlayerSuperDuration() {
-    return playerSuperDuration;
-  }
-
   public static boolean isGameEnd() {
     return gameEnd;
+  }
+
+  public static void addScore(int value) {
+    score += value;
   }
 }

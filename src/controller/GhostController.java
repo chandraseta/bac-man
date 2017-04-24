@@ -10,12 +10,15 @@ import model.character.Pinky;
 /**
  * Kelas controller untuk Ghost.
  */
-public class GhostController extends Thread {
+public class GhostController implements Runnable {
 
   private Ghost ghost;
   private Thread gThread;
   private String threadName;
 
+  /**
+   * Constructor GhostController
+   */
   public GhostController(char type) {
     if (type == 'a') {
       ghost = new Blinky((int) Arena.getBlinkyInitPos().getX(),
@@ -69,29 +72,31 @@ public class GhostController extends Thread {
    */
   public void run() {
     try {
-      int movement = nextMovement();
-      if (movement == 1) {
-        ghost.moveUp();
-        if (ghost instanceof Blinky) {
-          Blinky.setBlinkyI(ghost.getI() - 1);
+      while (true) {
+        int movement = nextMovement();
+        if (movement == 1) {
+          ghost.moveUp();
+          if (ghost instanceof Blinky) {
+            Blinky.setBlinkyI(ghost.getI() - 1);
+          }
+        } else if (movement == 2) {
+          ghost.moveRight();
+          if (ghost instanceof Blinky) {
+            Blinky.setBlinkyJ(ghost.getJ() + 1);
+          }
+        } else if (movement == 3) {
+          ghost.moveDown();
+          if (ghost instanceof Blinky) {
+            Blinky.setBlinkyI(ghost.getI() + 1);
+          }
+        } else {
+          ghost.moveLeft();
+          if (ghost instanceof Blinky) {
+            Blinky.setBlinkyJ(ghost.getJ() - 1);
+          }
         }
-      } else if (movement == 2) {
-        ghost.moveRight();
-        if (ghost instanceof Blinky) {
-          Blinky.setBlinkyJ(ghost.getJ() + 1);
-        }
-      } else if (movement == 3) {
-        ghost.moveDown();
-        if (ghost instanceof Blinky) {
-          Blinky.setBlinkyI(ghost.getI() + 1);
-        }
-      } else {
-        ghost.moveLeft();
-        if (ghost instanceof Blinky) {
-          Blinky.setBlinkyJ(ghost.getJ() - 1);
-        }
+        Thread.sleep(500);
       }
-      Thread.sleep(500);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
