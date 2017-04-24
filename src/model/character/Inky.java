@@ -10,7 +10,7 @@ import java.awt.*;
 public class Inky extends Ghost{
 
   public Inky() {
-    super((int) Arena.getInkyPosition().getX(), (int) Arena.getInkyPosition().getY(), "\\assets\\inky.gif");
+    super((int) Arena.getInkyInitPos().getX(), (int) Arena.getInkyInitPos().getY(), "\\assets\\inky.gif");
     scatterDestination = new Point(Arena.getMapWidth() - 1, Arena.getMapWidth() - 1);
   }
 

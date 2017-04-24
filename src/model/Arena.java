@@ -14,11 +14,11 @@ public class Arena {
   private static final String MAP_PATH = "src\\view\\assets\\map.txt";
   private static int mapLength;
   private static int mapWidth;
-  private static Point blinkyPosition;
-  private static Point pinkyPosition;
-  private static Point inkyPosition;
-  private static Point clydePosition;
-  private static Point playerPosition;
+  private static Point blinkyInitPos;
+  private static Point pinkyInitPos;
+  private static Point inkyInitPos;
+  private static Point clydeInitPos;
+  private static Point playerInitPos;
 
   public Arena() {
     loadMapFromFile(MAP_PATH);
@@ -52,23 +52,23 @@ public class Arena {
               break;
             case 'P':
               map[row][col] = new Grid();
-              playerPosition = new Point(row, col);
+              playerInitPos = new Point(row, col);
               break;
             case 'A':
               map[row][col] = new Grid();
-              blinkyPosition = new Point(row, col);
+              blinkyInitPos = new Point(row, col);
               break;
             case 'B':
               map[row][col] = new Grid();
-              pinkyPosition = new Point(row, col);
+              pinkyInitPos = new Point(row, col);
               break;
             case 'C':
               map[row][col] = new Grid();
-              inkyPosition = new Point(row, col);
+              inkyInitPos = new Point(row, col);
               break;
             case 'D':
               map[row][col] = new Grid();
-              clydePosition = new Point(row, col);
+              clydeInitPos = new Point(row, col);
             default:
               map[row][col] = new Grid();
           }
@@ -100,27 +100,27 @@ public class Arena {
     return map[i][j];
   }
 
-  public static Point getBlinkyPosition() {
-    return blinkyPosition;
+  public static Point getBlinkyInitPos() {
+    return blinkyInitPos;
   }
 
-  public static Point getPinkyPosition() {
-    return pinkyPosition;
+  public static Point getPinkyInitPos() {
+    return pinkyInitPos;
   }
 
-  public static Point getInkyPosition() {
-    return inkyPosition;
+  public static Point getInkyInitPos() {
+    return inkyInitPos;
   }
 
-  public static Point getClydePosition() {
-    return clydePosition;
+  public static Point getClydeInitPos() {
+    return clydeInitPos;
   }
 
-  public static Point getPlayerPosition() {
-    return playerPosition;
+  public static Point getPlayerInitPos() {
+    return playerInitPos;
   }
 
-  public static Point getCenter() {
-    return new Point(mapWidth / 2, mapLength / 2);
+  public static Point getRespawnPos() {
+    return new Point((mapWidth / 2)-1, mapLength / 2);
   }
 }

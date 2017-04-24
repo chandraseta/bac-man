@@ -10,7 +10,7 @@ import java.awt.*;
 public class Clyde extends Ghost {
 
   public Clyde() {
-    super((int) Arena.getClydePosition().getX(), (int) Arena.getClydePosition().getY(), "\\assets\\clyde.gif");
+    super((int) Arena.getClydeInitPos().getX(), (int) Arena.getClydeInitPos().getY(), "\\assets\\clyde.gif");
     scatterDestination = new Point(Arena.getMapWidth() - 1, 0);
   }
 

@@ -10,7 +10,7 @@ import java.awt.*;
 public class Pinky extends Ghost {
 
   public Pinky() {
-    super((int) Arena.getPinkyPosition().getX(), (int) Arena.getPinkyPosition().getY(), "\\assets\\pinky.gif");
+    super((int) Arena.getPinkyInitPos().getX(), (int) Arena.getPinkyInitPos().getY(), "\\assets\\pinky.gif");
     scatterDestination = new Point(0, 0);
   }
 

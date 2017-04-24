@@ -18,14 +18,14 @@ public class BacMan {
   public static void main(String[] args) {
     PlayerController bac = new PlayerController();
     GhostController[] ghostList = new GhostController[4];
-    ghostList[0] = new GhostController((int) Arena.getBlinkyPosition().getX(),
-        (int) Arena.getBlinkyPosition().getY(), 'a');
-    ghostList[1] = new GhostController((int) Arena.getPinkyPosition().getX(),
-        (int) Arena.getPinkyPosition().getY(), 'b');
-    ghostList[2] = new GhostController((int) Arena.getInkyPosition().getX(),
-        (int) Arena.getInkyPosition().getY(), 'c');
-    ghostList[3] = new GhostController((int) Arena.getClydePosition().getX(),
-        (int) Arena.getClydePosition().getY(), 'd');
+    ghostList[0] = new GhostController((int) Arena.getBlinkyInitPos().getX(),
+        (int) Arena.getBlinkyInitPos().getY(), 'a');
+    ghostList[1] = new GhostController((int) Arena.getPinkyInitPos().getX(),
+        (int) Arena.getPinkyInitPos().getY(), 'b');
+    ghostList[2] = new GhostController((int) Arena.getInkyInitPos().getX(),
+        (int) Arena.getInkyInitPos().getY(), 'c');
+    ghostList[3] = new GhostController((int) Arena.getClydeInitPos().getX(),
+        (int) Arena.getClydeInitPos().getY(), 'd');
     ArenaController gameArena = new ArenaController();
   }
 }

@@ -100,7 +100,7 @@ public abstract class Ghost extends GameCharacter {
   public int returnToBase() {
     int [] weights = new int[4];
     Point ghostPos = this.position;
-    Point center = Arena.getCenter();
+    Point center = Arena.getRespawnPos();
 
     weights[0] = PathFinder.manhattanDistance(new Point(ghostPos.x - 1, ghostPos.y), center);
     weights[1] = PathFinder.manhattanDistance(new Point(ghostPos.x, ghostPos.y + 1), center);
