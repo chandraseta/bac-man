@@ -1,21 +1,26 @@
 package model.character;
 
+import model.Arena;
+
+import java.awt.*;
+
 /**
  *
  */
 public class Blinky extends Ghost {
 
-  public static int blinkyI;
-  public static int blinkyJ;
+  private static int blinkyI;
+  private static int blinkyJ;
 
   public Blinky(int i, int j) {
     super(i, j, "\\assets\\ghost_a.png");
+    scatterDestination = new Point(0, Arena.getMapWidth() - 1);
     blinkyI = i;
     blinkyJ = j;
   }
 
   public void getNextDestination() {
-    destination.setLocation(Player.getPlayerI(), Player.getPlayerJ());
+    destination = Player.getPosition();
   }
 
   public static int getBlinkyI() {

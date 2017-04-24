@@ -46,13 +46,13 @@ public class PathFinder {
   
   private Point origin;
   private Point destination;
-  
-  private int movement;
 
   private int [] fromOriginDistance;
   private int [] fromOriginMovement;
   private int [] toDestinationDistance;
   private int [] toDestinationMovement;
+
+  private int movement;
   
   public PathFinder(Point origin, Point destination) {
     this.origin = origin;
