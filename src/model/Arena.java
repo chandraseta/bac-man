@@ -10,6 +10,7 @@ import java.io.*;
  * Kelas berisi Arena dari Game BacMan.
  */
 public class Arena {
+
   private static Grid[][] map;
   private static final String MAP_PATH = "src\\view\\assets\\map.txt";
   private static int mapLength;
@@ -121,6 +122,6 @@ public class Arena {
   }
 
   public static Point getRespawnPos() {
-    return new Point((mapWidth / 2)-1, mapLength / 2);
+    return new Point((mapWidth / 2) - 1, mapLength / 2);
   }
 }
