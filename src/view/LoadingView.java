@@ -13,6 +13,7 @@ public class LoadingView extends JFrame {
     protected JPanel loadingPanel;
 
     public LoadingView() {
+        setTitle("Loading");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         loadingPanel = new JPanel();
         loadingPanel.setPreferredSize(new Dimension(1600, 950));

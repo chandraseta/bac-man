@@ -1,9 +1,10 @@
 package controller;
 
+import model.character.Player;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
-import model.character.Player;
 
 /**
  * Kelas controller untuk Player.
@@ -71,7 +72,7 @@ public class PlayerController extends KeyAdapter {
       Player.setPlayerI(player.getI() + 1);
       Player.setOrientation('s');
       player.setNewImage("\\assets\\bacbac_down.gif");
-    } else if {direction == 4) {
+    } else if (direction == 4) {
       player.moveLeft();
       Player.setPlayerJ(player.getJ() - 1);
       Player.setOrientation('w');

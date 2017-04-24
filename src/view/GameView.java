@@ -97,24 +97,26 @@ public class GameView extends JFrame {
     infoPanel.setBackground(new Color(0, 0, 0));
     infoPanel.setPreferredSize(new Dimension(500, 950));
 
-    JLabel title = new JLabel("BACMAN", JLabel.CENTER);
-    title.setBorder(new EmptyBorder(60, 10, 10, 10));
-    title.setFont(screenFont.deriveFont(60f));
-    title.setForeground(Color.WHITE);
-    infoPanel.add(title);
+    URL logo_path = getClass().getResource("\\assets\\BacManLogo.png");
+    ImageIcon imageIcon = new ImageIcon(logo_path);
+    Image image = imageIcon.getImage();
+    Image newImage = image.getScaledInstance(400, 100, Image.SCALE_SMOOTH);
+    JLabel logo = new JLabel(new ImageIcon(newImage), JLabel.CENTER);
+    logo.setBorder(new EmptyBorder(60, 10, 10, 10));
+    infoPanel.add(logo);
 
     URL mascot_path = getClass().getResource("\\assets\\hooray.gif");
     JLabel mascot = new JLabel(new ImageIcon(mascot_path), JLabel.CENTER);
-    mascot.setBorder(new EmptyBorder(100, 40, 10, 10));
+    mascot.setBorder(new EmptyBorder(50, 40, 10, 10));
     infoPanel.add(mascot);
 
-    JLabel name = new JLabel("NAME: BACMAN", JLabel.LEFT);
-    name.setBorder(new EmptyBorder(150, 10, 10, 10));
+    JLabel name = new JLabel("NAME: BACMAN", JLabel.CENTER);
+    name.setBorder(new EmptyBorder(130, 10, 10, 10));
     name.setFont(scoreFont.deriveFont(120f));
     name.setForeground(Color.WHITE);
     infoPanel.add(name);
 
-    JLabel score = new JLabel("SCORE: " + BacMan.score, JLabel.LEFT);
+    JLabel score = new JLabel("SCORE: " + BacMan.score, JLabel.CENTER);
     score.setBorder(new EmptyBorder(10, 10, 10, 10));
     score.setFont(scoreFont.deriveFont(120f));
     score.setForeground(Color.WHITE);

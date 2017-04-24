@@ -1,4 +1,4 @@
-25 27
+25 28
 -------------------------
 -oooooooooo---oooooooooo-
 -o---o----o---o----o---o-
@@ -7,23 +7,23 @@
 -ooooooooooooooooooooooo-
 -o---o--o---o---o--o---o-
 -o---o--o---o---o--o---o-
--ooooo--ooo---ooo--ooooo-
------o----o---o----o-----
+-ooooo--ooo-o-ooo--ooooo-
+-----o----o-o-o----o-----
 -----o--         --o-----
 -----o-- ---A--- --o-----
 oooooooo - BCD - oooooooo
 -----o-- ------- --o-----
 -----o--         --o-----
 -----o-- ------- --o-----
------o-- ------- --o-----
--oooooooooo---oooooooooo-
--o---o----o---o----o---o-
--o---o----o---o----o---o-
+-----o-- ---o--- --o-----
+-oooooooooo-o-oooooooooo-
+-o---o----o-o-o----o---o-
+-o---o----o-o-o----o---o-
 -Soo-oooooooPooooooo-ooS-
 ---o-o--o---o---o--o-o---
 ---o-o--o---o---o--o-o---
--ooooo--ooo---ooo--ooooo-
--o--------o---o--------o-
+-ooooo--ooo-o-ooo--ooooo-
+-o--------o-o-o--------o-
 -o--------o---o--------o-
 -ooooooooooooooooooooooo-
 -------------------------
