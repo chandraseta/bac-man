@@ -9,8 +9,13 @@ import java.awt.*;
  */
 public class Clyde extends Ghost {
 
+  public Clyde() {
+    super((int) Arena.getClydePosition().getX(), (int) Arena.getClydePosition().getY(), "\\assets\\clyde.gif");
+    scatterDestination = new Point(Arena.getMapWidth() - 1, 0);
+  }
+
   public Clyde(int i, int j) {
-    super(i, j, "\\assets\\ghost_d.png");
+    super(i, j, "\\assets\\clyde.gif");
     scatterDestination = new Point(Arena.getMapWidth() - 1, 0);
   }
 

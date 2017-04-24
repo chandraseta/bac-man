@@ -2,7 +2,7 @@ package view;
 
 import controller.BacMan;
 import model.Arena;
-import model.character.Player;
+import model.character.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -18,11 +18,11 @@ public class GameView extends JFrame {
   protected JLabel[][] mapLabel;
   private static final int DEFAULT_SCALE = 40;
 
-  public GameView(Player bacman) {
+  public GameView(Player bacman, Blinky blinky, Inky inky, Pinky pinky, Clyde clyde) {
     scale = DEFAULT_SCALE;
     setTitle("Game Screen");
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    JPanel mapPanel = setMapPanel(bacman);
+    JPanel mapPanel = setMapPanel(bacman, blinky, inky, pinky, clyde);
     JPanel infoPanel = setInfoPanel();
     JPanel gamePanel = new JPanel();
 
@@ -45,7 +45,7 @@ public class GameView extends JFrame {
     pack();
   }
 
-  public JPanel setMapPanel(Player bacman) {
+  public JPanel setMapPanel(Player bacman, Blinky blinky, Inky inky, Pinky pinky, Clyde clyde) {
     JPanel mapPanel = new JPanel();
     mapPanel.setPreferredSize(new Dimension(1100, 950));
     mapPanel.setBackground(Color.black);
@@ -55,6 +55,18 @@ public class GameView extends JFrame {
       for (int j = 0; j < Arena.getMapLength(); j++) {
         if((i == bacman.getI()) && (j == bacman.getJ())) {
           mapLabel[i][j] = createLabel(bacman.getImgPath());
+          mapLabel[i][j].add(createLabel(Arena.getGrid(i, j).getImgPath()));
+        } else if((i == blinky.getI()) && (j == blinky.getJ())) {
+          mapLabel[i][j] = createLabel(blinky.getImgPath());
+          mapLabel[i][j].add(createLabel(Arena.getGrid(i, j).getImgPath()));
+        } else if((i == inky.getI()) && (j == inky.getJ())) {
+          mapLabel[i][j] = createLabel(inky.getImgPath());
+          mapLabel[i][j].add(createLabel(Arena.getGrid(i, j).getImgPath()));
+        } else if((i == pinky.getI()) && (j == pinky.getJ())) {
+          mapLabel[i][j] = createLabel(pinky.getImgPath());
+          mapLabel[i][j].add(createLabel(Arena.getGrid(i, j).getImgPath()));
+        } else if((i == clyde.getI()) && (j == clyde.getJ())) {
+          mapLabel[i][j] = createLabel(clyde.getImgPath());
           mapLabel[i][j].add(createLabel(Arena.getGrid(i, j).getImgPath()));
         } else {
           mapLabel[i][j] = createLabel(Arena.getGrid(i, j).getImgPath());
@@ -130,9 +142,13 @@ public class GameView extends JFrame {
   public static void main(String[] args) {
     Player bacman = new Player();
     Arena arena = new Arena();
+    Blinky blinky = new Blinky();
+    Inky inky = new Inky();
+    Pinky pinky = new Pinky();
+    Clyde clyde = new Clyde();
     LoadingView loadingView = new LoadingView();
     loadingView.setVisible(true);
-    GameView gameView = new GameView(bacman);
+    GameView gameView = new GameView(bacman, blinky, inky, pinky, clyde);
     loadingView.setVisible(false);
     gameView.setVisible(true);
   }

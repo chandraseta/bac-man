@@ -12,8 +12,15 @@ public class Blinky extends Ghost {
   private static int blinkyI;
   private static int blinkyJ;
 
+  public Blinky() {
+    super((int) Arena.getBlinkyPosition().getX(), (int) Arena.getBlinkyPosition().getY(), "\\assets\\blinky.gif");
+    scatterDestination = new Point(0, Arena.getMapWidth() - 1);
+    blinkyI = (int) Arena.getBlinkyPosition().getX();
+    blinkyJ = (int) Arena.getBlinkyPosition().getY();
+  }
+
   public Blinky(int i, int j) {
-    super(i, j, "\\assets\\ghost_a.png");
+    super(i, j, "\\assets\\blinky.gif");
     scatterDestination = new Point(0, Arena.getMapWidth() - 1);
     blinkyI = i;
     blinkyJ = j;

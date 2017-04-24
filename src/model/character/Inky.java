@@ -9,8 +9,13 @@ import java.awt.*;
  */
 public class Inky extends Ghost{
 
+  public Inky() {
+    super((int) Arena.getInkyPosition().getX(), (int) Arena.getInkyPosition().getY(), "\\assets\\inky.gif");
+    scatterDestination = new Point(Arena.getMapWidth() - 1, Arena.getMapWidth() - 1);
+  }
+
   public Inky(int i, int j) {
-    super(i, j, "\\assets\\ghost_c.png");
+    super(i, j, "\\assets\\inky.gif");
     scatterDestination = new Point(Arena.getMapWidth() - 1, Arena.getMapLength() - 1);
   }
 

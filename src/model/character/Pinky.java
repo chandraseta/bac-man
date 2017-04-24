@@ -9,8 +9,13 @@ import java.awt.*;
  */
 public class Pinky extends Ghost {
 
+  public Pinky() {
+    super((int) Arena.getPinkyPosition().getX(), (int) Arena.getPinkyPosition().getY(), "\\assets\\pinky.gif");
+    scatterDestination = new Point(0, 0);
+  }
+
   public Pinky(int i, int j) {
-    super(i, j, "\\assets\\ghost_b.png");
+    super(i, j, "\\assets\\pinky.gif");
     scatterDestination = new Point(0,0);
   }
 
