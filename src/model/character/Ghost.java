@@ -1,6 +1,7 @@
 package model.character;
 
 import model.GameCharacter;
+import model.Arena;
 
 import java.awt.Point;
 import java.util.Random;
@@ -28,12 +29,12 @@ public abstract class Ghost extends GameCharacter {
 
   /**
    * Setter nilai state.
-   * PREKONDISI: _state [0..2]
+   * PREKONDISI: state [0..2]
    *
-   * @param _state Nilai state baru.
+   * @param state Nilai state baru.
    */
-  public void setState(int _state) {
-    state = _state;
+  public void setState(int state) {
+    this.state = state;
   }
 
   public boolean isNormal() {
@@ -49,6 +50,10 @@ public abstract class Ghost extends GameCharacter {
   }
 
   public abstract void getNextDestination();
+
+  public int scatter() {
+    return (new PathFinder(this.position, scatterDestination).getMovement());
+  }
 
   /**
    * Menggerakkan Ghost menuju Player saat kondisi normal.
@@ -80,7 +85,7 @@ public abstract class Ghost extends GameCharacter {
     for (int i = 1; i < 4; ++i) {
       if (weights[i] > weight || weights[i] == weight && (new Random()).nextBoolean()) {
         weight = weights[i];
-        movement = i;
+        movement = i + 1;
       }
     }
 
@@ -93,7 +98,24 @@ public abstract class Ghost extends GameCharacter {
    * @return Nilai integer yang menentukan arah gerak Ghost pada status dead.
    */
   public int returnToBase() {
-    // TODO: IMPLEMENT
-    return 0;
+    int [] weights = new int[4];
+    Point ghostPos = this.position;
+    Point center = Arena.getCenter();
+
+    weights[0] = PathFinder.manhattanDistance(new Point(ghostPos.x - 1, ghostPos.y), center);
+    weights[1] = PathFinder.manhattanDistance(new Point(ghostPos.x, ghostPos.y + 1), center);
+    weights[2] = PathFinder.manhattanDistance(new Point(ghostPos.x + 1, ghostPos.y), center);
+    weights[3] = PathFinder.manhattanDistance(new Point(ghostPos.x, ghostPos.y - 1), center);
+
+    int movement = 0;
+    int weight = weights[0];
+    for (int i = 1; i < 4; ++i) {
+      if (weights[i] > weight || weights[i] == weight && (new Random()).nextBoolean()) {
+        weight = weights[i];
+        movement = i + 1;
+      }
+    }
+
+    return movement;
   }
 }

@@ -1,14 +1,10 @@
 package model;
 
-import java.awt.Point;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import model.element.Grid;
 import model.element.Wall;
+
+import java.awt.*;
+import java.io.*;
 
 /**
  * Kelas berisi Arena dari Game BacMan.
@@ -122,5 +118,9 @@ public class Arena {
 
   public static Point getPlayerPosition() {
     return playerPosition;
+  }
+
+  public static Point getCenter() {
+    return new Point(mapWidth / 2, mapLength / 2);
   }
 }
