@@ -13,6 +13,7 @@ import java.net.URL;
  */
 public class TitleView extends JFrame implements ActionListener {
     protected JPanel titlePanel;
+    public static boolean visibility;
 
     public TitleView() {
         setTitle("BacMan");
@@ -31,6 +32,8 @@ public class TitleView extends JFrame implements ActionListener {
 
         add(titlePanel);
         pack();
+        setVisible(true);
+        visibility = true;
     }
 
     public JLabel createLogo(GridBagLayout titleLayout, GridBagConstraints titleConstraints) {
@@ -67,28 +70,32 @@ public class TitleView extends JFrame implements ActionListener {
     public JTextField createTextInput(GridBagLayout titleLayout, GridBagConstraints titleConstraints) {
         titleConstraints.gridx = 0;
         titleConstraints.gridy = 2;
+        Font titleFont = null;
+        try {
+            titleFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("\\assets\\font\\game_over.ttf").openStream());
+        } catch (FontFormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         JTextField textField = new JTextField();
-        textField.setColumns(10);
+        textField.setLayout(null);
+        textField.setSize(50, 10);
+        textField.setHorizontalAlignment(JTextField.CENTER);
+        textField.setFont(titleFont.deriveFont(40f));
         textField.setBorder(new EmptyBorder(0, 0, 0, 0));
         titleLayout.setConstraints(textField, titleConstraints);
-        textField.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                String name = textField.getText();
-                System.out.println(name);
+        textField.addActionListener(ae -> {
+            String name = textField.getText();
+            if(textField.getText() != null) {
+                visibility = false;
+                setVisible(false);
             }
         });
-
-
         return textField;
-    }
-
-    public static void main(String[] args) {
-        TitleView titleView = new TitleView();
-        titleView.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
     }
 }

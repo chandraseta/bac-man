@@ -148,6 +148,8 @@ public class GameView extends JFrame {
     Inky inky = new Inky();
     Pinky pinky = new Pinky();
     Clyde clyde = new Clyde();
+    TitleView titleView = new TitleView();
+    while(TitleView.visibility);
     LoadingView loadingView = new LoadingView();
     loadingView.setVisible(true);
     GameView gameView = new GameView(bacman, blinky, inky, pinky, clyde);
