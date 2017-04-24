@@ -19,6 +19,10 @@ public class GameView extends JFrame {
   private static final int DEFAULT_SCALE = 40;
 
   public GameView(Player bacman, Blinky blinky, Inky inky, Pinky pinky, Clyde clyde) {
+    updateGameView(bacman, blinky, inky, pinky, clyde);
+  }
+
+  public void updateGameView(Player bacman, Blinky blinky, Inky inky, Pinky pinky, Clyde clyde) {
     scale = DEFAULT_SCALE;
     setTitle("Game Screen");
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -83,10 +87,8 @@ public class GameView extends JFrame {
   }
 
   public JPanel setInfoPanel() {
-    Font screenFont = null;
     Font scoreFont = null;
     try {
-      screenFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("\\assets\\font\\pac-font.ttf").openStream());
       scoreFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("\\assets\\font\\game_over.ttf").openStream());
     } catch (FontFormatException e) {
       e.printStackTrace();
@@ -153,7 +155,11 @@ public class GameView extends JFrame {
     LoadingView loadingView = new LoadingView();
     loadingView.setVisible(true);
     GameView gameView = new GameView(bacman, blinky, inky, pinky, clyde);
+    gameView.updateGameView(bacman, blinky, inky, pinky, clyde);
     loadingView.setVisible(false);
     gameView.setVisible(true);
+    while(!BacMan.isGameEnd()) {
+      gameView.updateGameView(bacman, blinky, inky, pinky, clyde);
+    }
   }
 }
