@@ -12,4 +12,9 @@ public class SuperCookie extends Cookie {
   public SuperCookie(String sprite, int value) {
     super(sprite, value);
   }
+
+  @Override
+  public void remove() {
+    available = false;
+  }
 }

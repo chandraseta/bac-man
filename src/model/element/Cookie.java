@@ -6,8 +6,8 @@ import model.GameElement;
  * Kelas berisi Cookie yang tersebar pada Grid dalam Arena.
  */
 public class Cookie extends GameElement {
-  private boolean available;
-  private int value;
+  protected boolean available;
+  protected int value;
 
   public Cookie() {
     super("\\assets\\cookie.png");

@@ -21,9 +21,13 @@ public class Arena {
   private static Point inkyInitPos;
   private static Point clydeInitPos;
   private static Point playerInitPos;
+  private int cookieCount;
+  private static int cookieLeft;
 
   public Arena() {
+    cookieCount = 0;
     loadMapFromFile(MAP_PATH);
+    cookieLeft = cookieCount;
   }
 
   public void loadMapFromFile(String path) {
@@ -48,12 +52,14 @@ public class Arena {
               break;
             case 'o':
               map[row][col] = new Grid(true);
+              cookieCount++;
               if (col==0 || col==mapLength-1) {
                 tunnelRow = row;
               }
               break;
             case 'S':
               map[row][col] = new Grid(true, true);
+              cookieCount++;
               break;
             case 'P':
               map[row][col] = new Grid();
@@ -131,5 +137,13 @@ public class Arena {
 
   public static Point getRespawnPos() {
     return new Point((mapWidth / 2) - 1, mapLength / 2);
+  }
+
+  public static int getCookieLeft() {
+    return cookieLeft;
+  }
+
+  public static void eatCookie() {
+    cookieLeft--;
   }
 }
