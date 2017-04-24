@@ -62,7 +62,7 @@ public class GhostController {
       }
     } else {
       ghost.moveLeft();
-      if (ghost instanceof ) {
+      if (ghost instanceof Blinky) {
         Blinky.setBlinkyJ(ghost.getJ() - 1);
       }
     }

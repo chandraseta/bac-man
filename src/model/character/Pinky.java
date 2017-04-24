@@ -10,6 +10,14 @@ public class Pinky extends Ghost {
   }
 
   public void getNextDestination() {
-    // TODO: Check for matrix index boundary before assigning new destination.
+    if (Player.getOrientation() == 's') {
+      destination.setLocation(Player.getPlayerI()+4, Player.getPlayerJ());
+    } else if (Player.getOrientation() == 'w') {
+      destination.setLocation(Player.getPlayerI()-4, Player.getPlayerJ());
+    } else if (Player.getOrientation() == 'a') {
+      destination.setLocation(Player.getPlayerI(), Player.getPlayerJ()-4);
+    } else {
+      destination.setLocation(Player.getPlayerI(), Player.getPlayerJ()+4);
+    }
   }
 }
