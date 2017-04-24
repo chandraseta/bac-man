@@ -1,5 +1,6 @@
 package model.character;
 
+import model.Arena;
 import model.GameCharacter;
 
 import java.awt.*;
@@ -36,7 +37,8 @@ public class Player extends GameCharacter {
   private static int playerJ = 12;
 
   public Player() {
-    super(20, 12, "\\assets\\bacbac_down.gif");
+    super((int) Arena.getPlayerInitPos().getX(), (int) Arena.getPlayerInitPos().getY(),
+        "\\assets\\bacbac_down.gif");
     state = 0;
     playerI = 20;
     playerJ = 12;

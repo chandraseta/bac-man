@@ -12,13 +12,13 @@ import model.character.Player;
 /**
  * Kelas controller untuk Player.
  */
-public class PlayerController implements Runnable {
+public class PlayerController implements Runnable, KeyListener {
 
   private Player player;
   private Thread pThread;
   private String threadName;
   private int direction;
-  //public static boolean[] keyPressed = new boolean[256];
+  public static boolean[] keyPressed = new boolean[256];
 
   public PlayerController() {
     player = new Player();
@@ -31,7 +31,7 @@ public class PlayerController implements Runnable {
     this.threadName = threadName;
   }
 
-  /*
+
   @Override
   public void keyTyped(KeyEvent e) {
   }
@@ -45,7 +45,7 @@ public class PlayerController implements Runnable {
   public void keyReleased(KeyEvent e) {
     keyPressed[e.getKeyCode()] = false;
   }
-  */
+
   public int getDirection() {
     /*
     if ((keyPressed[KeyEvent.VK_W]) || (keyPressed[KeyEvent.VK_UP])) {
@@ -58,7 +58,7 @@ public class PlayerController implements Runnable {
       return 4;
     } else {
     */
-    return direction;
+    return 2;
     //}
   }
 

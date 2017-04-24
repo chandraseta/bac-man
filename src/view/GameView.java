@@ -50,9 +50,11 @@ public class GameView extends JFrame implements Runnable {
     keyInput.getActionMap().put(MOVE_RIGHT, new MoveAction(2, bacman));
     keyInput.getActionMap().put(MOVE_DOWN, new MoveAction(3, bacman));
     keyInput.getActionMap().put(MOVE_LEFT, new MoveAction(4, bacman));
+    add(keyInput);
   }
 
-  public void updateGameView(PlayerController bacman, Blinky blinky, Inky inky, Pinky pinky, Clyde clyde) {
+  public void updateGameView(PlayerController bacman, Blinky blinky, Inky inky, Pinky pinky,
+      Clyde clyde) {
     scale = DEFAULT_SCALE;
     setTitle("Game Screen");
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -180,22 +182,21 @@ public class GameView extends JFrame implements Runnable {
         updateGameView(bacman, blinky, inky, pinky, clyde);
         Thread.sleep(200);
       }
-    }
-    catch(InterruptedException e) {
+    } catch (InterruptedException e) {
       e.printStackTrace();
     }
   }
 
   public void start() {
     if (thread == null) {
-      thread = new Thread (this, threadName);
+      thread = new Thread(this, threadName);
       thread.start();
     }
   }
 
   public static void main(String[] args) {
-    PlayerController bacman = new PlayerController();
     Arena arena = new Arena();
+    PlayerController bacman = new PlayerController();
     Blinky blinky = new Blinky();
     Inky inky = new Inky();
     Pinky pinky = new Pinky();
@@ -209,13 +210,16 @@ public class GameView extends JFrame implements Runnable {
     GameView gameView = new GameView(bacman, blinky, inky, pinky, clyde);
     loadingView.setVisible(false);
     gameView.setVisible(true);
+    bacman.start();
+    gameView.start();
     while (!BacMan.isGameEnd()) {
-      //bacman.start();
-      //gameView.start();
+      bacman.run();
+      gameView.run();
     }
   }
 
   public class MoveAction extends AbstractAction {
+
     int direction;
     PlayerController playerController;
 
@@ -230,4 +234,5 @@ public class GameView extends JFrame implements Runnable {
       playerController.move();
     }
   }
+
 }
