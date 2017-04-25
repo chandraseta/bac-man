@@ -9,8 +9,6 @@ import java.awt.*;
  * Kelas berisi karakter Player yang dapat dikendalikan pemain.
  *
  * @author
- * @version
- * @since
  */
 public class Player extends GameCharacter {
 

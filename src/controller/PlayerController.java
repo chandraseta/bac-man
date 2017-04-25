@@ -3,13 +3,10 @@ package controller;
 import model.Arena;
 import model.character.Player;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
 /**
  * Kelas controller untuk Player.
  */
-public class PlayerController implements Runnable, KeyListener {
+public class PlayerController implements Runnable {
 
   /**
    * Atribut objek Player.
@@ -31,10 +28,6 @@ public class PlayerController implements Runnable, KeyListener {
    */
   private int direction;
 
-  /**
-   *
-   */
-  public static boolean[] keyPressed = new boolean[256];
 
   /**
    * <p>
@@ -64,39 +57,6 @@ public class PlayerController implements Runnable, KeyListener {
   public PlayerController(int i, int j, String sprite, String threadName) {
     player = new Player(i, j, sprite);
     this.threadName = threadName;
-  }
-
-  @Override
-  /**
-   * 
-   */
-  public void keyTyped(KeyEvent e) {
-  }
-
-  @Override
-  public void keyPressed(KeyEvent e) {
-    keyPressed[e.getKeyCode()] = true;
-  }
-
-  @Override
-  public void keyReleased(KeyEvent e) {
-    keyPressed[e.getKeyCode()] = false;
-  }
-
-  public int getDirection() {
-    /*
-    if ((keyPressed[KeyEvent.VK_W]) || (keyPressed[KeyEvent.VK_UP])) {
-      return 1;
-    } else if ((keyPressed[KeyEvent.VK_D]) || (keyPressed[KeyEvent.VK_RIGHT])) {
-      return 2;
-    } else if ((keyPressed[KeyEvent.VK_S]) || (keyPressed[KeyEvent.VK_DOWN])) {
-      return 3;
-    } else if ((keyPressed[KeyEvent.VK_A]) || (keyPressed[KeyEvent.VK_LEFT])) {
-      return 4;
-    } else {
-    */
-    return 2;
-    //}
   }
 
   public void setDirection(int direction) {

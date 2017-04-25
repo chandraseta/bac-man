@@ -20,7 +20,7 @@ public class Grid extends GameElement {
     /**
      * <p>
      * Constructor
-     * <p>
+     *
      * Menciptakan Grid yang tidak memiliki Cookie.
      * </p>
      */
@@ -34,7 +34,7 @@ public class Grid extends GameElement {
     /**
      * <p>
      * Constructor
-     * <p>
+     *
      * Menciptakan Grid dengan parameter containCookie.
      * </p>
      *
@@ -52,7 +52,7 @@ public class Grid extends GameElement {
     /**
      * <p>
      * Constructor
-     * <p>
+     *
      * Menciptakan Grid dengan parameter containCookie dan isSuperCookie.
      * </p>
      *
@@ -75,7 +75,7 @@ public class Grid extends GameElement {
     /**
      * <p>
      * Constructor
-     * <p>
+     *
      * Menciptakan Grid dengan parameter sprite dan accessible.
      * </p>
      *

@@ -8,8 +8,6 @@ import java.awt.*;
  * Kelas Clyde mendefinisikan Ghost Clyde pada permainan.
  *
  * @author
- * @version
- * @since
  */
 public class Clyde extends Ghost {
 
@@ -21,7 +19,8 @@ public class Clyde extends Ghost {
    * </p>
    */
   public Clyde() {
-    super((int) Arena.getClydeInitPos().getX(), (int) Arena.getClydeInitPos().getY(), "\\assets\\clyde.gif");
+    super((int) Arena.getClydeInitPos().getX(), (int) Arena.getClydeInitPos().getY(),
+        "\\assets\\clyde.gif");
     scatterDestination = new Point(Arena.getMapWidth() - 2, 1);
   }
 

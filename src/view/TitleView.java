@@ -14,7 +14,7 @@ import java.net.URL;
 public class TitleView extends JFrame implements ActionListener {
 
   /**
-   *
+   * Panel pada title window.
    */
   protected JPanel titlePanel;
 

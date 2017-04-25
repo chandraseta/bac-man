@@ -8,8 +8,6 @@ import java.awt.Point;
  * Kelas Pinky mendefinisikan Ghost Pinky pada permainan.
  *
  * @author
- * @version
- * @since
  */
 public class Pinky extends Ghost {
 
@@ -21,7 +19,8 @@ public class Pinky extends Ghost {
    * </p>
    */
   public Pinky() {
-    super((int) Arena.getPinkyInitPos().getX(), (int) Arena.getPinkyInitPos().getY(), "\\assets\\pinky.gif");
+    super((int) Arena.getPinkyInitPos().getX(), (int) Arena.getPinkyInitPos().getY(),
+        "\\assets\\pinky.gif");
     scatterDestination = new Point(1, 1);
   }
 
@@ -37,7 +36,7 @@ public class Pinky extends Ghost {
    */
   public Pinky(int i, int j) {
     super(i, j, "\\assets\\pinky.gif");
-    scatterDestination = new Point(1,1);
+    scatterDestination = new Point(1, 1);
   }
 
   /**

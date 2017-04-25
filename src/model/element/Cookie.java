@@ -48,7 +48,7 @@ public class Cookie extends GameElement {
   /**
    * <p>
    * Constructor
-   * <p>
+   *
    * Menciptakan Cookie dengan parameter sprite dan value.
    * </p>
    *

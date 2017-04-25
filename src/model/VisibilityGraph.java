@@ -133,11 +133,14 @@ public class VisibilityGraph {
     landmarks = new Vector<>();
 
     // Initialize matrices
-    for (int i = 0; i < width; ++i)
-      for (int j = 0; j < length; ++j)
+    for (int i = 0; i < width; ++i) {
+      for (int j = 0; j < length; ++j) {
         accessibilityMatrix[i][j] = Arena.getGrid(i, j).isAccessible();
-    for (int[] row : landmarkMatrix)
+      }
+    }
+    for (int[] row : landmarkMatrix) {
       Arrays.fill(row, -1);
+    }
 
     // Find landmarks
     for (int i = 1; i < width - 1; ++i) {
@@ -173,10 +176,12 @@ public class VisibilityGraph {
   private static void calculateAdjacency() {
     adjacencyMatrix = new int[numOfLandmarks][numOfLandmarks];
     movementMatrix = new int[numOfLandmarks][numOfLandmarks];
-    for (int[] row : adjacencyMatrix)
+    for (int[] row : adjacencyMatrix) {
       Arrays.fill(row, Integer.MAX_VALUE);
-    for (int[] row : movementMatrix)
+    }
+    for (int[] row : movementMatrix) {
       Arrays.fill(row, 0);
+    }
 
     for (int i = 0; i < landmarks.size(); ++i) {
       findNeighbors(landmarks.elementAt(i), adjacencyMatrix[i], movementMatrix[i]);
@@ -187,8 +192,6 @@ public class VisibilityGraph {
    * Mencari
    *
    * @param origin Titik mula-mula.
-   * @param adjacencyArray
-   * @param movementArray
    */
   public static void findNeighbors(Point origin, int[] adjacencyArray, int[] movementArray) {
     int i = origin.x;
@@ -246,7 +249,7 @@ public class VisibilityGraph {
       PrintWriter writer = new PrintWriter("visibility_graph.txt", "UTF-8");
 
       writer.println("Accessibility Matrix");
-      for (boolean [] row: accessibilityMatrix) {
+      for (boolean[] row : accessibilityMatrix) {
         for (boolean col : row) {
           writer.print(col ? "1  " : "   ");
         }
@@ -257,40 +260,43 @@ public class VisibilityGraph {
       writer.println("Landmark Matrix");
       for (int i = 0; i < landmarkMatrix.length; i++) {
         for (int j = 0; j < landmarkMatrix[i].length; ++j) {
-          if (accessibilityMatrix[i][j])
+          if (accessibilityMatrix[i][j]) {
             writer.printf("%d\t", landmarkMatrix[i][j]);
-          else
+          } else {
             writer.printf(".\t");
+          }
         }
         writer.println();
       }
       writer.println();
 
       writer.printf("Landmarks: %d\n", numOfLandmarks);
-      for (Point landmark: landmarks) {
+      for (Point landmark : landmarks) {
         writer.println(landmark);
       }
       writer.println();
 
       writer.println("Adjacency Matrix");
-      for (int [] row: adjacencyMatrix) {
-        for (int col: row) {
-          if (col == Integer.MAX_VALUE)
+      for (int[] row : adjacencyMatrix) {
+        for (int col : row) {
+          if (col == Integer.MAX_VALUE) {
             writer.printf(".");
-          else
+          } else {
             writer.printf("%d", col);
+          }
         }
         writer.println();
       }
       writer.println();
 
       writer.println("Movement Matrix");
-      for (int [] row: movementMatrix) {
-        for (int col: row) {
-          if (col == 0)
+      for (int[] row : movementMatrix) {
+        for (int col : row) {
+          if (col == 0) {
             writer.printf(".");
-          else
+          } else {
             writer.printf("%d", col);
+          }
         }
         writer.println();
       }

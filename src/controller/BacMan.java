@@ -54,14 +54,18 @@ public class BacMan {
    *
    * @return score yang didapat Player.
    */
-  public static int getScore() { return score; }
+  public static int getScore() {
+    return score;
+  }
 
   /**
    * Mengembalikan apakah permainan berakhir atau tidak.
    *
    * @return gameEnd permainan sudah berakhir atau belum.
    */
-  public static boolean isGameEnd() { return gameEnd; }
+  public static boolean isGameEnd() {
+    return gameEnd;
+  }
 
   /**
    * Menambahkan score Player sejumlah value.

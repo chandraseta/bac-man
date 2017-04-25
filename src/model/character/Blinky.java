@@ -8,8 +8,6 @@ import java.awt.*;
  * Kelas Blinky mendefinisikan Ghost Blinky pada permainan.
  *
  * @author
- * @version
- * @since
  */
 public class Blinky extends Ghost {
 
@@ -31,7 +29,8 @@ public class Blinky extends Ghost {
    * </p>
    */
   public Blinky() {
-    super((int) Arena.getBlinkyInitPos().getX(), (int) Arena.getBlinkyInitPos().getY(), "\\assets\\blinky.gif");
+    super((int) Arena.getBlinkyInitPos().getX(), (int) Arena.getBlinkyInitPos().getY(),
+        "\\assets\\blinky.gif");
     scatterDestination = new Point(1, Arena.getMapWidth() - 2);
     blinkyI = (int) Arena.getBlinkyInitPos().getX();
     blinkyJ = (int) Arena.getBlinkyInitPos().getY();
@@ -43,6 +42,7 @@ public class Blinky extends Ghost {
    *
    * Menciptakan Ghost Blinky.
    * </p>
+   *
    * @param i Posisi y pada Blinky.
    * @param j Posis x pada Blinky.
    */

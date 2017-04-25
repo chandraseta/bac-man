@@ -19,7 +19,8 @@ public class Inky extends Ghost {
    * </p>
    */
   public Inky() {
-    super((int) Arena.getInkyInitPos().getX(), (int) Arena.getInkyInitPos().getY(), "\\assets\\inky.gif");
+    super((int) Arena.getInkyInitPos().getX(), (int) Arena.getInkyInitPos().getY(),
+        "\\assets\\inky.gif");
     scatterDestination = new Point(Arena.getMapWidth() - 2, Arena.getMapWidth() - 2);
   }
 
