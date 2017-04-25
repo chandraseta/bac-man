@@ -18,6 +18,11 @@ public class Cookie extends GameElement {
   protected int value;
 
   /**
+   * Atribut statis banyaknya Cookie yang tersisa.
+   */
+  private static int cookieLeft = 0;
+
+  /**
    * <p>
    * Constructor
    *
@@ -28,6 +33,7 @@ public class Cookie extends GameElement {
     super("\\assets\\cookie.png");
     available = true;
     value = 10;
+    cookieLeft++;
   }
 
   /**
@@ -43,6 +49,9 @@ public class Cookie extends GameElement {
     super("\\assets\\cookie.png");
     this.available = available;
     value = 10;
+    if (available) {
+      cookieLeft++;
+    }
   }
 
   /**
@@ -60,6 +69,7 @@ public class Cookie extends GameElement {
     super(sprite);
     available = true;
     this.value = value;
+    cookieLeft++;
   }
 
   /**
@@ -86,6 +96,7 @@ public class Cookie extends GameElement {
    */
   public void remove() {
     available = false;
+    cookieLeft--;
   }
 
   /**
@@ -95,5 +106,14 @@ public class Cookie extends GameElement {
    */
   public void setValue(int value) {
     this.value = value;
+  }
+
+  /**
+   * Fungsi getter jumlah cookie yang tersisa.
+   *
+   * @return Nilai cookieLeft.
+   */
+  public static int getCookieLeft() {
+    return cookieLeft;
   }
 }

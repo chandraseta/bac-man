@@ -32,9 +32,8 @@ public class ArenaTest {
   @Test
   public void matchArena() {
     assertEquals("Arena length doesn't match", 25, arena.getMapLength());
-    assertEquals("Arena width doesn't match", 19, arena.getMapWidth());
-    assertEquals("Cookie's in arena doesn't match", 204, arena.getCookieLeft());
-    assertEquals("Tunnel row in arena doesn't match", 8, arena.getTunnelRow());
+    assertEquals("Arena width doesn't match", 28, arena.getMapWidth());
+    assertEquals("Tunnel row in arena doesn't match", 12, arena.getTunnelRow());
   }
 
   /**

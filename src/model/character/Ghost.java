@@ -114,7 +114,6 @@ public abstract class Ghost extends GameCharacter {
    */
   public int moveTowardsPlayer() {
     getNextDestination();
-    System.out.println(destination);
     pathFinder.calculateMovement(this.position, destination);
     return pathFinder.getMovement();
   }
