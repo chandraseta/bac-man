@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 
 /**
@@ -22,11 +23,14 @@ public class GameOverView extends JFrame {
         setTitle("Game Over");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         gameOverPanel = new JPanel();
+        gameOverPanel.setPreferredSize(new Dimension(1600, 950));
         gameOverPanel.setBackground(Color.BLACK);
         GridBagLayout gameOverLayout = new GridBagLayout();
         gameOverPanel.setLayout(gameOverLayout);
         GridBagConstraints gameOverConstraints = new GridBagConstraints();
         gameOverConstraints.fill = GridBagConstraints.BOTH;
+        gameOverPanel.add(createGameOverBacBac(gameOverLayout, gameOverConstraints));
+        gameOverPanel.add(createGameOverText(gameOverLayout, gameOverConstraints));
 
         add(gameOverPanel);
         pack();
@@ -47,5 +51,30 @@ public class GameOverView extends JFrame {
         gameOverBacbac.setBorder(new EmptyBorder(10, 10, 40, 10));
         gameOverLayout.setConstraints(gameOverBacbac, gameOverConstraints);
         return gameOverBacbac;
+    }
+
+    public JLabel createGameOverText(GridBagLayout gameOverLayout, GridBagConstraints gameOverConstraints) {
+        gameOverConstraints.gridx = 0;
+        gameOverConstraints.gridy = 1;
+        Font gameOverFont = null;
+        try {
+            gameOverFont = Font.createFont(Font.TRUETYPE_FONT,
+                    getClass().getResource("\\assets\\font\\game_over.ttf").openStream());
+        } catch (FontFormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        JLabel gameOverText = new JLabel("GAME OVER", JLabel.CENTER);
+        gameOverText.setBorder(new EmptyBorder(20, 10, 10, 10));
+        gameOverText.setFont(gameOverFont.deriveFont(400f));
+        gameOverText.setForeground(Color.WHITE);
+        gameOverLayout.setConstraints(gameOverText, gameOverConstraints);
+        return gameOverText;
+    }
+
+    public static void main(String[] args) {
+        GameOverView gameOverView = new GameOverView();
+        gameOverView.setVisible(true);
     }
 }

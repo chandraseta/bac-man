@@ -115,12 +115,10 @@ public class PlayerController implements Runnable, KeyListener {
       if (Arena.getGrid(player.getI(), player.getJ() + 1).isAccessible()) {
         player.moveRight();
         Player.setPlayerJ(player.getJ() + 1);
-        Arena.getGrid(player.getI(), player.getJ()).removeCookie();
       } else if ((player.getI() == Arena.getTunnelRow())
           && (player.getJ() == Arena.getMapLength() - 1)) {
         player.teleport(player.getI(), 0);
         Player.setPlayerJ(0);
-        Arena.getGrid(player.getI(), player.getJ()).removeCookie();
       }
       Player.setOrientation('e');
       player.setNewImage("\\assets\\bacbac_right.gif");

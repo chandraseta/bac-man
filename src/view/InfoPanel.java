@@ -1,6 +1,7 @@
 package view;
 
 import controller.BacMan;
+import model.character.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -51,7 +52,11 @@ public class InfoPanel extends JComponent {
 
         x = getWidth() / 4;
         y = getHeight() / 3;
-        g.drawImage(getBacbacImage("\\assets\\hooray.gif", 0, 0), x, y, this);
+        if(Player.getStatus() == 1) {
+            g.drawImage(getBacbacImage("\\assets\\super_bacbac.gif", 0, 0), x, y, this);
+        } else {
+            g.drawImage(getBacbacImage("\\assets\\hooray.gif", 0, 0), x, y, this);
+        }
 
         x = getWidth() / 6;
         y = getHeight() * 3 / 4;

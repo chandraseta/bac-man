@@ -87,7 +87,7 @@ public class GameView extends JFrame implements Runnable {
       thread.start();
     }
   }
-  
+
   public class MoveAction extends AbstractAction {
 
     int direction;

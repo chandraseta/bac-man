@@ -5,9 +5,7 @@ import model.character.Blinky;
 import model.character.Clyde;
 import model.character.Inky;
 import model.character.Pinky;
-import view.GameView;
-import view.LoadingView;
-import view.TitleView;
+import view.*;
 
 /**
  * Kelas berisi semua aspek game BacMan.
@@ -114,5 +112,19 @@ public class BacMan {
             gameView.run();
             gameEnd = (Arena.getCookieLeft() == 0);
         }
+        GameOverView gameOverView = new GameOverView();
+        gameView.setVisible(false);
+        gameView.dispose();
+        titleView.dispose();
+        gameOverView.setVisible(true);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        CreditsView creditsView = new CreditsView();
+        gameOverView.setVisible(false);
+        gameOverView.dispose();
+        creditsView.setVisible(true);
     }
 }
