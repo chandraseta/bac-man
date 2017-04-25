@@ -28,11 +28,11 @@ public class PlayerTest {
   }
 
   /**
-   * Saat inisialisasi, Player berada pada ordinat 20 dan absis 12.
+   * Saat inisialisasi, Player berada pada ordinat 12 dan absis 12.
    */
   @Test
   public void matchPosition() {
-    assertEquals("Ordinate doesn't match", 20, player.getI());
+    assertEquals("Ordinate doesn't match", 12, player.getI());
     assertEquals("Absis doesn't match", 12, player.getJ());
   }
 
@@ -46,9 +46,9 @@ public class PlayerTest {
     player.moveRight();
     assertEquals("Wrong movement", 12, player.getJ());
     player.moveUp();
-    assertEquals("Wrong movement", 19, player.getI());
+    assertEquals("Wrong movement", 11, player.getI());
     player.moveDown();
-    assertEquals("Wrong movement", 20, player.getI());
+    assertEquals("Wrong movement", 12, player.getI());
   }
 
   /**

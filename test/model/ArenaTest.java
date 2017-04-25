@@ -2,6 +2,7 @@ package model;
 
 import static org.junit.Assert.assertEquals;
 
+import model.element.Cookie;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,6 +12,7 @@ import org.junit.Test;
 public class ArenaTest {
 
   private Arena arena;
+  private Cookie cookie;
 
   /**
    * <p>
@@ -30,8 +32,24 @@ public class ArenaTest {
   @Test
   public void matchArena() {
     assertEquals("Arena length doesn't match", 25, arena.getMapLength());
-    assertEquals("Arena width doesn't match", 28, arena.getMapWidth());
-    assertEquals("Cookie's in arena doesn't match", 244, arena.getCookieLeft());
-    assertEquals("Tunnel row in arena doesn't match", 12, arena.getTunnelRow());
+    assertEquals("Arena width doesn't match", 19, arena.getMapWidth());
+    assertEquals("Cookie's in arena doesn't match", 204, arena.getCookieLeft());
+    assertEquals("Tunnel row in arena doesn't match", 8, arena.getTunnelRow());
+  }
+
+  /**
+   * Setiap Cookie pada Arena sesuai dengan atribut yang semestinya.
+   */
+  @Test
+  public void matchCookieInArena() {
+    cookie = new Cookie();
+    for (int i = 0; i < arena.getMapWidth(); ++i) {
+      for (int j = 0; j < arena.getMapLength(); ++j) {
+        if ((arena.getGrid(i,j).isAccessible() == true)) {
+          arena.getGrid(i,j).removeCookie();
+        }
+      }
+    }
+    assertEquals("Cookie's in arena doesn't match", 4, arena.getCookieLeft());
   }
 }

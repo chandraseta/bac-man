@@ -1,6 +1,7 @@
 package model.character;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import model.Arena;
 import org.junit.Before;
@@ -30,11 +31,11 @@ public class ClydeTest {
   }
 
   /**
-   * Saat inisialisasi, Clyde berada pada ordinat 12 dan absis 13.
+   * Saat inisialisasi, Clyde berada pada ordinat 8 dan absis 13.
    */
   @Test
   public void matchPosition() {
-    assertEquals("Ordinate doesn't match", 12, clyde.getI());
+    assertEquals("Ordinate doesn't match", 8, clyde.getI());
     assertEquals("Absis doesn't match", 13, clyde.getJ());
   }
 
@@ -50,8 +51,16 @@ public class ClydeTest {
     clyde.moveLeft();
     clyde.moveUp();
     clyde.moveUp();
-    assertEquals("Wrong movement", 10, clyde.getI());
+    assertEquals("Wrong movement", 6, clyde.getI());
     clyde.moveDown();
-    assertEquals("Wrong movement", 11, clyde.getI());
+    assertEquals("Wrong movement", 7, clyde.getI());
+  }
+
+  /**
+   * Status pada Clyde sesuai skenario.
+   */
+  @Test
+  public void matchState() {
+    assertTrue("Wrong state",clyde.isNormal());
   }
 }

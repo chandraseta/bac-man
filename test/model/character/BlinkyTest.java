@@ -31,11 +31,11 @@ public class BlinkyTest {
   }
 
   /**
-   * Saat inisialisasi, Blinky berada pada ordinat 11 dan absis 12.
+   * Saat inisialisasi, Blinky berada pada ordinat 7 dan absis 12.
    */
   @Test
   public void matchPosition() {
-    assertEquals("Ordinate doesn't match", 11, blinky.getI());
+    assertEquals("Ordinate doesn't match", 7, blinky.getI());
     assertEquals("Absis doesn't match", 12, blinky.getJ());
   }
 
@@ -46,9 +46,9 @@ public class BlinkyTest {
   public void matchBlinkyMovement() {
     blinky.moveUp();
     blinky.moveUp();
-    assertEquals("Wrong movement", 9, blinky.getI());
+    assertEquals("Wrong movement", 5, blinky.getI());
     blinky.moveDown();
-    assertEquals("Wrong movement", 10, blinky.getI());
+    assertEquals("Wrong movement", 6, blinky.getI());
     blinky.moveLeft();
     assertEquals("Wrong movement", 11, blinky.getJ());
     blinky.moveRight();
@@ -60,6 +60,6 @@ public class BlinkyTest {
    */
   @Test
   public void matchState() {
-    assertTrue("Wrong state",blinky.isNormal());
+    assertTrue("Wrong state", blinky.isNormal());
   }
 }

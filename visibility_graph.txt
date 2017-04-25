@@ -1,4 +1,4 @@
-Accessibility Matrix
+Accessibility Matrix: 25 * 19
                                                                            
    1  1  1  1  1  1  1  1  1  1           1  1  1  1  1  1  1  1  1  1     
    1           1              1           1              1           1     

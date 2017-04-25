@@ -14,18 +14,39 @@ import java.util.Random;
 public abstract class Ghost extends GameCharacter {
 
   /**
-   * Artibut yang berisi informasi status Ghost
+   * Artibut yang berisi informasi status Ghost :
    * 0 = Normal
    * 1 = Vulnerable
    * 2 = Dead
    */
   protected int state;
 
+  /**
+   * Titik yang dituju oleh Ghost.
+   */
   protected Point destination;
+
+  /**
+   * Titik pada bagian pojok Arena yang dituju oleh Ghost.
+   */
   protected Point scatterDestination;
 
+  /**
+   * Objek PathFinder untuk mencari jalur menuju target yang dituju.
+   */
   protected PathFinder pathFinder;
 
+  /**
+   * <p>
+   * Constructor
+   *
+   * Menciptakan Ghost di dalam Arena.
+   * </p>
+   *
+   * @param i Ordinat Ghost.
+   * @param j Absis Ghost.
+   * @param sprite Path direktori sprite Ghost.
+   */
   public Ghost(int i, int j, String sprite) {
     super(i, j, sprite);
     state = 0;

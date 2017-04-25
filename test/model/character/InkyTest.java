@@ -1,6 +1,7 @@
 package model.character;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import model.Arena;
 import org.junit.Before;
@@ -30,11 +31,11 @@ public class InkyTest {
   }
 
   /**
-   * Saat inisialisasi, Inky berada pada ordinat 12 dan absis 12.
+   * Saat inisialisasi, Inky berada pada ordinat 8 dan absis 12.
    */
   @Test
   public void matchPosition() {
-    assertEquals("Ordinate doesn't match", 12, inky.getI());
+    assertEquals("Ordinate doesn't match", 8, inky.getI());
     assertEquals("Absis doesn't match", 12, inky.getJ());
   }
 
@@ -45,13 +46,21 @@ public class InkyTest {
   public void matchInkyMovement() {
     inky.moveUp();
     inky.moveUp();
-    assertEquals("Wrong movement", 10, inky.getI());
+    assertEquals("Wrong movement", 6, inky.getI());
     inky.moveDown();
     inky.moveDown();
-    assertEquals("Wrong movement", 12, inky.getI());
+    assertEquals("Wrong movement", 8, inky.getI());
     inky.moveLeft();
     assertEquals("Wrong movement", 11, inky.getJ());
     inky.moveRight();
     assertEquals("Wrong movement", 12, inky.getJ());
+  }
+
+  /**
+   * Status pada Inky sesuai skenario.
+   */
+  @Test
+  public void matchState() {
+    assertTrue("Wrong state",inky.isNormal());
   }
 }
