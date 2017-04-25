@@ -18,7 +18,7 @@ import java.net.URL;
 public class MapPanel extends JComponent {
 
   private final int SCALE_WIDTH = 40;
-  private final int SCALE_HEIGHT = 35;
+  private final int SCALE_HEIGHT = 45;
   private final int MAP_WIDTH = Arena.getMapWidth();
   private final int MAP_LENGTH = Arena.getMapLength();
   private PlayerController bacman;

@@ -14,7 +14,7 @@ import java.net.URL;
 public class InfoPanel extends JComponent {
 
   public InfoPanel() {
-    setPreferredSize(new Dimension(500, 950));
+    setPreferredSize(new Dimension(500, 860));
   }
 
   private Font getScreenFont() {
@@ -60,7 +60,7 @@ public class InfoPanel extends JComponent {
     }
 
     x = getWidth() / 6;
-    y = getHeight() * 3 / 4;
+    y = getHeight() * 4 / 5;
     g.setColor(Color.WHITE);
     g.setFont(getScreenFont().deriveFont(120f));
     String playerName;
@@ -71,7 +71,7 @@ public class InfoPanel extends JComponent {
     }
     g.drawString("NAME: " + playerName.toUpperCase(), x, y);
 
-    y = getHeight() * 4 / 5;
+    y = getHeight() * 4 / 5 + 70;
     g.drawString("SCORE: " + BacMan.score, x, y);
 
     g.dispose();
