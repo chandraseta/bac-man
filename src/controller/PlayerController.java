@@ -111,7 +111,6 @@ public class PlayerController implements Runnable {
     if (Arena.getGrid(player.getI(), player.getJ()).getCookie().isAvailable()) {
       BacMan.addScore(Arena.getGrid(player.getI(), player.getJ()).getCookie().getValue());
       Arena.getGrid(player.getI(), player.getJ()).removeCookie();
-      Arena.eatCookie();
     }
     //////// DEBUG /////////
 //    System.out.println("Player position: " + player.getI() + " " + player.getJ());

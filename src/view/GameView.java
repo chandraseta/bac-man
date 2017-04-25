@@ -41,6 +41,9 @@ public class GameView extends JFrame implements Runnable {
   private static final String MOVE_DOWN = "move down";
   private static final String MOVE_LEFT = "move left";
   private static JLabel keyInput = new JLabel();
+  private JPanel gamePanel = new JPanel();
+  private GridBagLayout gridBag = new GridBagLayout();
+  private GridBagConstraints gbc = new GridBagConstraints();
 
   /**
    * <p>
@@ -78,12 +81,10 @@ public class GameView extends JFrame implements Runnable {
     setTitle("Game Screen");
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     mapPanel.revalidate();
-    infoPanel.revalidate();
+    //infoPanel.revalidate();
     mapPanel.repaint();
-    infoPanel.repaint();
-    JPanel gamePanel = new JPanel();
+    //infoPanel.repaint();
 
-    GridBagLayout gridBag = new GridBagLayout();
     gamePanel.setLayout(gridBag);
 
     GridBagConstraints gbc = new GridBagConstraints();
@@ -95,8 +96,8 @@ public class GameView extends JFrame implements Runnable {
 
     gbc.gridx = 1;
     gbc.gridy = 0;
-    gridBag.setConstraints(infoPanel, gbc);
-    gamePanel.add(infoPanel);
+    //gridBag.setConstraints(infoPanel, gbc);
+    //gamePanel.add(infoPanel);
 
     add(gamePanel);
     pack();

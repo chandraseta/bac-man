@@ -63,16 +63,6 @@ public class Arena {
   private static Point playerInitPos;
 
   /**
-   * Banyak Cookie pada Arena.
-   */
-  private int cookieCount;
-
-  /**
-   * Cookie yang tersisa di Arena.
-   */
-  private static int cookieLeft;
-
-  /**
    * <p>
    * Constructor
    *
@@ -80,9 +70,7 @@ public class Arena {
    * </p>
    */
   public Arena() {
-    cookieCount = 0;
     loadMapFromFile(MAP_PATH);
-    cookieLeft = cookieCount;
   }
 
   /**
@@ -112,14 +100,12 @@ public class Arena {
               break;
             case 'o':
               map[row][col] = new Grid(true);
-              cookieCount++;
               if (col == 0 || col == mapLength - 1) {
                 tunnelRow = row;
               }
               break;
             case 'S':
               map[row][col] = new Grid(true, true);
-              cookieCount++;
               break;
             case 'P':
               map[row][col] = new Grid();
@@ -253,21 +239,5 @@ public class Arena {
    */
   public static Point getRespawnPos() {
     return new Point((mapWidth / 2) - 1, mapLength / 2);
-  }
-
-  /**
-   * Fungsi mengembalikan banyak Cookie tersisa di Arena.
-   *
-   * @return Banyak Cookie tersisa di Arena.
-   */
-  public static int getCookieLeft() {
-    return cookieLeft;
-  }
-
-  /**
-   * Method mengurangi banyak Cookie di arena.
-   */
-  public static void eatCookie() {
-    cookieLeft--;
   }
 }
