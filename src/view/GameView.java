@@ -1,8 +1,6 @@
 package view;
 
-import controller.BacMan;
 import controller.PlayerController;
-import model.Arena;
 import model.character.Blinky;
 import model.character.Clyde;
 import model.character.Inky;
@@ -17,7 +15,6 @@ import java.awt.event.ActionEvent;
  */
 public class GameView extends JFrame implements Runnable {
 
-  private int scale;
   private MapPanel mapPanel;
   private InfoPanel infoPanel;
   private Thread thread;
@@ -77,7 +74,7 @@ public class GameView extends JFrame implements Runnable {
     try {
       while (true) {
         updateGameView();
-        Thread.sleep(200);
+        Thread.sleep(1000);
       }
     } catch (InterruptedException e) {
       e.printStackTrace();
@@ -90,36 +87,7 @@ public class GameView extends JFrame implements Runnable {
       thread.start();
     }
   }
-
-  public static void main(String[] args) {
-    Arena arena = new Arena();
-    PlayerController bacman = new PlayerController();
-    Blinky blinky = new Blinky();
-    Inky inky = new Inky();
-    Pinky pinky = new Pinky();
-    Clyde clyde = new Clyde();
-    TitleView titleView = new TitleView();
-    while (TitleView.visibility) {
-      System.out.println();
-    }
-    LoadingView loadingView = new LoadingView();
-    loadingView.setVisible(true);
-    GameView gameView = new GameView(bacman, blinky, inky, pinky, clyde);
-    try {
-      Thread.sleep(5000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-    loadingView.setVisible(false);
-    gameView.setVisible(true);
-    bacman.start();
-    gameView.start();
-    while (!BacMan.isGameEnd()) {
-      bacman.run();
-      gameView.run();
-    }
-  }
-
+  
   public class MoveAction extends AbstractAction {
 
     int direction;

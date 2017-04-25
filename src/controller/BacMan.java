@@ -93,7 +93,13 @@ public class BacMan {
         GameView gameView = new GameView(bacman, (Blinky) ghostList[0].getGhost(),
                 (Inky) ghostList[2].getGhost(),
                 (Pinky) ghostList[1].getGhost(), (Clyde) ghostList[3].getGhost());
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         loadingView.setVisible(false);
+        loadingView.dispose();
         gameView.setVisible(true);
         bacman.start();
         gameView.start();
