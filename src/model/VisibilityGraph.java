@@ -1,6 +1,8 @@
 package model;
 
-import java.awt.*;
+import java.awt.Point;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -63,6 +65,9 @@ public class VisibilityGraph {
     // Generate visibility graph
     findLandmarks();
     calculateAdjacency();
+
+    // Debug
+    saveAllAttributesToFile();
   }
 
   /**
@@ -193,46 +198,104 @@ public class VisibilityGraph {
 
     // Check up
     found = false;
-    for (k = i - 1; k >= 0 && accessibilityMatrix[k][j] && !found; --k) {
+    for (k = i - 1; k >= 0 && accessibilityMatrix[k][j] && !found; k--) {
       found = (landmarkMatrix[k][j] != -1);
-    }
-    if (found) {
-      int v = landmarkMatrix[k][j];
-      adjacencyArray[v] = i - k;
-      movementArray[v] = 1;
+      if (found) {
+        int v = landmarkMatrix[k][j];
+        adjacencyArray[v] = i - k;
+        movementArray[v] = 1;
+      }
     }
 
     // Check right
     found = false;
-    for (k = j + 1; k < length && accessibilityMatrix[k][j] && !found; ++k) {
+    for (k = j + 1; k < length && accessibilityMatrix[i][k] && !found; k++) {
       found = (landmarkMatrix[i][k] != -1);
-    }
-    if (found) {
-      int v = landmarkMatrix[i][k];
-      adjacencyArray[v] = k - j;
-      movementArray[v] = 2;
+      if (found) {
+        int v = landmarkMatrix[i][k];
+        adjacencyArray[v] = k - j;
+        movementArray[v] = 2;
+      }
     }
 
     // Check down
     found = false;
-    for (k = i + 1; k < width && accessibilityMatrix[k][j] && !found; ++k) {
+    for (k = i + 1; k < width && accessibilityMatrix[k][j] && !found; k++) {
       found = (landmarkMatrix[k][j] != -1);
-    }
-    if (found) {
-      int v = landmarkMatrix[k][j];
-      adjacencyArray[v] = k - i;
-      movementArray[v] = 3;
+      if (found) {
+        int v = landmarkMatrix[k][j];
+        adjacencyArray[v] = k - i;
+        movementArray[v] = 3;
+      }
     }
 
     // Check left
     found = false;
-    for (k = j - 1; k >= 0 && accessibilityMatrix[k][j] && !found; --k) {
+    for (k = j - 1; k >= 0 && accessibilityMatrix[i][k] && !found; k--) {
       found = (landmarkMatrix[i][k] != -1);
+      if (found) {
+        int v = landmarkMatrix[i][k];
+        adjacencyArray[v] = j - k;
+        movementArray[v] = 4;
+      }
     }
-    if (found) {
-      int v = landmarkMatrix[i][k];
-      adjacencyArray[v] = j - k;
-      movementArray[v] = 4;
+  }
+
+  private void saveAllAttributesToFile() {
+    try {
+      PrintWriter writer = new PrintWriter("visibility_graph.txt", "UTF-8");
+
+      writer.println("Accessibility Matrix");
+      for (boolean [] row: accessibilityMatrix) {
+        for (boolean col : row) {
+          writer.print(col ? "1  " : "   ");
+        }
+        writer.println();
+      }
+      writer.println();
+
+      writer.println("Landmark Matrix");
+      for (int [] row: landmarkMatrix) {
+        for (int col: row) {
+          writer.printf("%d\t", col);
+        }
+        writer.println();
+      }
+      writer.println();
+
+      writer.printf("Landmarks: %d\n", numOfLandmarks);
+      for (Point landmark: landmarks) {
+        writer.println(landmark);
+      }
+      writer.println();
+
+      writer.println("Adjacency Matrix");
+      for (int [] row: adjacencyMatrix) {
+        for (int col: row) {
+          if (col == Integer.MAX_VALUE)
+            writer.printf(".");
+          else
+            writer.printf("%d", col);
+        }
+        writer.println();
+      }
+      writer.println();
+
+      writer.println("Movement Matrix");
+      for (int [] row: movementMatrix) {
+        for (int col: row) {
+          if (col == 0)
+            writer.printf(".");
+          else
+            writer.printf("%d", col);
+        }
+        writer.println();
+      }
+      writer.println();
+
+      writer.close();
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }
 }
