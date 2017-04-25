@@ -75,53 +75,109 @@ public class Player extends GameCharacter {
   }
 
   /**
+   * Fungsi mengembalikan nilai kebenaran bahwa Player berada pada state normal.
    *
-   * @return
+   * @return Nilai kebenaran apakah Player berada pada state normal.
    */
   public boolean isNormal() {
     return state == 0;
   }
 
+  /**
+   * Fungsi mengembalikan nilai kebenaran bahwa Player berada pada state super.
+   *
+   * @return Nilai kebenaran apakah Player berada pada state super.
+   */
   public boolean isSuper() {
     return state == 1;
   }
 
+  /**
+   * Fungsi mengembalikan nilai kebenaran bahwa Player berada pada state dead.
+   *
+   * @return Nilai kebenaran apakah Player berada pada state dead.
+   */
   public boolean isDead() {
     return state == 2;
   }
 
+  /**
+   * Fungsi mengembalikan state Player.
+   *
+   * @return State Player.
+   */
   public static int getStatus() {
     return state;
   }
 
+  /**
+   * Fungsi mengembalikan orientasi pergerakan Player.
+   *
+   * @return Orientas Player.
+   */
   public static char getOrientation() {
     return orientation;
   }
 
+  /**
+   * Fungsi mengembalikan ordinat Player pada Arena.
+   *
+   * @return Ordinat Player.
+   */
   public static int getPlayerI() {
     return playerI;
   }
 
+  /**
+   * Fungsi mengembalikan absis Player pada Arena.
+   *
+   * @return Absis Player.
+   */
   public static int getPlayerJ() {
     return playerJ;
   }
 
+  /**
+   * Fungsi mengembalikan posisi Player.
+   *
+   * @return Posisi Player dalam Point.
+   */
   public static Point getPosition() {
     return new Point(playerI, playerJ);
   }
 
+  /**
+   * Method mengubah state Player menjadi state tertentu.
+   *
+   * @param newState State baru Player.
+   */
   public static void setStatus(int newState) {
     state = newState;
   }
 
+  /**
+   * Method mengubah orientasi Player.
+   *
+   * @param newOrientation Orientasi baru Player.
+   */
   public static void setOrientation(char newOrientation) {
     orientation = newOrientation;
   }
 
+  /**
+   * Method mengubah ordinat Player pada Arena.
+   *
+   * @param newI Ordinat baru Player.
+   */
   public static void setPlayerI(int newI) {
     playerI = newI;
   }
 
+  /**
+   * Method mengubah absis Player pada Arena.
+   *
+   * @param newJ Absis baru Player.
+   */
   public static void setPlayerJ(int newJ) {
     playerJ = newJ;
   }

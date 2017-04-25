@@ -92,21 +92,63 @@ public class PathFinder {
       }
     }
   }
-
+  /**
+   * Konstanta banyaknya landmark pada Arena.
+   */
   private final int END = VisibilityGraph.getNumOfLandmarks();
 
+  /**
+   * Titik mula-mula.
+   */
   private Point origin;
+
+  /**
+   * Titik yang ingin dituju.
+   */
   private Point destination;
 
+  /**
+   * Jarak dari titik origin ke setiap landmark yang segaris dengan origin.
+   * Bila tidak segaris, jarak bernilai 0.
+   */
   private int[] fromOriginDistance;
+
+  /**
+   * Pergerakan dari titik origin ke setiap landmark yang segaris dengan origin.
+   * Bila tidak segaris, movement bernilai 0.
+   */
   private int[] fromOriginMovement;
+
+  /**
+   * Jarak dari setiap landmark ke titik tujuan yang segaris dengan landmark itu sendiri.
+   * Bila tidak segaris, jarak bernilai 0.
+   */
   private int[] toDestinationDistance;
+
+  /**
+   * Pergerakan dari setiap landmark ke titik tujuan yang segaris dengan landmark itu sendiri.
+   * Bila tidak segaris, movement bernilai 0.
+   */
   private int[] toDestinationMovement;
 
+  /**
+   * Matriks aksesibilitas Arena.
+   */
   private boolean[][] accessibilityMatrix;
 
+  /**
+   * Arah pergerakan Ghost.
+   */
   private int movement;
 
+  /**
+   * <p>
+   * Constructor
+   *
+   * Menciptakan PathFinder yang menghasilkan VisibilityGraph, jarak dan pergerakan titik awal ke
+   * setiap landmark dan setiap landmark ke titik tujuan.
+   * </p>
+   */
   public PathFinder() {
     fromOriginDistance = new int[VisibilityGraph.getNumOfLandmarks()];
     fromOriginMovement = new int[VisibilityGraph.getNumOfLandmarks()];
@@ -115,6 +157,12 @@ public class PathFinder {
     accessibilityMatrix = VisibilityGraph.getAccessibilityMatrix();
   }
 
+  /**
+   * Melakukan kalkulasi pergerakan berdasarkan dua titik yang berbeda pada map.
+   *
+   * @param origin Titik mula-mula.
+   * @param destination Titik yang ingin dituju.
+   */
   public void calculateMovement(Point origin, Point destination) {
     this.origin = origin;
     this.destination = destination;

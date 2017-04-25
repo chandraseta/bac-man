@@ -192,38 +192,81 @@ public class Arena {
     return map;
   }
 
+  /**
+   * Fungsi mengembalikan Grid pada suatu titik.
+   *
+   * @return Grid pada suatu titik di Arena.
+   */
   public static Grid getGrid(int i, int j) {
     return map[i][j];
   }
 
+  /**
+   * Fungsi mengembalikan posisi awal Blinky saat inisialisasi Arena.
+   *
+   * @return Posisi inisialisasi Blinky.
+   */
   public static Point getBlinkyInitPos() {
     return blinkyInitPos;
   }
 
+  /**
+   * Fungsi mengembalikan posisi awal Pinky saat inisialisasi Arena.
+   *
+   * @return Posisi inisialisasi Pinky.
+   */
   public static Point getPinkyInitPos() {
     return pinkyInitPos;
   }
 
+  /**
+   * Fungsi mengembalikan posisi awal Inky saat inisialisasi Arena.
+   *
+   * @return Posisi inisialisasi Inky.
+   */
   public static Point getInkyInitPos() {
     return inkyInitPos;
   }
 
+  /**
+   * Fungsi mengembalikan posisi awal Clyde saat inisialisasi Arena.
+   *
+   * @return Posisi inisialisasi Clyde.
+   */
   public static Point getClydeInitPos() {
     return clydeInitPos;
   }
 
+  /**
+   * Fungsi mengembalikan posisi awal Player saat inisialisasi Arena.
+   *
+   * @return Posisi inisialisasi Player.
+   */
   public static Point getPlayerInitPos() {
     return playerInitPos;
   }
 
+  /**
+   * Fungsi mengembalikan posisi respawn Ghost.
+   *
+   * @return Posisi respawn Ghost.
+   */
   public static Point getRespawnPos() {
     return new Point((mapWidth / 2) - 1, mapLength / 2);
   }
 
+  /**
+   * Fungsi mengembalikan banyak Cookie tersisa di Arena.
+   *
+   * @return Banyak Cookie tersisa di Arena.
+   */
   public static int getCookieLeft() {
     return cookieLeft;
   }
 
+  /**
+   * Method mengurangi banyak Cookie di arena.
+   */
   public static void eatCookie() {
     cookieLeft--;
   }
