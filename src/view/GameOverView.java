@@ -6,11 +6,18 @@ import java.awt.*;
 import java.net.URL;
 
 /**
- * Created by Holy on 25-Apr-17.
+ * Kelas GameOverView mendefinisikan tampilan program saat permainan telah berakhir.
  */
 public class GameOverView extends JFrame {
     private JPanel gameOverPanel;
 
+    /**
+     * <p>
+     * Constructor
+     *
+     * Menciptakan objek GameOverView sebagai tampilan program saat permainan berakhir.
+     * </p>
+     */
     public GameOverView() {
         setTitle("Game Over");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -25,6 +32,13 @@ public class GameOverView extends JFrame {
         pack();
     }
 
+    /**
+     * Fungsi mengembalikan sebuah sprite yang ditampilkan dalam window GameOver.
+     *
+     * @param gameOverLayout Layout untuk sprite.
+     * @param gameOverConstraints
+     * @return Sprite pada window.
+     */
     public JLabel createGameOverBacBac(GridBagLayout gameOverLayout, GridBagConstraints gameOverConstraints) {
         gameOverConstraints.gridx = 0;
         gameOverConstraints.gridy = 0;

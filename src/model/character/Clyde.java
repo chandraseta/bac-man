@@ -22,7 +22,7 @@ public class Clyde extends Ghost {
    */
   public Clyde() {
     super((int) Arena.getClydeInitPos().getX(), (int) Arena.getClydeInitPos().getY(), "\\assets\\clyde.gif");
-    scatterDestination = new Point(Arena.getMapWidth() - 1, 0);
+    scatterDestination = new Point(Arena.getMapWidth() - 2, 1);
   }
 
   /**
@@ -37,14 +37,15 @@ public class Clyde extends Ghost {
    */
   public Clyde(int i, int j) {
     super(i, j, "\\assets\\clyde.gif");
-    scatterDestination = new Point(Arena.getMapWidth() - 1, 0);
+    scatterDestination = new Point(Arena.getMapWidth() - 2, 1);
   }
 
   /**
    * Menentukan titik target yang akan dicapai Inky.
    */
   public void getNextDestination() {
-    if (PathFinder.manhattanDistance(this.position, Player.getPosition()) >= 8) {
+    int distance = PathFinder.manhattanDistance(this.position, Player.getPosition());
+    if (distance >= 8) {
       destination = Player.getPosition();
     } else {
       destination = scatterDestination;

@@ -10,8 +10,6 @@ import java.util.Random;
  * Kelas abstract Ghost yang menjadi dasar berbagai tipe Ghost.
  *
  * @author
- * @version
- * @since
  */
 public abstract class Ghost extends GameCharacter {
 
@@ -26,10 +24,13 @@ public abstract class Ghost extends GameCharacter {
   protected Point destination;
   protected Point scatterDestination;
 
+  protected PathFinder pathFinder;
+
   public Ghost(int i, int j, String sprite) {
     super(i, j, sprite);
     state = 0;
     destination = new Point(Player.getPlayerI(), Player.getPlayerJ());
+    pathFinder = new PathFinder();
   }
 
   /**
@@ -75,8 +76,14 @@ public abstract class Ghost extends GameCharacter {
    */
   public abstract void getNextDestination();
 
+  /**
+   * Fungsi mengembalikan pergerakan Ghost saat melakukan scatter.
+   *
+   * @return Pergerakan Ghost saat scatter.
+   */
   public int scatter() {
-    return (new PathFinder(this.position, scatterDestination).getMovement());
+    pathFinder.calculateMovement(this.position, scatterDestination);
+    return pathFinder.getMovement();
   }
 
   /**
@@ -86,7 +93,9 @@ public abstract class Ghost extends GameCharacter {
    */
   public int moveTowardsPlayer() {
     getNextDestination();
-    return (new PathFinder(this.position, destination)).getMovement();
+    System.out.println(destination);
+    pathFinder.calculateMovement(this.position, destination);
+    return pathFinder.getMovement();
   }
 
   /**
@@ -95,7 +104,7 @@ public abstract class Ghost extends GameCharacter {
    * @return Nilai integer yang menentukan arah gerak Ghost pada status vulnerable.
    */
   public int moveAwayFromPlayer() {
-    int [] weights = new int[4];
+    int[] weights = new int[4];
     Point ghostPos = this.position;
     Point playerPos = Player.getPosition();
 
@@ -122,7 +131,7 @@ public abstract class Ghost extends GameCharacter {
    * @return Nilai integer yang menentukan arah gerak Ghost pada status dead.
    */
   public int returnToBase() {
-    int [] weights = new int[4];
+    int[] weights = new int[4];
     Point ghostPos = this.position;
     Point center = Arena.getRespawnPos();
 

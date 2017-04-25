@@ -185,7 +185,7 @@ public class VisibilityGraph {
 
   /**
    * Mencari
-   * 
+   *
    * @param origin Titik mula-mula.
    * @param adjacencyArray
    * @param movementArray
@@ -255,9 +255,12 @@ public class VisibilityGraph {
       writer.println();
 
       writer.println("Landmark Matrix");
-      for (int [] row: landmarkMatrix) {
-        for (int col: row) {
-          writer.printf("%d\t", col);
+      for (int i = 0; i < landmarkMatrix.length; i++) {
+        for (int j = 0; j < landmarkMatrix[i].length; ++j) {
+          if (accessibilityMatrix[i][j])
+            writer.printf("%d\t", landmarkMatrix[i][j]);
+          else
+            writer.printf(".\t");
         }
         writer.println();
       }

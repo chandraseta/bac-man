@@ -2,7 +2,7 @@ package model.character;
 
 import model.Arena;
 
-import java.awt.*;
+import java.awt.Point;
 
 /**
  * Kelas Pinky mendefinisikan Ghost Pinky pada permainan.
@@ -22,7 +22,7 @@ public class Pinky extends Ghost {
    */
   public Pinky() {
     super((int) Arena.getPinkyInitPos().getX(), (int) Arena.getPinkyInitPos().getY(), "\\assets\\pinky.gif");
-    scatterDestination = new Point(0, 0);
+    scatterDestination = new Point(1, 1);
   }
 
   /**
@@ -37,7 +37,7 @@ public class Pinky extends Ghost {
    */
   public Pinky(int i, int j) {
     super(i, j, "\\assets\\pinky.gif");
-    scatterDestination = new Point(0,0);
+    scatterDestination = new Point(1,1);
   }
 
   /**
