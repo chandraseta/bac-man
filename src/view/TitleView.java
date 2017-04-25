@@ -23,6 +23,8 @@ public class TitleView extends JFrame implements ActionListener {
      */
     public static boolean visibility;
 
+    public static String playerName;
+
     /**
      * <p>
      * Constructor
@@ -115,7 +117,7 @@ public class TitleView extends JFrame implements ActionListener {
         textField.setBorder(new EmptyBorder(0, 0, 0, 0));
         titleLayout.setConstraints(textField, titleConstraints);
         textField.addActionListener(ae -> {
-            String name = textField.getText();
+            playerName = textField.getText();
             if(textField.getText() != null) {
                 visibility = false;
                 setVisible(false);
