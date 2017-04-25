@@ -120,7 +120,7 @@ public class PlayerController implements Runnable, KeyListener {
     try {
       while (true) {
         move();
-        Thread.sleep(1000);
+        Thread.sleep(400);
       }
     } catch (InterruptedException e) {
       e.printStackTrace();
