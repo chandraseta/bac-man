@@ -1,0 +1,324 @@
+
+C:\Users\Holy\Projects\Bac-Man>java -cp lib/jdepend-2.9.5.jar jdepend.textui.JDepend out 
+
+--------------------------------------------------
+- Package: controller
+--------------------------------------------------
+
+Stats:
+    Total Classes: 3
+    Concrete Classes: 3
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 8
+
+    A: 0
+    I: 0.89
+    D: 0.11
+
+Abstract Classes:
+
+Concrete Classes:
+    controller.BacMan
+    controller.GhostController
+    controller.PlayerController
+
+Depends Upon:
+    java.awt
+    java.awt.event
+    java.io
+    java.lang
+    model
+    model.character
+    model.element
+    view
+
+Used By:
+    view
+
+--------------------------------------------------
+- Package: java.awt
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.awt.event
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.awt.image
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.io
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.lang
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.lang.invoke
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.net
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.util
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: java.util.concurrent
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: javax.swing
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: javax.swing.border
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: model
+--------------------------------------------------
+
+Stats:
+    Total Classes: 5
+    Concrete Classes: 4
+    Abstract Classes: 1
+
+    Ca: 4
+    Ce: 6
+
+    A: 0.2
+    I: 0.6
+    D: 0.2
+
+Abstract Classes:
+    model.GameElement
+
+Concrete Classes:
+    model.Arena
+    model.ArenaTest
+    model.GameCharacter
+    model.VisibilityGraph
+
+Depends Upon:
+    java.awt
+    java.io
+    java.lang
+    java.util
+    model.element
+    org.junit
+
+Used By:
+    controller
+    model.character
+    model.element
+    view
+
+--------------------------------------------------
+- Package: model.character
+--------------------------------------------------
+
+Stats:
+    Total Classes: 13
+    Concrete Classes: 12
+    Abstract Classes: 1
+
+    Ca: 2
+    Ce: 8
+
+    A: 0.08
+    I: 0.8
+    D: 0.12
+
+Abstract Classes:
+    model.character.Ghost
+
+Concrete Classes:
+    model.character.Blinky
+    model.character.BlinkyTest
+    model.character.Clyde
+    model.character.ClydeTest
+    model.character.Inky
+    model.character.InkyTest
+    model.character.PathFinder
+    model.character.PathFinder$Node
+    model.character.Pinky
+    model.character.PinkyTest
+    model.character.Player
+    model.character.PlayerTest
+
+Depends Upon:
+    java.awt
+    java.io
+    java.lang
+    java.lang.invoke
+    java.util
+    java.util.concurrent
+    model
+    org.junit
+
+Used By:
+    controller
+    view
+
+--------------------------------------------------
+- Package: model.element
+--------------------------------------------------
+
+Stats:
+    Total Classes: 4
+    Concrete Classes: 4
+    Abstract Classes: 0
+
+    Ca: 3
+    Ce: 2
+
+    A: 0
+    I: 0.4
+    D: 0.6
+
+Abstract Classes:
+
+Concrete Classes:
+    model.element.Cookie
+    model.element.Grid
+    model.element.SuperCookie
+    model.element.Wall
+
+Depends Upon:
+    java.lang
+    model
+
+Used By:
+    controller
+    model
+    view
+
+--------------------------------------------------
+- Package: org.junit
+--------------------------------------------------
+No stats available: package referenced, but not analyzed.
+
+--------------------------------------------------
+- Package: view
+--------------------------------------------------
+
+Stats:
+    Total Classes: 8
+    Concrete Classes: 8
+    Abstract Classes: 0
+
+    Ca: 1
+    Ce: 13
+
+    A: 0
+    I: 0.93
+    D: 0.07
+
+Abstract Classes:
+
+Concrete Classes:
+    view.CreditsView
+    view.GameOverView
+    view.GameView
+    view.GameView$MoveAction
+    view.InfoPanel
+    view.LoadingView
+    view.MapPanel
+    view.TitleView
+
+Depends Upon:
+    controller
+    java.awt
+    java.awt.event
+    java.awt.image
+    java.io
+    java.lang
+    java.lang.invoke
+    java.net
+    javax.swing
+    javax.swing.border
+    model
+    model.character
+    model.element
+
+Used By:
+    controller
+
+
+--------------------------------------------------
+- Package Dependency Cycles:
+--------------------------------------------------
+
+controller
+    |
+    |   model.character
+    |-> model
+    |   model.element
+    |-> model
+
+model
+    |
+    |   model.element
+    |-> model
+
+model.character
+    |
+    |-> model
+    |   model.element
+    |-> model
+
+model.element
+    |
+    |   model
+    |-> model.element
+
+view
+    |
+    |   controller
+    |   model.character
+    |-> model
+    |   model.element
+    |-> model
+
+
+--------------------------------------------------
+- Summary:
+--------------------------------------------------
+
+Name, Class Count, Abstract Class Count, Ca, Ce, A, I, D, V:
+
+controller,3,0,1,8,0,0.89,0.11,1
+java.awt,0,0,4,0,0,0,1,1
+java.awt.event,0,0,2,0,0,0,1,1
+java.awt.image,0,0,1,0,0,0,1,1
+java.io,0,0,4,0,0,0,1,1
+java.lang,0,0,5,0,0,0,1,1
+java.lang.invoke,0,0,2,0,0,0,1,1
+java.net,0,0,1,0,0,0,1,1
+java.util,0,0,2,0,0,0,1,1
+java.util.concurrent,0,0,1,0,0,0,1,1
+javax.swing,0,0,1,0,0,0,1,1
+javax.swing.border,0,0,1,0,0,0,1,1
+model,5,1,4,6,0.2,0.6,0.2,1
+model.character,13,1,2,8,0.08,0.8,0.12,1
+model.element,4,0,3,2,0,0.4,0.6,1
+org.junit,0,0,2,0,0,0,1,1
+view,8,0,1,13,0,0.93,0.07,1
