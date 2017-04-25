@@ -11,8 +11,18 @@ import java.net.URL;
  */
 public class LoadingView extends JFrame {
 
+  /**
+   * Panel yang dibuat saat melakukan loading.
+   */
   protected JPanel loadingPanel;
 
+  /**
+   * <p>
+   * Constructor
+   *
+   * Menciptakan LoadingView pada window saat dengan melakukan window,
+   * </p>
+   */
   public LoadingView() {
     setTitle("Loading");
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -38,6 +48,13 @@ public class LoadingView extends JFrame {
     pack();
   }
 
+  /**
+   * Fungsi mengembalikan sebuah text yang akan ditampilkan saat melakukan Loading.
+   *
+   * @param loadingLayout Layout untuk text Loading.
+   * @param loadingConstraints Constraints mengelola layout text.
+   * @return Text pada window Loading.
+   */
   public JLabel createLoadingText(GridBagLayout loadingLayout,
       GridBagConstraints loadingConstraints) {
     loadingConstraints.gridx = 0;
@@ -60,6 +77,13 @@ public class LoadingView extends JFrame {
     return loadingText;
   }
 
+  /**
+   * Menciptakan label loading dari gambar BacBac.
+   *
+   * @param loadingLayout Layout untuk gambar saat Loading.
+   * @param loadingConstraints Constraints mengelola layout gambar.
+   * @return Gambar BacBac ditampilkan dalam window Loading.
+   */
   public JLabel createLoadingBacBac(GridBagLayout loadingLayout,
       GridBagConstraints loadingConstraints) {
     loadingConstraints.gridx = 0;
@@ -72,6 +96,13 @@ public class LoadingView extends JFrame {
     return sleepingBacbac;
   }
 
+  /**
+   * Menciptakan label loading dari gambar Ghost.
+   *
+   * @param loadingLayout Layout untuk gambar saat Loading.
+   * @param loadingConstraints Constraints mengelola layout gambar.
+   * @return Gambar Ghost ditampilkan dalam window Loading.
+   */
   public JLabel createLoadingGhost(GridBagLayout loadingLayout,
       GridBagConstraints loadingConstraints, int gridx, String image_path) {
     loadingConstraints.gridx = gridx;

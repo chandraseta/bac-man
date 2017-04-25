@@ -17,22 +17,94 @@ import java.net.URL;
  */
 public class MapPanel extends JComponent {
 
+  /**
+   * Lebar ukuran sprite yang ditampilkan pada 1 petak Arena.
+   */
   private final int SCALE_WIDTH = 40;
+
+  /**
+   * Panjang ukuran sprite yang ditampilkan pada 1 petak Arena.
+   */
   private final int SCALE_HEIGHT = 45;
+
+  /**
+   * Panjang Map dalam satuan panjang.
+   */
   private final int MAP_WIDTH = Arena.getMapWidth();
+
+  /**
+   * Lebar Map dalam satuan panjang.
+   */
   private final int MAP_LENGTH = Arena.getMapLength();
+
+  /**
+   * PlayerController dalam Arena.
+   */
   private PlayerController bacman;
+
+  /**
+   * Objek Blinky.
+   */
   private Blinky blinky;
+
+  /**
+   * Objek Inky.
+   */
   private Inky inky;
+
+  /**
+   * Objek Pinky.
+   */
   private Pinky pinky;
+
+  /**
+   * Objek Clyde.
+   */
   private Clyde clyde;
+
+  /**
+   * Posisi Player sebelumnya.
+   */
   private Point bacmanPreviousPosition = new Point();
+
+  /**
+   * Posisi Blinky sebelumnya.
+   */
   private Point blinkyPreviousPosition = new Point();
+
+  /**
+   * Posisi Pinky sebelumnya.
+   */
   private Point pinkyPreviousPosition = new Point();
+
+  /**
+   * Posisi Inky sebelumnya.
+   */
   private Point inkyPreviousPosition = new Point();
+
+  /**
+   * Posisi Clyde sebelumnya.
+   */
   private Point clydePreviousPosition = new Point();
+
+  /**
+   * Posisi Player sebelumnya.
+   */
   private boolean isFirstTime = true;
 
+  /**
+   * <p>
+   * Constructor
+   *
+   * Menciptakan Panel Map pada permainan.
+   * </p>
+   *
+   * @param bacman PlayerController pada Player.
+   * @param blinky Objek Blinky.
+   * @param inky Objek Inky.
+   * @param pinky Objek Pinky.
+   * @param clyde Objek Clyde.
+   */
   public MapPanel(PlayerController bacman, Blinky blinky, Inky inky, Pinky pinky, Clyde clyde) {
     this.bacman = bacman;
     this.blinky = blinky;
@@ -42,10 +114,24 @@ public class MapPanel extends JComponent {
     setPreferredSize(new Dimension(MAP_LENGTH * SCALE_WIDTH, MAP_WIDTH * SCALE_HEIGHT));
   }
 
+  /**
+   * Fungsi mengembalikan apakah gambar merupakan gambar berekstensi gif.
+   *
+   * @param image_path Path direktori gambar.
+   * @return Gambar berekstensi gif atau tidak.
+   */
   public static boolean isGIF(String image_path) {
     return (image_path.contains(".gif"));
   }
 
+  /**
+   * Fungsi mengembalikan gambar yang telah di-resize.
+   *
+   * @param srcImg Gambar yang akan di-resize.
+   * @param w Lebar gambar.
+   * @param h Panjang gambar.
+   * @return Gambar yang telah di-resize berdasarkan parameter w dan h.
+   */
   public static Image getScaledImage(Image srcImg, int w, int h) {
     BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
     Graphics2D g2 = resizedImg.createGraphics();
@@ -56,6 +142,12 @@ public class MapPanel extends JComponent {
     return resizedImg;
   }
 
+  /**
+   * Fungsi mengembalikan gambar dari suatu path direktori.
+   *
+   * @param image_path Path direktori gambar.
+   * @return Gambar dengan ukuran yang telah disesuaikan.
+   */
   private Image getTileImage(String image_path) {
     URL img_path = getClass().getResource(image_path);
     ImageIcon imageIcon = new ImageIcon(img_path);
@@ -67,6 +159,11 @@ public class MapPanel extends JComponent {
     }
   }
 
+  /**
+   * Override method paintComponent.
+   *
+   * @param g menampilkan graphic pada InfoPanel.
+   */
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);

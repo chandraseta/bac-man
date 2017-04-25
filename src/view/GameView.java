@@ -15,10 +15,26 @@ import java.awt.event.ActionEvent;
  */
 public class GameView extends JFrame implements Runnable {
 
+  /**
+   * Panel berisi Arena permainan.
+   */
   private MapPanel mapPanel;
+
+  /**
+   * Panel berisi info permainan.
+   */
   private InfoPanel infoPanel;
+
+  /**
+   * Thread untuk menjalankan interface program.
+   */
   private Thread thread;
+
+  /**
+   * Nama Thread.
+   */
   private String threadName;
+
   private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
   private static final String MOVE_UP = "move up";
   private static final String MOVE_RIGHT = "move right";
@@ -26,6 +42,19 @@ public class GameView extends JFrame implements Runnable {
   private static final String MOVE_LEFT = "move left";
   private static JLabel keyInput = new JLabel();
 
+  /**
+   * <p>
+   * Constructor
+   *
+   * Menciptakan tampilan pada permainan.
+   * </p>
+   *
+   * @param bacman PlayerController pada Player.
+   * @param blinky Objek Blinky.
+   * @param inky Objek Inky.
+   * @param pinky Objek Pinky.
+   * @param clyde Objek Clyde.
+   */
   public GameView(PlayerController bacman, Blinky blinky, Inky inky, Pinky pinky, Clyde clyde) {
     mapPanel = new MapPanel(bacman, blinky, inky, pinky, clyde);
     infoPanel = new InfoPanel();
@@ -42,6 +71,9 @@ public class GameView extends JFrame implements Runnable {
     add(keyInput);
   }
 
+  /**
+   * Melakukan update pada tampilan permainan.
+   */
   public void updateGameView() {
     setTitle("Game Screen");
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -70,6 +102,9 @@ public class GameView extends JFrame implements Runnable {
     pack();
   }
 
+  /**
+   * Mengatur jalannya Thread GameView selama permainan.
+   */
   public void run() {
     try {
       while (true) {
@@ -81,6 +116,9 @@ public class GameView extends JFrame implements Runnable {
     }
   }
 
+  /**
+   * Memulai jalannya Thread pada GameView.
+   */
   public void start() {
     if (thread == null) {
       thread = new Thread(this, threadName);
@@ -88,16 +126,34 @@ public class GameView extends JFrame implements Runnable {
     }
   }
 
+  /**
+   * Kelas MoveAction diturunkan dari AbstractAction.
+   */
   public class MoveAction extends AbstractAction {
 
     int direction;
     PlayerController playerController;
 
+    /**
+     * <p>
+     * Constructor
+     *
+     * Menciptakan MoveAction untuk menghubungkan PlayerController dengan arah gerak Player.
+     * </p>
+     *
+     * @param direction Arah gerak Player.
+     * @param playerController Objek Controller untuk Player.
+     */
     MoveAction(int direction, PlayerController playerController) {
       this.direction = direction;
       this.playerController = playerController;
     }
 
+    /**
+     * Override actionPerformed Method.
+     *
+     * @param e Instance dari ActionEvent.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
       playerController.setDirection(direction);

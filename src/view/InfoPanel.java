@@ -9,14 +9,26 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * Created by Holy on 25-Apr-17.
+ * Kelas InfoPanel mendefinisikan panel yang berisi info permainan.
  */
 public class InfoPanel extends JComponent {
 
+  /**
+   * <p>
+   * Constructor
+   *
+   * Menciptakan InfoPanel dengan size yang sudah ditentukan.
+   * </p>
+   */
   public InfoPanel() {
     setPreferredSize(new Dimension(500, 860));
   }
 
+  /**
+   * Fungsi mengembalikan font pada InfoPanel.
+   *
+   * @return Font pada InfoPanel.
+   */
   private Font getScreenFont() {
     Font scoreFont = null;
     try {
@@ -30,6 +42,14 @@ public class InfoPanel extends JComponent {
     return scoreFont;
   }
 
+  /**
+   * Fungsi mengembalikan sebuah gambar. Skala ukuran menjadi parameter gambar.
+   *
+   * @param image_path Path direktori gambar.
+   * @param widthScale Skala lebar gambar.
+   * @param heightScale Skala panjang gambar.
+   * @return Gambar yang telah diatur skalanya dari parameter input.
+   */
   private Image getBacbacImage(String image_path, int widthScale, int heightScale) {
     URL img_path = getClass().getResource(image_path);
     ImageIcon imageIcon = new ImageIcon(img_path);
@@ -41,6 +61,11 @@ public class InfoPanel extends JComponent {
     }
   }
 
+  /**
+   * Override method paintComponent.
+   *
+   * @param g menampilkan graphic pada InfoPanel.
+   */
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);

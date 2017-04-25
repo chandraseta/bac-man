@@ -59,7 +59,7 @@ public class TitleView extends JFrame implements ActionListener {
   /**
    * Menciptakan logo permainan.
    *
-   * @return logo Logo permainan.
+   * @return Logo permainan.
    */
   public JLabel createLogo(GridBagLayout titleLayout, GridBagConstraints titleConstraints) {
     titleConstraints.gridx = 0;
@@ -75,6 +75,8 @@ public class TitleView extends JFrame implements ActionListener {
 
   /**
    * Menciptakan Text pada title.
+   *
+   * @return Text yang akan ditampilkan pada TitleView.
    */
   public JLabel createText(GridBagLayout titleLayout, GridBagConstraints titleConstraints) {
     titleConstraints.gridx = 0;
@@ -96,6 +98,13 @@ public class TitleView extends JFrame implements ActionListener {
     return titleText;
   }
 
+  /**
+   * Fungsi mengembalikan sebuah TextField untuk menyimpan input pengguna berupa teks.
+   *
+   * @param titleLayout Layout pada TitleView.
+   * @param titleConstraints Constraints mengelola layout.
+   * @return TextField pada TitleView.
+   */
   public JTextField createTextInput(GridBagLayout titleLayout,
       GridBagConstraints titleConstraints) {
     titleConstraints.gridx = 0;
