@@ -11,12 +11,12 @@ public class Inky extends Ghost{
 
   public Inky() {
     super((int) Arena.getInkyInitPos().getX(), (int) Arena.getInkyInitPos().getY(), "\\assets\\inky.gif");
-    scatterDestination = new Point(Arena.getMapWidth() - 1, Arena.getMapWidth() - 1);
+    scatterDestination = new Point(Arena.getMapWidth() - 2, Arena.getMapWidth() - 2);
   }
 
   public Inky(int i, int j) {
     super(i, j, "\\assets\\inky.gif");
-    scatterDestination = new Point(Arena.getMapWidth() - 1, Arena.getMapLength() - 1);
+    scatterDestination = new Point(Arena.getMapWidth() - 2, Arena.getMapLength() - 2);
   }
 
   public void getNextDestination() {

@@ -4,7 +4,7 @@ import java.awt.Point;
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 import model.VisibilityGraph;
 
@@ -17,7 +17,7 @@ public class PathFinder {
     private int cost;
     private int heuristic;
 
-    Node(int currNode, int initCost) {
+    Node (int currNode, int initCost) {
       path = new LinkedList<>();
       path.add(currNode);
       cost = initCost;
@@ -27,7 +27,7 @@ public class PathFinder {
         heuristic = 0;
     }
 
-    Node(Node parent, int currNode, int addCost) {
+    Node (Node parent, int currNode, int addCost) {
       path = new LinkedList<>(parent.path);
       cost = parent.cost + addCost;
       path.add(currNode);
@@ -73,8 +73,6 @@ public class PathFinder {
   public void calculateMovement(Point origin, Point destination) {
     this.origin = origin;
     this.destination = destination;
-    System.out.print(origin);
-    System.out.println(destination);
 
     if (origin.equals(destination))
       movement = 0;
@@ -149,16 +147,18 @@ public class PathFinder {
     } else {
       VisibilityGraph.findNeighbors(destination, toDestinationDistance, toDestinationMovement);
       for (int movement: toDestinationMovement) {
-        movement += 2;
-        if (movement > 4)
-          movement -= 4;
+        if (movement != 0) {
+          movement += 2;
+          if (movement > 4)
+            movement -= 4;
+        }
       }
     }
   }
 
   private int findPath() {
     try {
-      PriorityQueue<Node> aliveNodes = new PriorityQueue<>(10, Node::compareTo);
+      PriorityBlockingQueue<Node> aliveNodes = new PriorityBlockingQueue<>(10, Node::compareTo);
       int n = VisibilityGraph.getNumOfLandmarks();
       int[][] adjacencyMatrix = VisibilityGraph.getAdjacencyMatrix();
 

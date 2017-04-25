@@ -11,12 +11,12 @@ public class Pinky extends Ghost {
 
   public Pinky() {
     super((int) Arena.getPinkyInitPos().getX(), (int) Arena.getPinkyInitPos().getY(), "\\assets\\pinky.gif");
-    scatterDestination = new Point(0, 0);
+    scatterDestination = new Point(1, 1);
   }
 
   public Pinky(int i, int j) {
     super(i, j, "\\assets\\pinky.gif");
-    scatterDestination = new Point(0,0);
+    scatterDestination = new Point(1,1);
   }
 
   public void getNextDestination() {

@@ -14,14 +14,14 @@ public class Blinky extends Ghost {
 
   public Blinky() {
     super((int) Arena.getBlinkyInitPos().getX(), (int) Arena.getBlinkyInitPos().getY(), "\\assets\\blinky.gif");
-    scatterDestination = new Point(0, Arena.getMapWidth() - 1);
+    scatterDestination = new Point(1, Arena.getMapWidth() - 2);
     blinkyI = (int) Arena.getBlinkyInitPos().getX();
     blinkyJ = (int) Arena.getBlinkyInitPos().getY();
   }
 
   public Blinky(int i, int j) {
     super(i, j, "\\assets\\blinky.gif");
-    scatterDestination = new Point(0, Arena.getMapWidth() - 1);
+    scatterDestination = new Point(1, Arena.getMapWidth() - 2);
     blinkyI = i;
     blinkyJ = j;
   }
