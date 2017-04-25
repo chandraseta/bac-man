@@ -42,7 +42,7 @@ public class VisibilityGraph {
   private static int width;
 
   /**
-   *
+   * Kumpulan Landmark yang ada pada Graph.
    */
   private static Vector<Point> landmarks;
 

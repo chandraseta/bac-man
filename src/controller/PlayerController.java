@@ -59,10 +59,18 @@ public class PlayerController implements Runnable {
     this.threadName = threadName;
   }
 
+  /**
+   * Mengatur arah pergerakan Player.
+   *
+   * @param direction Arah gerak Player.
+   */
   public void setDirection(int direction) {
     this.direction = direction;
   }
 
+  /**
+   * Mengatur tampilan sprite player sesuai arah gerak Player.
+   */
   public void move() {
     if (direction == 1) {
       if (Arena.getGrid(player.getI() - 1, player.getJ()).isAccessible()) {
@@ -111,6 +119,9 @@ public class PlayerController implements Runnable {
     ////////////////////////
   }
 
+  /**
+   * Mengatur jalannya Thread Player selama permainan.
+   */
   public void run() {
     try {
       while (true) {
@@ -122,6 +133,9 @@ public class PlayerController implements Runnable {
     }
   }
 
+  /**
+   * Memulai jalannya Thread pada Player.
+   */
   public void start() {
     if (pThread == null) {
       pThread = new Thread(this, threadName);
@@ -129,6 +143,11 @@ public class PlayerController implements Runnable {
     }
   }
 
+  /**
+   * Fungsi mengembalikan objek Player.
+   *
+   * @return Objek Player pada permainan.
+   */
   public Player getPlayer() {
     return player;
   }

@@ -11,6 +11,9 @@ import java.net.URL;
  */
 public class GameOverView extends JFrame {
 
+  /**
+   * Panel pada window GameOver.
+   */
   private JPanel gameOverPanel;
 
   /**
@@ -54,6 +57,13 @@ public class GameOverView extends JFrame {
     return gameOverBacbac;
   }
 
+  /**
+   * Fungsi mengembalikan text pada window GameOver.
+   *
+   * @param gameOverLayout Layout untuk text GameOver.
+   * @param gameOverConstraints Constraints mengelola gameOverLayout.
+   * @return Text pada window GameOver.
+   */
   public JLabel createGameOverText(GridBagLayout gameOverLayout,
       GridBagConstraints gameOverConstraints) {
     gameOverConstraints.gridx = 0;
@@ -75,6 +85,11 @@ public class GameOverView extends JFrame {
     return gameOverText;
   }
 
+  /**
+   * Program pada window GameOver.
+   *
+   * @param args Command line argument.
+   */
   public static void main(String[] args) {
     GameOverView gameOverView = new GameOverView();
     gameOverView.setVisible(true);

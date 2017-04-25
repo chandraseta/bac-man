@@ -10,7 +10,7 @@ import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Kelas PathFinder
+ * Kelas PathFinder mendefinisikan kelas untu mencari jalur Ghost ke suatu titik.
  */
 public class PathFinder {
 
@@ -36,6 +36,12 @@ public class PathFinder {
      */
     private int heuristic;
 
+    /**
+     * Constructor Node dengan parameter currNode dan initCost.
+     *
+     * @param currNode Node yang akan di-expand.
+     * @param initCost Cost mula-mula Node dari Ghost mencapai titik pada Node.
+     */
     Node(int currNode, int initCost) {
       path = new LinkedList<>();
       path.add(currNode);
@@ -48,6 +54,13 @@ public class PathFinder {
       }
     }
 
+    /**
+     * Constructor Node dengan parameter parent, currNode, dan addCost.
+     *
+     * @param parent Parent Node pada Node yang akan di-expand.
+     * @param currNode Node yang aan di-expand.
+     * @param addCost Cost yang ditambahkan pada Node.
+     */
     Node(Node parent, int currNode, int addCost) {
       path = new LinkedList<>(parent.path);
       cost = parent.cost + addCost;
@@ -60,6 +73,15 @@ public class PathFinder {
       }
     }
 
+    /**
+     * Fungsi mengembalikan :
+     * -1 jika total cost objek node lebih kecil dari node yang dibandingkan.
+     * 0 jika total cost objek node sama dengan node yang dibandingkan.
+     * 1 jika total cost objek node lebih besar dari node yang dibandingkan.
+     *
+     * @param n2 Node yang dibandingkan.
+     * @return Integer
+     */
     int compareTo(Node n2) {
       if (this.cost + this.heuristic < n2.cost + n2.heuristic) {
         return -1;
@@ -112,6 +134,13 @@ public class PathFinder {
     }
   }
 
+  /**
+   * Fungsi mengembalikan movement Ghost.
+   * Movement Ghost = 0 apabila Ghost tidak segaris dengan Player.
+   * Apabila segaris, Ghost akan bergerak menuju Player.
+   *
+   * @return Pergerakan Ghost.
+   */
   private int checkLineOfSight() {
     boolean isLineOfSight = true;
 
@@ -185,6 +214,12 @@ public class PathFinder {
     }
   }
 
+  /**
+   * Fungsi mengembalikan pergerakan Ghost dengan menentukan sebuah path untuk mencapai titik yang
+   * dituju Ghost.
+   *
+   * @return pergerakan Ghost.
+   */
   private int findPath() {
     try {
       PriorityBlockingQueue<Node> aliveNodes = new PriorityBlockingQueue<>(10, Node::compareTo);
@@ -222,6 +257,13 @@ public class PathFinder {
     }
   }
 
+  /**
+   * Fungsi mengembalikan Jarak Manhattan dari dua titik yang berbeda.
+   *
+   * @param start Titik mula-mula.
+   * @param end Titik yang dituju.
+   * @return Jarak Manhattan dari kedua titik.
+   */
   public static int manhattanDistance(Point start, Point end) {
     if (start.equals(end)) {
       return 0;
@@ -239,6 +281,11 @@ public class PathFinder {
     }
   }
 
+  /**
+   * Fungsi mengembalikan pergerakan Ghost.
+   *
+   * @return Arah pergerakan Ghost.
+   */
   public int getMovement() {
     return movement;
   }

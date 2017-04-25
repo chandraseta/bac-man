@@ -7,9 +7,13 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * Created by Holy on 25-Apr-17.
+ * Kelas CreditsView mendefinisikan window Credits.
  */
 public class CreditsView extends JFrame {
+
+    /**
+     *
+     */
     private JPanel creditsPanel;
 
     public CreditsView() {
