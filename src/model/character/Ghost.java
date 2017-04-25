@@ -8,10 +8,15 @@ import java.util.Random;
 
 /**
  * Kelas abstract Ghost yang menjadi dasar berbagai tipe Ghost.
+ *
+ * @author
+ * @version
+ * @since
  */
 public abstract class Ghost extends GameCharacter {
+
   /**
-   * Berisi informasi status Ghost
+   * Artibut yang berisi informasi status Ghost
    * 0 = Normal
    * 1 = Vulnerable
    * 2 = Dead
@@ -37,18 +42,37 @@ public abstract class Ghost extends GameCharacter {
     this.state = state;
   }
 
+  /**
+   * Mengembalikan apakah Ghost berada pada state normal.
+   *
+   * @return Nilai pernyataan Ghost berada pada state normal.
+   */
   public boolean isNormal() {
     return state == 0;
   }
 
+  /**
+   * Mengembalikan apakah Ghost berada pada state vulnerable.
+   *
+   * @return Nilai pernyataan Ghost berada pada state vulnerable.
+   */
   public boolean isVulnerable() {
     return state == 1;
   }
 
+  /**
+   * Mngembalikan apakah Ghost berada pada state dead.
+   *
+   * @return Nilai pernyataan Ghost berada pada state dead.
+   */
   public boolean isDead() {
     return state == 2;
   }
 
+  /**
+   * Menentukan titik target yang akan dicapai suatu Ghost.
+   * Setiap Ghost memiliki target yang berbeda.
+   */
   public abstract void getNextDestination();
 
   public int scatter() {

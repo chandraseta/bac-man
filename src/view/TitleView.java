@@ -9,12 +9,27 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * Created by Holy on 24-Apr-17.
+ * Kelas TitleView mendefinisikan interface pada awal sebelum memulai permainan.
  */
 public class TitleView extends JFrame implements ActionListener {
+
+    /**
+     *
+     */
     protected JPanel titlePanel;
+
+    /**
+     * Suatu objek pada interface ditampilkan atau tidak.
+     */
     public static boolean visibility;
 
+    /**
+     * <p>
+     * Constructor
+     *
+     * Menciptakan sebuah window tampilan untuk menampilkan judul permainan.
+     * </p>
+     */
     public TitleView() {
         setTitle("BacMan");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -36,6 +51,13 @@ public class TitleView extends JFrame implements ActionListener {
         visibility = true;
     }
 
+    /**
+     * Menciptakan logo permainan.
+     *
+     * @param titleLayout
+     * @param titleConstraints
+     * @return logo Logo permainan.
+     */
     public JLabel createLogo(GridBagLayout titleLayout, GridBagConstraints titleConstraints) {
         titleConstraints.gridx = 0;
         titleConstraints.gridy = 0;
@@ -48,6 +70,13 @@ public class TitleView extends JFrame implements ActionListener {
         return logo;
     }
 
+    /**
+     * Menciptakan
+     *
+     * @param titleLayout
+     * @param titleConstraints
+     * @return
+     */
     public JLabel createText(GridBagLayout titleLayout, GridBagConstraints titleConstraints) {
         titleConstraints.gridx = 0;
         titleConstraints.gridy = 1;

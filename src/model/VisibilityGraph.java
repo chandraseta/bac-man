@@ -5,18 +5,57 @@ import java.util.Arrays;
 import java.util.Vector;
 
 /**
- * Created by ASUS on 23/04/17.
+ * Kelas VisibilityGraph mendefinisikan Graph pada Arena.
  */
 public class VisibilityGraph {
+
+  /**
+   * Grid dapat diakses atau tidak untuk setiap Grid dalam Arena.
+   */
   private static boolean[][] accessibilityMatrix;
+
+  /**
+   * Grid merupakan landmark atau tidak untuk setiap Grid dalam Arena
+   */
   private static int[][] landmarkMatrix;
+
+  /**
+   * Matriks ketetangaan untuk setiap landmark di Arena.
+   */
   private static int[][] adjacencyMatrix;
+
+  /**
+   * Matriks pergerakan dari satu landmark ke landmark lainnya di Arena.
+   */
   private static int[][] movementMatrix;
+
+  /**
+   * Panjang Arena.
+   */
   private static int length;
+
+  /**
+   * Lebar Arena.
+   */
   private static int width;
+
+  /**
+   *
+   */
   private static Vector<Point> landmarks;
+
+  /**
+   * Banyak landmark di Arena.
+   */
   private static int numOfLandmarks = 0;
 
+  /**
+   * <p>
+   * Constructor
+   *
+   * Menciptakan VisibilityGraph dari Arena.
+   * </p>
+   */
   public VisibilityGraph() {
     length = Arena.getMapLength();
     width = Arena.getMapWidth();
@@ -26,30 +65,63 @@ public class VisibilityGraph {
     calculateAdjacency();
   }
 
+  /**
+   * Fungsi mengembalikan Matriks aksesibilitas Arena.
+   *
+   * @return Matriks aksesibilitas Arena.
+   */
   public static boolean[][] getAccessibilityMatrix() {
     return accessibilityMatrix;
   }
-  
+
+  /**
+   * Fungsi mengembalikan Matriks landmark Arena.
+   *
+   * @return Matriks landmark Arena.
+   */
   public static int[][] getLandmarkMatrix() {
     return landmarkMatrix;
   }
 
+  /**
+   * Fungsi mengembalikan Matriks ketetangaan dari landmark pada Arena.
+   *
+   * @return Matriks ketetanggan dari landmark pada Arena.
+   */
   public static int[][] getAdjacencyMatrix() {
     return adjacencyMatrix;
   }
 
+  /**
+   * Fungsi mengembalikan Matriks pergerakan dari landmark pada Arena.
+   *
+   * @return Matriks pergerakan dari landmark pada Arena.
+   */
   public static int[][] getMovementMatrix() {
     return movementMatrix;
   }
 
+  /**
+   * Fungsi mengembalikan landmark yang ada pada Arena.
+   *
+   * @return kumpulan landmark pada Arena.
+   */
   public static Vector<Point> getLandmarks() {
     return landmarks;
   }
 
+  /**
+   * Fungsi mengembalikan banyak landmark yang ada di Arena.
+   *
+   * @return Banyak landmark pada Arena.
+   */
   public static int getNumOfLandmarks() {
     return numOfLandmarks;
   }
 
+  /**
+   * Method untuk mencari landmark yang ada pada Arena.
+   */
   private static void findLandmarks() {
     accessibilityMatrix = new boolean[width][length];
     landmarkMatrix = new int[width][length];
@@ -89,6 +161,10 @@ public class VisibilityGraph {
     }
   }
 
+  /**
+   * Melakukan perhitungan pada matriks ketetanggaan dan pergerakan dari seluruh landmark
+   * yang ada pada Arena.
+   */
   private static void calculateAdjacency() {
     adjacencyMatrix = new int[numOfLandmarks][numOfLandmarks];
     movementMatrix = new int[numOfLandmarks][numOfLandmarks];
@@ -101,7 +177,14 @@ public class VisibilityGraph {
       findNeighbors(landmarks.elementAt(i), adjacencyMatrix[i], movementMatrix[i]);
     }
   }
-  
+
+  /**
+   * Mencari
+   * 
+   * @param origin Titik mula-mula.
+   * @param adjacencyArray
+   * @param movementArray
+   */
   public static void findNeighbors(Point origin, int[] adjacencyArray, int[] movementArray) {
     int i = origin.x;
     int j = origin.y;

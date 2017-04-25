@@ -1,38 +1,75 @@
 package controller;
 
-import java.awt.KeyEventDispatcher;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.Arrays;
-import javax.swing.AbstractAction;
 import model.Arena;
 import model.character.Player;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * Kelas controller untuk Player.
  */
 public class PlayerController implements Runnable, KeyListener {
 
+  /**
+   * Atribut objek Player.
+   */
   private Player player;
+
+  /**
+   * Thread pada objek Player.
+   */
   private Thread pThread;
+
+  /**
+   * Nama pada Thread Player.
+   */
   private String threadName;
+
+  /**
+   * Arah gerak pada Player.
+   */
   private int direction;
+
+  /**
+   *
+   */
   public static boolean[] keyPressed = new boolean[256];
 
+  /**
+   * <p>
+   * Constructor
+   *
+   * Menciptakan PlayerController untuk mengendalikan Player saat permainan berlangsung.
+   * </p>
+   */
   public PlayerController() {
     player = new Player();
     this.threadName = "PlayerThread";
     direction = 0;
   }
 
+  /**
+   * <p>
+   * Constructor
+   *
+   * Menciptakan PlayerController dengan parameter.
+   * </p>
+   *
+   * @param i Posisi y Player.
+   * @param j Posisi x Player.
+   * @param sprite Path direktori sprite Player.
+   * @param threadName Nama Thread Player.
+   */
   public PlayerController(int i, int j, String sprite, String threadName) {
     player = new Player(i, j, sprite);
     this.threadName = threadName;
   }
 
-
   @Override
+  /**
+   * 
+   */
   public void keyTyped(KeyEvent e) {
   }
 

@@ -7,11 +7,15 @@ import java.awt.*;
 
 /**
  * Kelas berisi karakter Player yang dapat dikendalikan pemain.
+ *
+ * @author
+ * @version
+ * @since
  */
 public class Player extends GameCharacter {
 
   /**
-   * Berisi informasi status Player.
+   * Atribut yang berisi informasi status Player.
    * 0 = Normal
    * 1 = Super
    * 2 = Dead
@@ -19,7 +23,7 @@ public class Player extends GameCharacter {
   private static int state;
 
   /**
-   * Berisi informasi orientasi arah gerak Player.
+   * Atribut yang berisi informasi orientasi arah gerak Player.
    * n = Up
    * e = Right
    * s = Down
@@ -28,14 +32,22 @@ public class Player extends GameCharacter {
   private static char orientation;
 
   /**
-   *
+   * Posisi y pada player yang telah diinisialisasi.
    */
   private static int playerI = 20;
+
   /**
-   *
+   * Posisi x pada player yang telah diinisialisasi.
    */
   private static int playerJ = 12;
 
+  /**
+   * <p>
+   * Constructor
+   *
+   * Menciptakan objek Player pada permainan.
+   * </p>
+   */
   public Player() {
     super((int) Arena.getPlayerInitPos().getX(), (int) Arena.getPlayerInitPos().getY(),
         "\\assets\\bacbac_down.gif");
@@ -45,6 +57,17 @@ public class Player extends GameCharacter {
     orientation = 's';
   }
 
+  /**
+   * <p>
+   * Constructor
+   *
+   * Menciptakan objek Player pada permainan dengan parameter.
+   * </p>
+   *
+   * @param i Posisi y Player.
+   * @param j Posisi x Player.
+   * @param sprite Path direktori sprite Player.
+   */
   public Player(int i, int j, String sprite) {
     super(i, j, sprite);
     state = 0;
@@ -53,6 +76,10 @@ public class Player extends GameCharacter {
     orientation = 's';
   }
 
+  /**
+   *
+   * @return
+   */
   public boolean isNormal() {
     return state == 0;
   }
