@@ -41,8 +41,8 @@ public class Inky extends Ghost{
     int dI = destI - Blinky.getBlinkyI();
     int dJ = destJ - Blinky.getBlinkyJ();
 
-    destI = Math.min(Math.max(destI + dI, 0), Arena.getMapWidth());
-    destJ = Math.min(Math.max(destJ + dJ, 0), Arena.getMapLength());
+    destI = Math.min(Math.max(destI + dI, 0), Arena.getMapWidth() - 1);
+    destJ = Math.min(Math.max(destJ + dJ, 0), Arena.getMapLength() - 1);
 
     destination.setLocation(destI, destJ);
   }

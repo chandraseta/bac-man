@@ -21,10 +21,13 @@ public abstract class Ghost extends GameCharacter {
   protected Point destination;
   protected Point scatterDestination;
 
+  protected PathFinder pathFinder;
+
   public Ghost(int i, int j, String sprite) {
     super(i, j, sprite);
     state = 0;
     destination = new Point(Player.getPlayerI(), Player.getPlayerJ());
+    pathFinder = new PathFinder();
   }
 
   /**
@@ -52,7 +55,8 @@ public abstract class Ghost extends GameCharacter {
   public abstract void getNextDestination();
 
   public int scatter() {
-    return (new PathFinder(this.position, scatterDestination).getMovement());
+    pathFinder.calculateMovement(this.position, scatterDestination);
+    return pathFinder.getMovement();
   }
 
   /**
@@ -62,7 +66,9 @@ public abstract class Ghost extends GameCharacter {
    */
   public int moveTowardsPlayer() {
     getNextDestination();
-    return (new PathFinder(this.position, destination)).getMovement();
+    System.out.println(destination);
+    pathFinder.calculateMovement(this.position, destination);
+    return pathFinder.getMovement();
   }
 
   /**
