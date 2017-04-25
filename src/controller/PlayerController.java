@@ -114,8 +114,8 @@ public class PlayerController implements Runnable {
       Arena.eatCookie();
     }
     //////// DEBUG /////////
-    System.out.println("Player position: " + player.getI() + " " + player.getJ());
-    System.out.println("Player orientation: " + Player.getOrientation());
+//    System.out.println("Player position: " + player.getI() + " " + player.getJ());
+//    System.out.println("Player orientation: " + Player.getOrientation());
     ////////////////////////
   }
 

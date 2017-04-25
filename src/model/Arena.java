@@ -140,6 +140,7 @@ public class Arena {
             case 'D':
               map[row][col] = new Grid();
               clydeInitPos = new Point(row, col);
+              break;
             default:
               map[row][col] = new Grid();
           }

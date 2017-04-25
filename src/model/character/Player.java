@@ -32,12 +32,12 @@ public class Player extends GameCharacter {
   /**
    * Posisi y pada player yang telah diinisialisasi.
    */
-  private static int playerI = 20;
+  private static int playerI;
 
   /**
    * Posisi x pada player yang telah diinisialisasi.
    */
-  private static int playerJ = 12;
+  private static int playerJ;
 
   /**
    * <p>
@@ -50,8 +50,8 @@ public class Player extends GameCharacter {
     super((int) Arena.getPlayerInitPos().getX(), (int) Arena.getPlayerInitPos().getY(),
         "\\assets\\bacbac_down.gif");
     state = 0;
-    playerI = 20;
-    playerJ = 12;
+    playerI = Arena.getPlayerInitPos().x;
+    playerJ = Arena.getPlayerInitPos().y;
     orientation = 's';
   }
 

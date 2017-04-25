@@ -143,7 +143,7 @@ public abstract class Ghost extends GameCharacter {
     int movement = 0;
     int weight = weights[0];
     for (int i = 1; i < 4; ++i) {
-      if (weights[i] > weight || weights[i] == weight && (new Random()).nextBoolean()) {
+      if (weights[i] < weight || weights[i] == weight && (new Random()).nextBoolean()) {
         weight = weights[i];
         movement = i + 1;
       }

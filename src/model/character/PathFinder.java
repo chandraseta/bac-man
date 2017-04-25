@@ -268,11 +268,8 @@ public class PathFinder {
     if (start.equals(end)) {
       return 0;
     } else {
-      int dx = start.x - end.x;
-      if (dx < 0) {
-        dx *= -1;
-      }
-      int dy = start.y - end.y;
+      int dx = Math.abs(start.x - end.x);
+      int dy = Math.abs(start.y - end.y);
       if (dy < 0) {
         dy *= -1;
       }
