@@ -11,11 +11,11 @@ Stats:
     Abstract Classes: 0
 
     Ca: 1
-    Ce: 8
+    Ce: 7
 
     A: 0
-    I: 0.89
-    D: 0.11
+    I: 0.88
+    D: 0.12
 
 Abstract Classes:
 
@@ -26,7 +26,6 @@ Concrete Classes:
 
 Depends Upon:
     java.awt
-    java.awt.event
     java.io
     java.lang
     model
@@ -141,11 +140,11 @@ Stats:
     Abstract Classes: 1
 
     Ca: 2
-    Ce: 8
+    Ce: 7
 
     A: 0.08
-    I: 0.8
-    D: 0.12
+    I: 0.78
+    D: 0.15
 
 Abstract Classes:
     model.character.Ghost
@@ -166,7 +165,6 @@ Concrete Classes:
 
 Depends Upon:
     java.awt
-    java.io
     java.lang
     java.lang.invoke
     java.util
@@ -183,28 +181,32 @@ Used By:
 --------------------------------------------------
 
 Stats:
-    Total Classes: 4
-    Concrete Classes: 4
+    Total Classes: 7
+    Concrete Classes: 7
     Abstract Classes: 0
 
     Ca: 3
-    Ce: 2
+    Ce: 3
 
     A: 0
-    I: 0.4
-    D: 0.6
+    I: 0.5
+    D: 0.5
 
 Abstract Classes:
 
 Concrete Classes:
     model.element.Cookie
+    model.element.CookieTest
     model.element.Grid
+    model.element.GridTest
     model.element.SuperCookie
     model.element.Wall
+    model.element.WallTest
 
 Depends Upon:
     java.lang
     model
+    org.junit
 
 Used By:
     controller
@@ -305,11 +307,11 @@ view
 
 Name, Class Count, Abstract Class Count, Ca, Ce, A, I, D, V:
 
-controller,3,0,1,8,0,0.89,0.11,1
+controller,3,0,1,7,0,0.88,0.12,1
 java.awt,0,0,4,0,0,0,1,1
-java.awt.event,0,0,2,0,0,0,1,1
+java.awt.event,0,0,1,0,0,0,1,1
 java.awt.image,0,0,1,0,0,0,1,1
-java.io,0,0,4,0,0,0,1,1
+java.io,0,0,3,0,0,0,1,1
 java.lang,0,0,5,0,0,0,1,1
 java.lang.invoke,0,0,2,0,0,0,1,1
 java.net,0,0,1,0,0,0,1,1
@@ -318,7 +320,7 @@ java.util.concurrent,0,0,1,0,0,0,1,1
 javax.swing,0,0,1,0,0,0,1,1
 javax.swing.border,0,0,1,0,0,0,1,1
 model,5,1,4,6,0.2,0.6,0.2,1
-model.character,13,1,2,8,0.08,0.8,0.12,1
-model.element,4,0,3,2,0,0.4,0.6,1
-org.junit,0,0,2,0,0,0,1,1
+model.character,13,1,2,7,0.08,0.78,0.15,1
+model.element,7,0,3,3,0,0.5,0.5,1
+org.junit,0,0,3,0,0,0,1,1
 view,8,0,1,13,0,0.93,0.07,1
