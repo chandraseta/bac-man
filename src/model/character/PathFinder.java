@@ -217,7 +217,9 @@ public class PathFinder {
       }
 
       Node currNode = aliveNodes.poll();
-      while (currNode.path.getLast() != end) {
+      long startTime = System.nanoTime();
+      long endTime = startTime;
+      while (currNode.path.getLast() != end && endTime - startTime < 250000000) {
         int u = currNode.path.getLast();
         for (int v = 0; v < n; ++v) {
           if (adjacencyMatrix[u][v] != Integer.MAX_VALUE && !currNode.path.contains(v)) {
@@ -228,6 +230,7 @@ public class PathFinder {
           aliveNodes.add(new Node(currNode, end, toDestinationDistance[u]));
         }
         currNode = aliveNodes.poll();
+        endTime = System.nanoTime();
       }
 
       int destNode = currNode.path.poll();

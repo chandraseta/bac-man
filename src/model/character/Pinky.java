@@ -50,10 +50,10 @@ public class Pinky extends Ghost {
         destI = Math.max(destI - 4, 0);
         break;
       case 'e':
-        destJ = Math.min(destJ + 4, Arena.getMapLength());
+        destJ = Math.min(destJ + 4, Arena.getMapLength() - 1);
         break;
       case 's':
-        destI = Math.min(destI + 4, Arena.getMapLength());
+        destI = Math.min(destI + 4, Arena.getMapLength() - 1);
         break;
       case 'w':
         destJ = Math.max(destJ - 4, 0);
