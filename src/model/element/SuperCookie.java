@@ -22,7 +22,7 @@ public class SuperCookie extends Cookie {
    * <p>
    * Constructor
    *
-   * Menciptakan SUperCookie pada Grid dengan parameter sprite dan value.
+   * Menciptakan SuperCookie pada Grid dengan parameter sprite dan value.
    * </p>
    *
    * @param sprite Path direktori sprite SuperCookie.
