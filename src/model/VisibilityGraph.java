@@ -206,44 +206,60 @@ public class VisibilityGraph {
     // Check up
     found = false;
     for (k = i - 1; k > 0 && accessibilityMatrix[k][j] && !found; k--) {
-      found = (landmarkMatrix[k][j] != -1);
-      if (found) {
-        int v = landmarkMatrix[k][j];
-        adjacencyArray[v] = i - k;
-        movementArray[v] = 1;
+      if (k < width && j < length) {
+        if (accessibilityMatrix[k][j]) {
+          found = (landmarkMatrix[k][j] != -1);
+          if (found) {
+            int v = landmarkMatrix[k][j];
+            adjacencyArray[v] = i - k;
+            movementArray[v] = 1;
+          }
+        }
       }
     }
 
     // Check right
     found = false;
-    for (k = j + 1; k < length - 1 && accessibilityMatrix[i][k] && !found; k++) {
-      found = (landmarkMatrix[i][k] != -1);
-      if (found) {
-        int v = landmarkMatrix[i][k];
-        adjacencyArray[v] = k - j;
-        movementArray[v] = 2;
+    for (k = j + 1; k < length - 1 && !found; k++) {
+      if (i < width && k < length) {
+        if (accessibilityMatrix[i][k]) {
+          found = (landmarkMatrix[i][k] != -1);
+          if (found) {
+            int v = landmarkMatrix[i][k];
+            adjacencyArray[v] = k - j;
+            movementArray[v] = 2;
+          }
+        }
       }
     }
 
     // Check down
     found = false;
-    for (k = i + 1; k < width - 1 && accessibilityMatrix[k][j] && !found; k++) {
-      found = (landmarkMatrix[k][j] != -1);
-      if (found) {
-        int v = landmarkMatrix[k][j];
-        adjacencyArray[v] = k - i;
-        movementArray[v] = 3;
+    for (k = i + 1; k < width - 1 && !found; k++) {
+      if (k < width && j < length) {
+        if (accessibilityMatrix[k][j]) {
+          found = (landmarkMatrix[k][j] != -1);
+          if (found) {
+            int v = landmarkMatrix[k][j];
+            adjacencyArray[v] = k - i;
+            movementArray[v] = 3;
+          }
+        }
       }
     }
 
     // Check left
     found = false;
     for (k = j - 1; k > 0 && accessibilityMatrix[i][k] && !found; k--) {
-      found = (landmarkMatrix[i][k] != -1);
-      if (found) {
-        int v = landmarkMatrix[i][k];
-        adjacencyArray[v] = j - k;
-        movementArray[v] = 4;
+      if (i<width && k <length) {
+        if (accessibilityMatrix[i][k]) {
+          found = (landmarkMatrix[i][k] != -1);
+          if (found) {
+            int v = landmarkMatrix[i][k];
+            adjacencyArray[v] = j - k;
+            movementArray[v] = 4;
+          }
+        }
       }
     }
   }
