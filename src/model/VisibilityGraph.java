@@ -205,7 +205,9 @@ public class VisibilityGraph {
 
     // Check up
     found = false;
-    for (k = i - 1; k > 0 && accessibilityMatrix[k][j] && !found; k--) {
+    for (k = i - 1; k > 0 && !found; k--) {
+      if (!accessibilityMatrix[k][j])
+        break;
       found = (landmarkMatrix[k][j] != -1);
       if (found) {
         int v = landmarkMatrix[k][j];
@@ -216,7 +218,9 @@ public class VisibilityGraph {
 
     // Check right
     found = false;
-    for (k = j + 1; k < length - 1 && accessibilityMatrix[i][k] && !found; k++) {
+    for (k = j + 1; k < length - 1 && !found; k++) {
+      if (!accessibilityMatrix[i][k])
+        break;
       found = (landmarkMatrix[i][k] != -1);
       if (found) {
         int v = landmarkMatrix[i][k];
@@ -227,7 +231,9 @@ public class VisibilityGraph {
 
     // Check down
     found = false;
-    for (k = i + 1; k < width - 1 && accessibilityMatrix[k][j] && !found; k++) {
+    for (k = i + 1; k < width - 1 && !found; k++) {
+      if (!accessibilityMatrix[k][j])
+        break;
       found = (landmarkMatrix[k][j] != -1);
       if (found) {
         int v = landmarkMatrix[k][j];
@@ -238,7 +244,9 @@ public class VisibilityGraph {
 
     // Check left
     found = false;
-    for (k = j - 1; k > 0 && accessibilityMatrix[i][k] && !found; k--) {
+    for (k = j - 1; k > 0 && !found; k--) {
+      if (accessibilityMatrix[i][k])
+        break;
       found = (landmarkMatrix[i][k] != -1);
       if (found) {
         int v = landmarkMatrix[i][k];
