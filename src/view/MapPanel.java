@@ -135,11 +135,7 @@ public class MapPanel extends JComponent {
     URL imgPath = getClass().getResource(imagePath);
     ImageIcon imageIcon = new ImageIcon(imgPath);
     Image image = imageIcon.getImage();
-//    if (isGif(imagePath)) {
     return image;
-//    } else {
-//      return getScaledImage(image, scaleWidth, scaleHeight);
-//    }
   }
 
   /**
@@ -178,8 +174,6 @@ public class MapPanel extends JComponent {
               .isAvailable())) {
             tileImage = getTileImage(Arena.getGrid(i, j).getImgPath());
             g.drawImage(tileImage, x, y, this);
-          } else {
-
           }
         }
       }

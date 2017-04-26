@@ -69,7 +69,7 @@ public class GameView extends JFrame {
     add(keyInput);
   }
 
-   /**
+  /**
    * Melakukan update pada tampilan permainan.
    */
   public void updateGameView() {

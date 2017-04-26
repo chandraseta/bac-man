@@ -41,7 +41,6 @@ public class BacMan {
   /**
    * Controller untuk objek Ghost pada permainan.
    */
-//  private static GhostController[] ghostList;
   private static GhostController ghosts;
 
   /**
@@ -84,12 +83,12 @@ public class BacMan {
    * Mengubah nilai gameEnd berdasarkan salah satu kondisi.
    * 1. Semua cookie telah dimakan.
    * 2. Player dan Ghost berada pada petak yang sama.
-   *
    */
   public static void updateGameEnd() {
     boolean gameEnd = (Cookie.getCookieLeft() == 0);
-    for (Ghost ghost: ghosts.getGhosts()) {
-      gameEnd = gameEnd || (Player.getPlayerI() == ghost.getI() && Player.getPlayerJ() == ghost.getJ());
+    for (Ghost ghost : ghosts.getGhosts()) {
+      gameEnd =
+          gameEnd || (Player.getPlayerI() == ghost.getI() && Player.getPlayerJ() == ghost.getJ());
     }
   }
 
@@ -138,7 +137,7 @@ public class BacMan {
       gameWorker.execute();
       try {
         TimeUnit.MILLISECONDS.sleep(1000);
-      } catch (InterruptedException e){
+      } catch (InterruptedException e) {
         e.printStackTrace();
       }
       updateGameEnd();

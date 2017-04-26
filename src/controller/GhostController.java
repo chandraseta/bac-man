@@ -53,7 +53,6 @@ public class GhostController implements Runnable {
   /**
    * Fungsi menentukan pergerakan Ghost selanjutnya.
    *
-   * @return Nilai integer yang menentukan arah gerak Ghost berdasarkan kondisi Ghost.
    */
   public void nextMovement() {
     for (int i = 0; i < ghosts.length; ++i) {

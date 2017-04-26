@@ -6,21 +6,22 @@ C:\Users\Holy\Projects\Bac-Man>java -cp lib/jdepend-2.9.5.jar jdepend.textui.JDe
 --------------------------------------------------
 
 Stats:
-    Total Classes: 3
-    Concrete Classes: 3
+    Total Classes: 4
+    Concrete Classes: 4
     Abstract Classes: 0
 
     Ca: 1
-    Ce: 7
+    Ce: 9
 
     A: 0
-    I: 0.88
-    D: 0.12
+    I: 0.9
+    D: 0.1
 
 Abstract Classes:
 
 Concrete Classes:
     controller.BacMan
+    controller.BacMan$1
     controller.GhostController
     controller.PlayerController
 
@@ -28,6 +29,8 @@ Depends Upon:
     java.awt
     java.io
     java.lang
+    java.util.concurrent
+    javax.swing
     model
     model.character
     model.element
@@ -271,10 +274,8 @@ Used By:
 
 controller
     |
-    |   model.character
-    |-> model
-    |   model.element
-    |-> model
+    |   view
+    |-> controller
 
 model
     |
@@ -295,10 +296,7 @@ model.element
 view
     |
     |   controller
-    |   model.character
-    |-> model
-    |   model.element
-    |-> model
+    |-> view
 
 
 --------------------------------------------------
@@ -307,7 +305,7 @@ view
 
 Name, Class Count, Abstract Class Count, Ca, Ce, A, I, D, V:
 
-controller,3,0,1,7,0,0.88,0.12,1
+controller,4,0,1,9,0,0.9,0.1,1
 java.awt,0,0,4,0,0,0,1,1
 java.awt.event,0,0,1,0,0,0,1,1
 java.awt.image,0,0,1,0,0,0,1,1
@@ -316,8 +314,8 @@ java.lang,0,0,5,0,0,0,1,1
 java.lang.invoke,0,0,2,0,0,0,1,1
 java.net,0,0,1,0,0,0,1,1
 java.util,0,0,2,0,0,0,1,1
-java.util.concurrent,0,0,1,0,0,0,1,1
-javax.swing,0,0,1,0,0,0,1,1
+java.util.concurrent,0,0,2,0,0,0,1,1
+javax.swing,0,0,2,0,0,0,1,1
 javax.swing.border,0,0,1,0,0,0,1,1
 model,5,1,4,6,0.2,0.6,0.2,1
 model.character,13,1,2,7,0.08,0.78,0.15,1
