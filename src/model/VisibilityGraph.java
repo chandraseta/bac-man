@@ -205,7 +205,7 @@ public class VisibilityGraph {
 
     // Check up
     found = false;
-    for (k = i - 1; k > 0 && accessibilityMatrix[k][j] && !found; k--) {
+    for (k = i - 1; k > 0 && !found; k--) {
       if (k < width && j < length) {
         if (accessibilityMatrix[k][j]) {
           found = (landmarkMatrix[k][j] != -1);
@@ -250,7 +250,7 @@ public class VisibilityGraph {
 
     // Check left
     found = false;
-    for (k = j - 1; k > 0 && accessibilityMatrix[i][k] && !found; k--) {
+    for (k = j - 1; k > 0 && !found; k--) {
       if (i<width && k <length) {
         if (accessibilityMatrix[i][k]) {
           found = (landmarkMatrix[i][k] != -1);
