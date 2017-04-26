@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.net.URL;
@@ -154,18 +153,25 @@ public class MapPanel extends JComponent {
         Image tileImage;
         if ((i == bacman.getPlayer().getI()) && (j == bacman.getPlayer().getJ())) {
           tileImage = getTileImage(bacman.getPlayer().getImgPath());
+          g.drawImage(tileImage, x, y, this);
         } else if ((i == blinky.getI()) && (j == blinky.getJ())) {
           tileImage = getTileImage((blinky.getImgPath()));
+          g.drawImage(tileImage, x, y, this);
         } else if ((i == inky.getI()) && (j == inky.getJ())) {
           tileImage = getTileImage((inky.getImgPath()));
+          g.drawImage(tileImage, x, y, this);
         } else if ((i == pinky.getI()) && (j == pinky.getJ())) {
           tileImage = getTileImage((pinky.getImgPath()));
+          g.drawImage(tileImage, x, y, this);
         } else if ((i == clyde.getI()) && (j == clyde.getJ())) {
           tileImage = getTileImage((clyde.getImgPath()));
-        } else {
+          g.drawImage(tileImage, x, y, this);
+        } else if((!Arena.getGrid(i, j).isAccessible()) || (Arena.getGrid(i, j).getCookie().isAvailable())) {
           tileImage = getTileImage(Arena.getGrid(i, j).getImgPath());
+          g.drawImage(tileImage, x, y, this);
+        } else {
+
         }
-        g.drawImage(tileImage, x, y, this);
       }
     }
     g.dispose();
