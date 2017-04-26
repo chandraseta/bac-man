@@ -20,6 +20,14 @@ import model.character.Player;
  */
 public class InfoPanel extends JComponent {
 
+  /**
+   * Penanda proses repaint sedang berlangsung.
+   */
+  private boolean repaintingInProgress;
+
+  /**
+   * Font yang digunakan.
+   */
   private Font screenFont;
 
   /**
@@ -79,36 +87,40 @@ public class InfoPanel extends JComponent {
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
-    g.setColor(Color.BLACK);
-    g.fillRect(0, 0, getWidth(), getHeight());
+    if (!repaintingInProgress) {
+      repaintingInProgress = true;
+      g.setColor(Color.BLACK);
+      g.fillRect(0, 0, getWidth(), getHeight());
 
-    int x = getWidth() / 10;
-    int y = getHeight() / 9;
-    g.drawImage(getBacbacImage("\\assets\\BacManLogo.png", 400, 100), x, y, this);
+      int x = getWidth() / 10;
+      int y = getHeight() / 9;
+      g.drawImage(getBacbacImage("\\assets\\BacManLogo.png", 400, 100), x, y, this);
 
-    x = getWidth() / 4;
-    y = getHeight() / 3;
-    if (Player.getStatus() == 1) {
-      g.drawImage(getBacbacImage("\\assets\\super_bacbac.gif", 0, 0), x, y, this);
-    } else {
-      g.drawImage(getBacbacImage("\\assets\\hooray.gif", 0, 0), x, y, this);
+      x = getWidth() / 4;
+      y = getHeight() / 3;
+      if (Player.getStatus() == 1) {
+        g.drawImage(getBacbacImage("\\assets\\super_bacbac.gif", 0, 0), x, y, this);
+      } else {
+        g.drawImage(getBacbacImage("\\assets\\hooray.gif", 0, 0), x, y, this);
+      }
+
+      x = getWidth() / 6;
+      y = getHeight() * 4 / 5;
+      g.setColor(Color.WHITE);
+      g.setFont(screenFont.deriveFont(120f));
+      String playerName;
+      if (TitleView.playerName.length() > 6) {
+        playerName = TitleView.playerName.substring(0, 6);
+      } else {
+        playerName = TitleView.playerName;
+      }
+      g.drawString("NAME: " + playerName.toUpperCase(), x, y);
+
+      y = getHeight() * 4 / 5 + 70;
+      g.drawString("SCORE: " + BacMan.score, x, y);
+
+      g.dispose();
+      repaintingInProgress = false;
     }
-
-    x = getWidth() / 6;
-    y = getHeight() * 4 / 5;
-    g.setColor(Color.WHITE);
-    g.setFont(screenFont.deriveFont(120f));
-    String playerName;
-    if (TitleView.playerName.length() > 6) {
-      playerName = TitleView.playerName.substring(0, 6);
-    } else {
-      playerName = TitleView.playerName;
-    }
-    g.drawString("NAME: " + playerName.toUpperCase(), x, y);
-
-    y = getHeight() * 4 / 5 + 70;
-    g.drawString("SCORE: " + BacMan.score, x, y);
-
-    g.dispose();
   }
 }

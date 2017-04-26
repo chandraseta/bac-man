@@ -70,6 +70,11 @@ public class MapPanel extends JComponent {
   private Clyde clyde;
 
   /**
+   * Penanda proses repaint sedang berlangsung.
+   */
+  private boolean repaintInProgress;
+
+  /**
    * <p>
    * Constructor
    *
@@ -88,6 +93,7 @@ public class MapPanel extends JComponent {
     this.inky = inky;
     this.pinky = pinky;
     this.clyde = clyde;
+    repaintInProgress = false;
     setPreferredSize(new Dimension(mapLength * scaleWidth, mapWidth * scaleHeight));
   }
 
@@ -129,11 +135,11 @@ public class MapPanel extends JComponent {
     URL imgPath = getClass().getResource(imagePath);
     ImageIcon imageIcon = new ImageIcon(imgPath);
     Image image = imageIcon.getImage();
-    if (isGif(imagePath)) {
-      return image;
-    } else {
-      return getScaledImage(image, scaleWidth, scaleHeight);
-    }
+//    if (isGif(imagePath)) {
+    return image;
+//    } else {
+//      return getScaledImage(image, scaleWidth, scaleHeight);
+//    }
   }
 
   /**
@@ -144,37 +150,41 @@ public class MapPanel extends JComponent {
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
-    g.setColor(Color.black);
-    g.fillRect(0, 0, getWidth(), getHeight());
-    for (int i = 0; i < mapWidth; i++) {
-      for (int j = 0; j < mapLength; j++) {
-        int x = j * scaleWidth;
-        int y = i * scaleHeight;
-        Image tileImage;
-        if ((i == bacman.getPlayer().getI()) && (j == bacman.getPlayer().getJ())) {
-          tileImage = getTileImage(bacman.getPlayer().getImgPath());
-          g.drawImage(tileImage, x, y, this);
-        } else if ((i == blinky.getI()) && (j == blinky.getJ())) {
-          tileImage = getTileImage((blinky.getImgPath()));
-          g.drawImage(tileImage, x, y, this);
-        } else if ((i == inky.getI()) && (j == inky.getJ())) {
-          tileImage = getTileImage((inky.getImgPath()));
-          g.drawImage(tileImage, x, y, this);
-        } else if ((i == pinky.getI()) && (j == pinky.getJ())) {
-          tileImage = getTileImage((pinky.getImgPath()));
-          g.drawImage(tileImage, x, y, this);
-        } else if ((i == clyde.getI()) && (j == clyde.getJ())) {
-          tileImage = getTileImage((clyde.getImgPath()));
-          g.drawImage(tileImage, x, y, this);
-        } else if ((!Arena.getGrid(i, j).isAccessible()) || (Arena.getGrid(i, j).getCookie()
-            .isAvailable())) {
-          tileImage = getTileImage(Arena.getGrid(i, j).getImgPath());
-          g.drawImage(tileImage, x, y, this);
-        } else {
+    if (!repaintInProgress) {
+      repaintInProgress = true;
+      g.setColor(Color.black);
+      g.fillRect(0, 0, getWidth(), getHeight());
+      for (int i = 0; i < mapWidth; i++) {
+        for (int j = 0; j < mapLength; j++) {
+          int x = j * scaleWidth;
+          int y = i * scaleHeight;
+          Image tileImage;
+          if ((i == bacman.getPlayer().getI()) && (j == bacman.getPlayer().getJ())) {
+            tileImage = getTileImage(bacman.getPlayer().getImgPath());
+            g.drawImage(tileImage, x, y, this);
+          } else if ((i == blinky.getI()) && (j == blinky.getJ())) {
+            tileImage = getTileImage((blinky.getImgPath()));
+            g.drawImage(tileImage, x, y, this);
+          } else if ((i == inky.getI()) && (j == inky.getJ())) {
+            tileImage = getTileImage((inky.getImgPath()));
+            g.drawImage(tileImage, x, y, this);
+          } else if ((i == pinky.getI()) && (j == pinky.getJ())) {
+            tileImage = getTileImage((pinky.getImgPath()));
+            g.drawImage(tileImage, x, y, this);
+          } else if ((i == clyde.getI()) && (j == clyde.getJ())) {
+            tileImage = getTileImage((clyde.getImgPath()));
+            g.drawImage(tileImage, x, y, this);
+          } else if ((!Arena.getGrid(i, j).isAccessible()) || (Arena.getGrid(i, j).getCookie()
+              .isAvailable())) {
+            tileImage = getTileImage(Arena.getGrid(i, j).getImgPath());
+            g.drawImage(tileImage, x, y, this);
+          } else {
 
+          }
         }
       }
+      g.dispose();
+      repaintInProgress = false;
     }
-    g.dispose();
   }
 }

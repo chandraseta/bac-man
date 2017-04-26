@@ -21,7 +21,7 @@ import model.character.Pinky;
  *
  * @author Holy Lovenia - 13515113
  */
-public class GameView extends JFrame implements Runnable {
+public class GameView extends JFrame {
 
   private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
   private static final String MOVE_UP = "move up";
@@ -37,14 +37,6 @@ public class GameView extends JFrame implements Runnable {
    * Panel berisi info permainan.
    */
   private InfoPanel infoPanel;
-  /**
-   * Thread untuk menjalankan interface program.
-   */
-  private Thread thread;
-  /**
-   * Nama Thread.
-   */
-  private String threadName;
   private JPanel gamePanel = new JPanel();
   private GridBagLayout gridBag = new GridBagLayout();
   private GridBagConstraints gbc = new GridBagConstraints();
@@ -66,7 +58,6 @@ public class GameView extends JFrame implements Runnable {
     mapPanel = new MapPanel(bacman, blinky, inky, pinky, clyde);
     infoPanel = new InfoPanel();
     updateGameView();
-    threadName = "ViewThread";
     keyInput.getInputMap(IFW).put(KeyStroke.getKeyStroke("UP"), MOVE_UP);
     keyInput.getInputMap(IFW).put(KeyStroke.getKeyStroke("RIGHT"), MOVE_RIGHT);
     keyInput.getInputMap(IFW).put(KeyStroke.getKeyStroke("DOWN"), MOVE_DOWN);
@@ -84,8 +75,8 @@ public class GameView extends JFrame implements Runnable {
   public void updateGameView() {
     setTitle("Game Screen");
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    //mapPanel.revalidate();
-    //infoPanel.revalidate();
+    mapPanel.revalidate();
+    infoPanel.revalidate();
     mapPanel.repaint();
     infoPanel.repaint();
 
@@ -105,30 +96,6 @@ public class GameView extends JFrame implements Runnable {
 
     add(gamePanel);
     pack();
-  }
-
-  /**
-   * Mengatur jalannya Thread GameView selama permainan.
-   */
-  public void run() {
-    try {
-      while (true) {
-        updateGameView();
-        Thread.sleep(500);
-      }
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-  }
-
-  /**
-   * Memulai jalannya Thread pada GameView.
-   */
-  public void start() {
-    if (thread == null) {
-      thread = new Thread(this, threadName);
-      thread.start();
-    }
   }
 
   /**

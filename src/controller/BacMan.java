@@ -131,7 +131,7 @@ public class BacMan {
         @Override
         protected Void doInBackground() throws Exception {
           gameView.updateGameView();
-          Thread.sleep(1000);
+          Thread.sleep(10);
           return null;
         }
       };
