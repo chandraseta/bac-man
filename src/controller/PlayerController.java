@@ -82,13 +82,13 @@ public class PlayerController implements Runnable {
       Player.setOrientation('n');
       player.setNewImage("\\assets\\bacbac_up.gif");
     } else if (direction == 2) {
-      if (Arena.getGrid(player.getI(), player.getJ() + 1).isAccessible()) {
-        player.moveRight();
-        Player.setPlayerJ(player.getJ() + 1);
-      } else if ((player.getI() == Arena.getTunnelRow())
-          && (player.getJ() == Arena.getMapLength() - 1)) {
+      if ((player.getI() == Arena.getTunnelRow() && (player.getJ() == Arena.getMapLength() - 1))) {
         player.teleport(player.getI(), 0);
         Player.setPlayerJ(0);
+      }
+      else if (Arena.getGrid(player.getI(), player.getJ() + 1).isAccessible()) {
+        player.moveRight();
+        Player.setPlayerJ(player.getJ() + 1);
       }
       Player.setOrientation('e');
       player.setNewImage("\\assets\\bacbac_right.gif");
@@ -100,12 +100,12 @@ public class PlayerController implements Runnable {
       Player.setOrientation('s');
       player.setNewImage("\\assets\\bacbac_down.gif");
     } else if (direction == 4) {
-      if (Arena.getGrid(player.getI(), player.getJ() - 1).isAccessible()) {
-        player.moveLeft();
-        Player.setPlayerJ(player.getJ() - 1);
-      } else if ((player.getI() == Arena.getTunnelRow()) && (player.getJ() == 0)) {
+      if ((player.getI() == Arena.getTunnelRow()) && (player.getJ() == 0)) {
         player.teleport(player.getI(), Arena.getMapLength() - 1);
         Player.setPlayerJ(Arena.getMapLength() - 1);
+      } else if (Arena.getGrid(player.getI(), player.getJ() - 1).isAccessible()) {
+        player.moveLeft();
+        Player.setPlayerJ(player.getJ() - 1);
       }
       Player.setOrientation('w');
       player.setNewImage("\\assets\\bacbac_left.gif");
