@@ -85,9 +85,9 @@ public class GameView extends JFrame implements Runnable {
     setTitle("Game Screen");
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     mapPanel.revalidate();
-    //infoPanel.revalidate();
+    infoPanel.revalidate();
     mapPanel.repaint();
-    //infoPanel.repaint();
+    infoPanel.repaint();
 
     gamePanel.setLayout(gridBag);
 
@@ -100,8 +100,8 @@ public class GameView extends JFrame implements Runnable {
 
     gbc.gridx = 1;
     gbc.gridy = 0;
-    //gridBag.setConstraints(infoPanel, gbc);
-    //gamePanel.add(infoPanel);
+    gridBag.setConstraints(infoPanel, gbc);
+    gamePanel.add(infoPanel);
 
     add(gamePanel);
     pack();
@@ -114,7 +114,7 @@ public class GameView extends JFrame implements Runnable {
     try {
       while (true) {
         updateGameView();
-        Thread.sleep(1000);
+        Thread.sleep(500);
       }
     } catch (InterruptedException e) {
       e.printStackTrace();
