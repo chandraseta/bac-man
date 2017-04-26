@@ -32,8 +32,8 @@ public class ArenaTest {
   @Test
   public void matchArena() {
     assertEquals("Arena length doesn't match", 25, arena.getMapLength());
-    assertEquals("Arena width doesn't match", 28, arena.getMapWidth());
-    assertEquals("Tunnel row in arena doesn't match", 12, arena.getTunnelRow());
+    assertEquals("Arena width doesn't match", 19, arena.getMapWidth());
+    assertEquals("Tunnel row in arena doesn't match", 8, arena.getTunnelRow());
   }
 
   /**
@@ -41,14 +41,15 @@ public class ArenaTest {
    */
   @Test
   public void matchCookieInArena() {
-    cookie = new Cookie();
     for (int i = 0; i < arena.getMapWidth(); ++i) {
       for (int j = 0; j < arena.getMapLength(); ++j) {
-        if ((arena.getGrid(i,j).isAccessible() == true)) {
-          arena.getGrid(i,j).removeCookie();
+        if (arena.getGrid(i,j).isAccessible()) {
+          if (arena.getGrid(i,j).getCookie().isAvailable()) {
+            arena.getGrid(i,j).removeCookie();
+          }
         }
       }
     }
-    assertEquals("Cookie's in arena doesn't match", 4, arena.getCookieLeft());
+    assertEquals("Cookie's in arena doesn't match", 0, Cookie.getCookieLeft());
   }
 }

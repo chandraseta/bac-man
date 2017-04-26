@@ -38,5 +38,6 @@ public class SuperCookie extends Cookie {
    */
   public void remove() {
     available = false;
+    cookieLeft--;
   }
 }

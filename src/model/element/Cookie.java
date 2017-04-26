@@ -10,7 +10,7 @@ public class Cookie extends GameElement {
   /**
    * Atribut statis banyaknya Cookie yang tersisa.
    */
-  private static int cookieLeft = 0;
+  protected static int cookieLeft = 0;
   /**
    * Atribut Cookie ada pada Arena atau tidak.
    */
