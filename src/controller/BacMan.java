@@ -4,6 +4,7 @@ import model.Arena;
 import model.VisibilityGraph;
 import model.character.Blinky;
 import model.character.Clyde;
+import model.character.Ghost;
 import model.character.Inky;
 import model.character.Pinky;
 import model.character.Player;
@@ -12,7 +13,6 @@ import view.CreditsView;
 import view.GameOverView;
 import view.GameView;
 import view.LoadingView;
-import view.TitleView;
 
 /**
  * Kelas berisi semua aspek game BacMan.
@@ -38,7 +38,9 @@ public class BacMan {
   /**
    * Controller untuk objek Ghost pada permainan.
    */
-  private static GhostController[] ghostList;
+//  private static GhostController[] ghostList;
+  private static GhostController ghosts;
+
   /**
    * Penanda permainan sudah berakhir atau belum.
    */
@@ -82,16 +84,9 @@ public class BacMan {
    *
    */
   public static void updateGameEnd() {
-    if ((Cookie.getCookieLeft() == 0)
-        || ((Player.getPlayerI() == ghostList[0].getGhost().getI())
-            && (Player.getPlayerJ() == ghostList[0].getGhost().getJ()))
-        || ((Player.getPlayerI() == ghostList[1].getGhost().getI())
-            && (Player.getPlayerJ() == ghostList[1].getGhost().getJ()))
-        || ((Player.getPlayerI() == ghostList[2].getGhost().getI())
-            && (Player.getPlayerJ() == ghostList[2].getGhost().getJ()))
-        || ((Player.getPlayerI() == ghostList[3].getGhost().getI())
-            && (Player.getPlayerJ() == ghostList[3].getGhost().getJ()))) {
-      gameEnd = true;
+    boolean gameEnd = (Cookie.getCookieLeft() == 0);
+    for (Ghost ghost: ghosts.getGhosts()) {
+      gameEnd = gameEnd || (Player.getPlayerI() == ghost.getI() && Player.getPlayerJ() == ghost.getJ());
     }
   }
 
@@ -106,17 +101,13 @@ public class BacMan {
     gameArena = new Arena();
     new VisibilityGraph();
     bac = new PlayerController();
-    ghostList = new GhostController[4];
-    ghostList[0] = new GhostController('a');
-    ghostList[1] = new GhostController('b');
-    ghostList[2] = new GhostController('c');
-    ghostList[3] = new GhostController('d');
-    TitleView titleView = new TitleView();
-    titleView.visibility = true;
-    titleView.setVisible(true);
-    while (TitleView.visibility) {
-      System.out.println();
-    }
+    ghosts = new GhostController();
+//    TitleView titleView = new TitleView();
+//    titleView.visibility = true;
+//    titleView.setVisible(true);
+//    while (TitleView.visibility) {
+//      System.out.println();
+//    }
     LoadingView loadingView = new LoadingView();
     loadingView.setVisible(true);
     try {
@@ -124,22 +115,20 @@ public class BacMan {
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-    GameView gameView = new GameView(bac, (Blinky) ghostList[0].getGhost(),
-        (Inky) ghostList[2].getGhost(),
-        (Pinky) ghostList[1].getGhost(), (Clyde) ghostList[3].getGhost());
+    GameView gameView = new GameView(bac, (Blinky) ghosts.getGhosts()[0],
+        (Inky) ghosts.getGhosts()[2],
+        (Pinky) ghosts.getGhosts()[1], (Clyde) ghosts.getGhosts()[3]);
     loadingView.setVisible(false);
     loadingView.dispose();
     gameView.setVisible(true);
     bac.start();
     gameView.start();
-    for (int i = 0; i < 4; i++) {
-      ghostList[i].start();
-    }
+    ghosts.start();
     while (!gameEnd) {
       updateGameEnd();
     }
     GameOverView gameOverView = new GameOverView();
-    titleView.dispose();
+//    titleView.dispose();
     gameView.setVisible(false);
     gameOverView.setVisible(true);
     gameView.dispose();

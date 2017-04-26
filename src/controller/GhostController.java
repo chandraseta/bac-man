@@ -17,7 +17,7 @@ public class GhostController implements Runnable {
   /**
    * Objek Ghost yang dikendalikan pada permainan.
    */
-  private Ghost ghost;
+  private Ghost [] ghosts;
 
   /**
    * Thread pada Ghost.
@@ -28,6 +28,8 @@ public class GhostController implements Runnable {
    * Nama pada Thread.
    */
   private String threadName;
+  
+  private int [] movement = new int[4];
 
   /**
    * <p>
@@ -36,51 +38,16 @@ public class GhostController implements Runnable {
    * Menciptakan Controller untuk objek Ghost dengan parameter type.
    * </p>
    *
-   * @param type Suatu tipe Ghost.
    */
-  public GhostController(char type) {
-    if (type == 'a') {
-      ghost = new Blinky((int) Arena.getBlinkyInitPos().getX(),
-          (int) Arena.getBlinkyInitPos().getY());
-      this.threadName = "BlinkyThread";
-    } else if (type == 'b') {
-      ghost = new Pinky((int) Arena.getPinkyInitPos().getX(), (int) Arena.getPinkyInitPos().getY());
-      this.threadName = "PinkyThread";
-    } else if (type == 'c') {
-      ghost = new Inky((int) Arena.getInkyInitPos().getX(), (int) Arena.getInkyInitPos().getY());
-      this.threadName = "InkyThread";
-    } else {
-      ghost = new Clyde((int) Arena.getClydeInitPos().getX(), (int) Arena.getClydeInitPos().getY());
-      this.threadName = "ClydeThread";
-    }
-  }
-
-  /**
-   * <p>
-   * Constructor
-   *
-   * Menciptakan Controller untuk objek Ghost dengan parameter type.
-   * </p>
-   *
-   * @param i Posisi y Ghost pada Arena.
-   * @param j Posisi x Ghost pada Arena.
-   * @param type Suatu tipe Ghost.
-   * @param threadName Nama Thread Ghost.
-   */
-  public GhostController(int i, int j, char type, String threadName) {
-    if (type == 'a') {
-      ghost = new Blinky(i, j);
-      this.threadName = threadName;
-    } else if (type == 'b') {
-      ghost = new Pinky(i, j);
-      this.threadName = threadName;
-    } else if (type == 'c') {
-      ghost = new Inky(i, j);
-      this.threadName = threadName;
-    } else {
-      ghost = new Clyde(i, j);
-      this.threadName = threadName;
-    }
+  public GhostController() {
+    ghosts = new Ghost[] {
+        new Blinky(Arena.getBlinkyInitPos().x, Arena.getBlinkyInitPos().y),
+        new Pinky(Arena.getPinkyInitPos().x, Arena.getPinkyInitPos().y),
+        new Inky(Arena.getInkyInitPos().x, Arena.getInkyInitPos().y),
+        new Clyde(Arena.getClydeInitPos().x, Arena.getClydeInitPos().y)
+    };
+    this.threadName = "GhostController";
+    
   }
 
   /**
@@ -88,13 +55,15 @@ public class GhostController implements Runnable {
    *
    * @return Nilai integer yang menentukan arah gerak Ghost berdasarkan kondisi Ghost.
    */
-  public int nextMovement() {
-    if (ghost.isNormal()) {
-      return ghost.moveTowardsPlayer();
-    } else if (ghost.isVulnerable()) {
-      return ghost.moveAwayFromPlayer();
-    } else {
-      return ghost.returnToBase();
+  public void nextMovement() {
+    for (int i = 0; i < ghosts.length; ++i) {
+      if (ghosts[i].isNormal()) {
+        movement[i] = ghosts[i].moveTowardsPlayer();
+      } else if (ghosts[i].isVulnerable()) {
+        movement[i] = ghosts[i].moveAwayFromPlayer();
+      } else {
+        movement[i] = ghosts[i].returnToBase();
+      }
     }
   }
 
@@ -104,26 +73,28 @@ public class GhostController implements Runnable {
   public void run() {
     try {
       while (true) {
-        int movement = nextMovement();
-        if (movement == 1) {
-          ghost.moveUp();
-          if (ghost instanceof Blinky) {
-            Blinky.setBlinkyI(ghost.getI() - 1);
-          }
-        } else if (movement == 2) {
-          ghost.moveRight();
-          if (ghost instanceof Blinky) {
-            Blinky.setBlinkyJ(ghost.getJ() + 1);
-          }
-        } else if (movement == 3) {
-          ghost.moveDown();
-          if (ghost instanceof Blinky) {
-            Blinky.setBlinkyI(ghost.getI() + 1);
-          }
-        } else {
-          ghost.moveLeft();
-          if (ghost instanceof Blinky) {
-            Blinky.setBlinkyJ(ghost.getJ() - 1);
+        nextMovement();
+        for (int i = 0; i < ghosts.length; ++i) {
+          if (movement[i] == 1) {
+            ghosts[i].moveUp();
+            if (ghosts[i] instanceof Blinky) {
+              Blinky.setBlinkyI(ghosts[i].getI() - 1);
+            }
+          } else if (movement[i] == 2) {
+            ghosts[i].moveRight();
+            if (ghosts[i] instanceof Blinky) {
+              Blinky.setBlinkyJ(ghosts[i].getJ() + 1);
+            }
+          } else if (movement[i] == 3) {
+            ghosts[i].moveDown();
+            if (ghosts[i] instanceof Blinky) {
+              Blinky.setBlinkyI(ghosts[i].getI() + 1);
+            }
+          } else {
+            ghosts[i].moveLeft();
+            if (ghosts[i] instanceof Blinky) {
+              Blinky.setBlinkyJ(ghosts[i].getJ() - 1);
+            }
           }
         }
         Thread.sleep(1000);
@@ -148,7 +119,7 @@ public class GhostController implements Runnable {
    *
    * @return Objek Ghost pada permainan.
    */
-  public Ghost getGhost() {
-    return ghost;
+  public Ghost [] getGhosts() {
+    return ghosts;
   }
 }
