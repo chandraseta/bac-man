@@ -10,7 +10,7 @@ import model.character.Pinky;
 /**
  * Kelas controller untuk Ghost.
  *
- * @author
+ * @author Felix Limanta - 13515065
  */
 public class GhostController implements Runnable {
 

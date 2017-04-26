@@ -5,6 +5,8 @@ import model.character.Player;
 
 /**
  * Kelas controller untuk Player.
+ *
+ * @author Rionaldi Chandraseta - 13515077
  */
 public class PlayerController implements Runnable {
 

@@ -17,6 +17,8 @@ import javax.swing.border.EmptyBorder;
 
 /**
  * Kelas GameOverView mendefinisikan tampilan program saat permainan telah berakhir.
+ *
+ * @author Holy Lovenia - 13515113
  */
 public class GameOverView extends JFrame {
 
@@ -63,6 +65,7 @@ public class GameOverView extends JFrame {
    * Fungsi mengembalikan sebuah sprite yang ditampilkan dalam window GameOver.
    *
    * @param gameOverLayout Layout untuk sprite.
+   * @param gameOverConstraints Constraint untuk layout.
    * @return Sprite pada window.
    */
   public JLabel createGameOverBacBac(GridBagLayout gameOverLayout,

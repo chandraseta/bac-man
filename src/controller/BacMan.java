@@ -17,7 +17,7 @@ import view.TitleView;
 /**
  * Kelas berisi semua aspek game BacMan.
  *
- * @author
+ * @author Oktavianus Handika - 13515035
  */
 public class BacMan {
 

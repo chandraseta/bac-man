@@ -17,7 +17,9 @@ import model.character.Inky;
 import model.character.Pinky;
 
 /**
- * Created by Holy on 20-Apr-17.
+ * Kelas GameView yang berisi tampilan utama saat permainan berjalan.
+ *
+ * @author Holy Lovenia - 13515113
  */
 public class GameView extends JFrame implements Runnable {
 

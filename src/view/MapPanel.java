@@ -20,6 +20,8 @@ import model.character.Pinky;
 
 /**
  * Kelas MapPanel mendefinisikan tampilan arena.
+ *
+ * @author Holy Lovenia - 13515113
  */
 public class MapPanel extends JComponent {
 

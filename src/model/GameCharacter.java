@@ -5,7 +5,7 @@ import java.awt.Point;
 /**
  * Kelas abstrak GameCharacter sebagai dasar dari semua karakter dalam game.
  *
- * @author
+ * @author Rionaldi Chandraseta - 13515077
  */
 public class GameCharacter extends GameElement {
 

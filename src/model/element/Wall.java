@@ -3,6 +3,8 @@ package model.element;
 /**
  * Kelas berisi Wall yang merupakan Grid yang secara normal
  * tidak dapat dilewati oleh Player maupun Ghost.
+ *
+ * @author Oktavianus Handika - 13515035
  */
 public class Wall extends Grid {
 

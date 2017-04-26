@@ -3,7 +3,7 @@ package model.element;
 /**
  * Kelas berisi SuperCookie yang memberikan player status Super ketika dimakan.
  *
- * @author
+ * @author Holy Lovenia - 13515113
  */
 public class SuperCookie extends Cookie {
 

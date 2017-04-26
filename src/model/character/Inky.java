@@ -6,7 +6,7 @@ import model.Arena;
 /**
  * Kelas Inky mendefinisikan Ghost Inky pada permainan.
  *
- * @author
+ * @author Felix Limanta - 13515065
  */
 public class Inky extends Ghost {
 

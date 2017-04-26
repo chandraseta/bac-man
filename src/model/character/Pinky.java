@@ -6,7 +6,7 @@ import model.Arena;
 /**
  * Kelas Pinky mendefinisikan Ghost Pinky pada permainan.
  *
- * @author
+ * @author Felix Limanta - 13515065
  */
 public class Pinky extends Ghost {
 

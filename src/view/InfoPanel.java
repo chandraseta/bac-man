@@ -15,6 +15,8 @@ import model.character.Player;
 
 /**
  * Kelas InfoPanel mendefinisikan panel yang berisi info permainan.
+ *
+ * @author Holy Lovenia - 13515113
  */
 public class InfoPanel extends JComponent {
 

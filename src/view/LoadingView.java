@@ -16,7 +16,9 @@ import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 /**
- * Created by Holy on 24-Apr-17.
+ * Kelas LoadingView berisi tampilan saat sedang loading GameView.
+ *
+ * @author Holy Lovenia - 13515113
  */
 public class LoadingView extends JFrame {
 
@@ -110,6 +112,8 @@ public class LoadingView extends JFrame {
    *
    * @param loadingLayout Layout untuk gambar saat Loading.
    * @param loadingConstraints Constraints mengelola layout gambar.
+   * @param gridx Posisi menyamping dalam layout.
+   * @param imagePath Path untuk gambar yang ingin ditampilkan.
    * @return Gambar Ghost ditampilkan dalam window Loading.
    */
   public JLabel createLoadingGhost(GridBagLayout loadingLayout,

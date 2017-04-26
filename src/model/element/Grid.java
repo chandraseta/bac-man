@@ -4,6 +4,8 @@ import model.GameElement;
 
 /**
  * Kelas berisi Grid yang merupakan komponen dari Arena.
+ *
+ * @author Rionaldi Chandraseta - 13515077
  */
 public class Grid extends GameElement {
 

@@ -7,7 +7,7 @@ import model.GameCharacter;
 /**
  * Kelas berisi karakter Player yang dapat dikendalikan pemain.
  *
- * @author
+ * @author Rionaldi Chandraseta - 13515077
  */
 public class Player extends GameCharacter {
 

@@ -21,6 +21,8 @@ import javax.swing.border.EmptyBorder;
 
 /**
  * Kelas TitleView mendefinisikan interface pada awal sebelum memulai permainan.
+ *
+ * @author Holy Lovenia - 13515113
  */
 public class TitleView extends JFrame implements ActionListener {
 
@@ -66,6 +68,8 @@ public class TitleView extends JFrame implements ActionListener {
   /**
    * Menciptakan logo permainan.
    *
+   * @param titleLayout Layout untuk sprite.
+   * @param titleConstraints Constraint untuk layout.
    * @return Logo permainan.
    */
   public JLabel createLogo(GridBagLayout titleLayout, GridBagConstraints titleConstraints) {
@@ -83,6 +87,8 @@ public class TitleView extends JFrame implements ActionListener {
   /**
    * Menciptakan Text pada title.
    *
+   * @param titleLayout Layout untuk sprite.
+   * @param titleConstraints Constraint untuk layout.
    * @return Text yang akan ditampilkan pada TitleView.
    */
   public JLabel createText(GridBagLayout titleLayout, GridBagConstraints titleConstraints) {

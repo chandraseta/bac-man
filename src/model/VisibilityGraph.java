@@ -8,6 +8,8 @@ import java.util.Vector;
 
 /**
  * Kelas VisibilityGraph mendefinisikan Graph pada Arena.
+ *
+ * @author Felix Limanta - 13515065
  */
 public class VisibilityGraph {
 

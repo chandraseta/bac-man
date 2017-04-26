@@ -6,7 +6,7 @@ import model.Arena;
 /**
  * Kelas Blinky mendefinisikan Ghost Blinky pada permainan.
  *
- * @author
+ * @author Felix Limanta - 13515065
  */
 public class Blinky extends Ghost {
 
@@ -63,6 +63,8 @@ public class Blinky extends Ghost {
 
   /**
    * Setter posisi y Blinky.
+   *
+   * @param newI posisi baru y Blinky.
    */
   public static void setBlinkyI(int newI) {
     blinkyI = newI;
@@ -79,6 +81,8 @@ public class Blinky extends Ghost {
 
   /**
    * Setter posisi x Blinky.
+   *
+   * @param newJ posisi baru x Blinky.
    */
   public static void setBlinkyJ(int newJ) {
     blinkyJ = newJ;

@@ -10,6 +10,8 @@ import model.VisibilityGraph;
 
 /**
  * Kelas PathFinder mendefinisikan kelas untu mencari jalur Ghost ke suatu titik.
+ *
+ * @author Felix Limanta - 13515065
  */
 public class PathFinder {
 

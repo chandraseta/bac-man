@@ -8,7 +8,7 @@ import model.GameCharacter;
 /**
  * Kelas abstract Ghost yang menjadi dasar berbagai tipe Ghost.
  *
- * @author
+ * @author Rionaldi Chandraseta - 13515077
  */
 public abstract class Ghost extends GameCharacter {
 

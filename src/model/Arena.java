@@ -12,6 +12,8 @@ import model.element.Wall;
 
 /**
  * Kelas berisi Arena dari Game BacMan.
+ *
+ * @author Oktavianus Handika - 13515035
  */
 public class Arena {
 
@@ -114,6 +116,8 @@ public class Arena {
   /**
    * Fungsi mengembalikan Grid pada suatu titik.
    *
+   * @param i Posisi y Grid.
+   * @param j Posisi x Grid.
    * @return Grid pada suatu titik di Arena.
    */
   public static Grid getGrid(int i, int j) {

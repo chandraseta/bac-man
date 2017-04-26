@@ -4,6 +4,8 @@ import model.GameElement;
 
 /**
  * Kelas berisi Cookie yang tersebar pada Grid dalam Arena.
+ *
+ * @author Rionaldi Chandraseta - 13515077
  */
 public class Cookie extends GameElement {
 

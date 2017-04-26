@@ -6,7 +6,7 @@ import model.Arena;
 /**
  * Kelas Clyde mendefinisikan Ghost Clyde pada permainan.
  *
- * @author
+ * @author Felix Limanta - 13515065
  */
 public class Clyde extends Ghost {
 

@@ -2,6 +2,8 @@ package model;
 
 /**
  * Kelas abstrak GameElement berisi dasar dari semua elemen permainan.
+ *
+ * @author Rionaldi Chandraseta - 13515077
  */
 public abstract class GameElement {
 

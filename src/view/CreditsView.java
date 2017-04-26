@@ -17,6 +17,8 @@ import javax.swing.border.EmptyBorder;
 
 /**
  * Kelas CreditsView mendefinisikan window Credits.
+ *
+ * @author Holy Lovenia - 13515113
  */
 public class CreditsView extends JFrame {
 
