@@ -166,7 +166,8 @@ public class MapPanel extends JComponent {
         } else if ((i == clyde.getI()) && (j == clyde.getJ())) {
           tileImage = getTileImage((clyde.getImgPath()));
           g.drawImage(tileImage, x, y, this);
-        } else if((!Arena.getGrid(i, j).isAccessible()) || (Arena.getGrid(i, j).getCookie().isAvailable())) {
+        } else if ((!Arena.getGrid(i, j).isAccessible()) || (Arena.getGrid(i, j).getCookie()
+            .isAvailable())) {
           tileImage = getTileImage(Arena.getGrid(i, j).getImgPath());
           g.drawImage(tileImage, x, y, this);
         } else {
