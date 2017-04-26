@@ -71,36 +71,6 @@ public class MapPanel extends JComponent {
   private Clyde clyde;
 
   /**
-   * Posisi Player sebelumnya.
-   */
-  private Point bacmanPreviousPosition = new Point();
-
-  /**
-   * Posisi Blinky sebelumnya.
-   */
-  private Point blinkyPreviousPosition = new Point();
-
-  /**
-   * Posisi Pinky sebelumnya.
-   */
-  private Point pinkyPreviousPosition = new Point();
-
-  /**
-   * Posisi Inky sebelumnya.
-   */
-  private Point inkyPreviousPosition = new Point();
-
-  /**
-   * Posisi Clyde sebelumnya.
-   */
-  private Point clydePreviousPosition = new Point();
-
-  /**
-   * Posisi Player sebelumnya.
-   */
-  private boolean isFirstTime = true;
-
-  /**
    * <p>
    * Constructor
    *

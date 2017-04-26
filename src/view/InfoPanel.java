@@ -20,6 +20,8 @@ import model.character.Player;
  */
 public class InfoPanel extends JComponent {
 
+  private Font screenFont;
+
   /**
    * <p>
    * Constructor
@@ -29,6 +31,7 @@ public class InfoPanel extends JComponent {
    */
   public InfoPanel() {
     setPreferredSize(new Dimension(500, 860));
+    screenFont = getScreenFont();
   }
 
   /**
@@ -94,7 +97,7 @@ public class InfoPanel extends JComponent {
     x = getWidth() / 6;
     y = getHeight() * 4 / 5;
     g.setColor(Color.WHITE);
-    g.setFont(getScreenFont().deriveFont(120f));
+    g.setFont(screenFont.deriveFont(120f));
     String playerName;
     if (TitleView.playerName.length() > 6) {
       playerName = TitleView.playerName.substring(0, 6);

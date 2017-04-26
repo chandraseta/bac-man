@@ -78,20 +78,20 @@ public class GameView extends JFrame implements Runnable {
     add(keyInput);
   }
 
-  /**
+   /**
    * Melakukan update pada tampilan permainan.
    */
   public void updateGameView() {
     setTitle("Game Screen");
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    mapPanel.revalidate();
-    infoPanel.revalidate();
+    //mapPanel.revalidate();
+    //infoPanel.revalidate();
     mapPanel.repaint();
     infoPanel.repaint();
 
     gamePanel.setLayout(gridBag);
 
-    GridBagConstraints gbc = new GridBagConstraints();
+    gbc = new GridBagConstraints();
     gbc.fill = GridBagConstraints.BOTH;
     gbc.gridx = 0;
     gbc.gridy = 0;

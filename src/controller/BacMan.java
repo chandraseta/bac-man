@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.concurrent.TimeUnit;
+import javax.swing.SwingWorker;
 import model.Arena;
 import model.VisibilityGraph;
 import model.character.Blinky;
@@ -13,6 +15,7 @@ import view.CreditsView;
 import view.GameOverView;
 import view.GameView;
 import view.LoadingView;
+import view.TitleView;
 
 /**
  * Kelas berisi semua aspek game BacMan.
@@ -102,16 +105,16 @@ public class BacMan {
     new VisibilityGraph();
     bac = new PlayerController();
     ghosts = new GhostController();
-//    TitleView titleView = new TitleView();
-//    titleView.visibility = true;
-//    titleView.setVisible(true);
-//    while (TitleView.visibility) {
-//      System.out.println();
-//    }
+    TitleView titleView = new TitleView();
+    titleView.visibility = true;
+    titleView.setVisible(true);
+    while (TitleView.visibility) {
+      System.out.println();
+    }
     LoadingView loadingView = new LoadingView();
     loadingView.setVisible(true);
     try {
-      Thread.sleep(5000);
+      TimeUnit.MILLISECONDS.sleep(5000);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
@@ -122,18 +125,31 @@ public class BacMan {
     loadingView.dispose();
     gameView.setVisible(true);
     bac.start();
-    gameView.start();
     ghosts.start();
     while (!gameEnd) {
+      SwingWorker<Void, Void> gameWorker = new SwingWorker<Void, Void>() {
+        @Override
+        protected Void doInBackground() throws Exception {
+          gameView.updateGameView();
+          Thread.sleep(1000);
+          return null;
+        }
+      };
+      gameWorker.execute();
+      try {
+        TimeUnit.MILLISECONDS.sleep(1000);
+      } catch (InterruptedException e){
+        e.printStackTrace();
+      }
       updateGameEnd();
     }
     GameOverView gameOverView = new GameOverView();
-//    titleView.dispose();
+    titleView.dispose();
     gameView.setVisible(false);
     gameOverView.setVisible(true);
     gameView.dispose();
     try {
-      Thread.sleep(5000);
+      TimeUnit.MILLISECONDS.sleep(5000);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
