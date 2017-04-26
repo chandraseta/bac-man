@@ -1,12 +1,23 @@
 package view;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
+import javax.swing.border.EmptyBorder;
 
 /**
  * Kelas TitleView mendefinisikan interface pada awal sebelum memulai permainan.
@@ -14,19 +25,17 @@ import java.net.URL;
 public class TitleView extends JFrame implements ActionListener {
 
   /**
-   * Panel pada title window.
-   */
-  protected JPanel titlePanel;
-
-  /**
    * Suatu objek pada interface ditampilkan atau tidak.
    */
   public static boolean visibility;
-
   /**
    * String yang diinput pengguna saat awal permainan.
    */
   public static String playerName;
+  /**
+   * Panel pada title window.
+   */
+  protected JPanel titlePanel;
 
   /**
    * <p>
@@ -52,8 +61,6 @@ public class TitleView extends JFrame implements ActionListener {
 
     add(titlePanel);
     pack();
-    setVisible(true);
-    visibility = true;
   }
 
   /**
@@ -64,8 +71,8 @@ public class TitleView extends JFrame implements ActionListener {
   public JLabel createLogo(GridBagLayout titleLayout, GridBagConstraints titleConstraints) {
     titleConstraints.gridx = 0;
     titleConstraints.gridy = 0;
-    URL logo_path = getClass().getResource("\\assets\\BacManLogo.png");
-    ImageIcon imageIcon = new ImageIcon(logo_path);
+    URL logoPath = getClass().getResource("\\assets\\BacManLogo.png");
+    ImageIcon imageIcon = new ImageIcon(logoPath);
     Image image = imageIcon.getImage();
     Image newImage = image.getScaledInstance(1200, 300, Image.SCALE_SMOOTH);
     JLabel logo = new JLabel(new ImageIcon(newImage));

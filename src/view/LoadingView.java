@@ -1,10 +1,19 @@
 package view;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.io.IOException;
 import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+import javax.swing.border.EmptyBorder;
 
 /**
  * Created by Holy on 24-Apr-17.
@@ -20,7 +29,7 @@ public class LoadingView extends JFrame {
    * <p>
    * Constructor
    *
-   * Menciptakan LoadingView pada window saat dengan melakukan window,
+   * Menciptakan LoadingView pada window saat dengan melakukan window.
    * </p>
    */
   public LoadingView() {
@@ -89,8 +98,8 @@ public class LoadingView extends JFrame {
     loadingConstraints.gridx = 0;
     loadingConstraints.gridy = 1;
     loadingConstraints.gridwidth = 4;
-    URL sleeping_bacbac_path = getClass().getResource("\\assets\\loading.gif");
-    JLabel sleepingBacbac = new JLabel(new ImageIcon(sleeping_bacbac_path), JLabel.CENTER);
+    URL sleepingBacbacPath = getClass().getResource("\\assets\\loading.gif");
+    JLabel sleepingBacbac = new JLabel(new ImageIcon(sleepingBacbacPath), JLabel.CENTER);
     sleepingBacbac.setBorder(new EmptyBorder(10, 10, 40, 10));
     loadingLayout.setConstraints(sleepingBacbac, loadingConstraints);
     return sleepingBacbac;
@@ -104,12 +113,12 @@ public class LoadingView extends JFrame {
    * @return Gambar Ghost ditampilkan dalam window Loading.
    */
   public JLabel createLoadingGhost(GridBagLayout loadingLayout,
-      GridBagConstraints loadingConstraints, int gridx, String image_path) {
+      GridBagConstraints loadingConstraints, int gridx, String imagePath) {
     loadingConstraints.gridx = gridx;
     loadingConstraints.gridy = 2;
     loadingConstraints.gridwidth = 1;
-    URL loading_ghost_path = getClass().getResource(image_path);
-    JLabel loadingGhost = new JLabel(new ImageIcon(loading_ghost_path), JLabel.CENTER);
+    URL loadingGhostPath = getClass().getResource(imagePath);
+    JLabel loadingGhost = new JLabel(new ImageIcon(loadingGhostPath), JLabel.CENTER);
     loadingGhost.setBorder(new EmptyBorder(30, 10, 10, 10));
     loadingLayout.setConstraints(loadingGhost, loadingConstraints);
     return loadingGhost;

@@ -1,10 +1,19 @@
 package view;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.io.IOException;
 import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+import javax.swing.border.EmptyBorder;
 
 /**
  * Kelas CreditsView mendefinisikan window Credits.
@@ -45,6 +54,16 @@ public class CreditsView extends JFrame {
   }
 
   /**
+   * Program utama.
+   *
+   * @param args Command line argument.
+   */
+  public static void main(String[] args) {
+    CreditsView creditsView = new CreditsView();
+    creditsView.setVisible(true);
+  }
+
+  /**
    * Fungsi mengembalikan label credits permainan.
    *
    * @param creditsLayout Layout untuk credits.
@@ -56,8 +75,8 @@ public class CreditsView extends JFrame {
     creditsConstraints.gridx = 0;
     creditsConstraints.gridy = 1;
     creditsConstraints.gridwidth = 2;
-    URL credits_bacbac_path = getClass().getResource("\\assets\\credit.gif");
-    JLabel creditsBacbac = new JLabel(new ImageIcon(credits_bacbac_path), JLabel.CENTER);
+    URL creditsBacBacPath = getClass().getResource("\\assets\\credit.gif");
+    JLabel creditsBacbac = new JLabel(new ImageIcon(creditsBacBacPath), JLabel.CENTER);
     creditsBacbac.setBorder(new EmptyBorder(10, 10, 60, 10));
     creditsLayout.setConstraints(creditsBacbac, creditsConstraints);
     return creditsBacbac;
@@ -206,15 +225,5 @@ public class CreditsView extends JFrame {
     creditsText.setForeground(Color.WHITE);
     creditsLayout.setConstraints(creditsText, creditsConstraints);
     return creditsText;
-  }
-
-  /**
-   * Program utama.
-   *
-   * @param args Command line argument.
-   */
-  public static void main(String[] args) {
-    CreditsView creditsView = new CreditsView();
-    creditsView.setVisible(true);
   }
 }

@@ -1,16 +1,22 @@
 package view;
 
 import controller.PlayerController;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
+import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import model.Arena;
 import model.character.Blinky;
 import model.character.Clyde;
 import model.character.Inky;
 import model.character.Pinky;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.net.URL;
 
 /**
  * Kelas MapPanel mendefinisikan tampilan arena.
@@ -20,22 +26,22 @@ public class MapPanel extends JComponent {
   /**
    * Lebar ukuran sprite yang ditampilkan pada 1 petak Arena.
    */
-  private final int SCALE_WIDTH = 40;
+  private final int scaleWidth = 40;
 
   /**
    * Panjang ukuran sprite yang ditampilkan pada 1 petak Arena.
    */
-  private final int SCALE_HEIGHT = 45;
+  private final int scaleHeight = 45;
 
   /**
    * Panjang Map dalam satuan panjang.
    */
-  private final int MAP_WIDTH = Arena.getMapWidth();
+  private final int mapWidth = Arena.getMapWidth();
 
   /**
    * Lebar Map dalam satuan panjang.
    */
-  private final int MAP_LENGTH = Arena.getMapLength();
+  private final int mapLength = Arena.getMapLength();
 
   /**
    * PlayerController dalam Arena.
@@ -111,17 +117,17 @@ public class MapPanel extends JComponent {
     this.inky = inky;
     this.pinky = pinky;
     this.clyde = clyde;
-    setPreferredSize(new Dimension(MAP_LENGTH * SCALE_WIDTH, MAP_WIDTH * SCALE_HEIGHT));
+    setPreferredSize(new Dimension(mapLength * scaleWidth, mapWidth * scaleHeight));
   }
 
   /**
    * Fungsi mengembalikan apakah gambar merupakan gambar berekstensi gif.
    *
-   * @param image_path Path direktori gambar.
+   * @param imagePath Path direktori gambar.
    * @return Gambar berekstensi gif atau tidak.
    */
-  public static boolean isGIF(String image_path) {
-    return (image_path.contains(".gif"));
+  public static boolean isGif(String imagePath) {
+    return (imagePath.contains(".gif"));
   }
 
   /**
@@ -145,17 +151,17 @@ public class MapPanel extends JComponent {
   /**
    * Fungsi mengembalikan gambar dari suatu path direktori.
    *
-   * @param image_path Path direktori gambar.
+   * @param imagePath Path direktori gambar.
    * @return Gambar dengan ukuran yang telah disesuaikan.
    */
-  private Image getTileImage(String image_path) {
-    URL img_path = getClass().getResource(image_path);
-    ImageIcon imageIcon = new ImageIcon(img_path);
+  private Image getTileImage(String imagePath) {
+    URL imgPath = getClass().getResource(imagePath);
+    ImageIcon imageIcon = new ImageIcon(imgPath);
     Image image = imageIcon.getImage();
-    if (isGIF(image_path)) {
+    if (isGif(imagePath)) {
       return image;
     } else {
-      return getScaledImage(image, SCALE_WIDTH, SCALE_HEIGHT);
+      return getScaledImage(image, scaleWidth, scaleHeight);
     }
   }
 
@@ -169,10 +175,10 @@ public class MapPanel extends JComponent {
     super.paintComponent(g);
     g.setColor(Color.black);
     g.fillRect(0, 0, getWidth(), getHeight());
-    for (int i = 0; i < MAP_WIDTH; i++) {
-      for (int j = 0; j < MAP_LENGTH; j++) {
-        int x = j * SCALE_WIDTH;
-        int y = i * SCALE_HEIGHT;
+    for (int i = 0; i < mapWidth; i++) {
+      for (int j = 0; j < mapLength; j++) {
+        int x = j * scaleWidth;
+        int y = i * scaleHeight;
         Image tileImage;
         if ((i == bacman.getPlayer().getI()) && (j == bacman.getPlayer().getJ())) {
           tileImage = getTileImage(bacman.getPlayer().getImgPath());

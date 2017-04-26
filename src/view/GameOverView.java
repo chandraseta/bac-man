@@ -1,10 +1,19 @@
 package view;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.io.IOException;
 import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+import javax.swing.border.EmptyBorder;
 
 /**
  * Kelas GameOverView mendefinisikan tampilan program saat permainan telah berakhir.
@@ -41,6 +50,16 @@ public class GameOverView extends JFrame {
   }
 
   /**
+   * Program pada window GameOver.
+   *
+   * @param args Command line argument.
+   */
+  public static void main(String[] args) {
+    GameOverView gameOverView = new GameOverView();
+    gameOverView.setVisible(true);
+  }
+
+  /**
    * Fungsi mengembalikan sebuah sprite yang ditampilkan dalam window GameOver.
    *
    * @param gameOverLayout Layout untuk sprite.
@@ -50,8 +69,8 @@ public class GameOverView extends JFrame {
       GridBagConstraints gameOverConstraints) {
     gameOverConstraints.gridx = 0;
     gameOverConstraints.gridy = 0;
-    URL gameover_bacbac_path = getClass().getResource("\\assets\\loading.gif");
-    JLabel gameOverBacbac = new JLabel(new ImageIcon(gameover_bacbac_path), JLabel.CENTER);
+    URL gameOverBacBacPath = getClass().getResource("\\assets\\loading.gif");
+    JLabel gameOverBacbac = new JLabel(new ImageIcon(gameOverBacBacPath), JLabel.CENTER);
     gameOverBacbac.setBorder(new EmptyBorder(10, 10, 40, 10));
     gameOverLayout.setConstraints(gameOverBacbac, gameOverConstraints);
     return gameOverBacbac;
@@ -83,15 +102,5 @@ public class GameOverView extends JFrame {
     gameOverText.setForeground(Color.WHITE);
     gameOverLayout.setConstraints(gameOverText, gameOverConstraints);
     return gameOverText;
-  }
-
-  /**
-   * Program pada window GameOver.
-   *
-   * @param args Command line argument.
-   */
-  public static void main(String[] args) {
-    GameOverView gameOverView = new GameOverView();
-    gameOverView.setVisible(true);
   }
 }

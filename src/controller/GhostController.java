@@ -22,7 +22,7 @@ public class GhostController implements Runnable {
   /**
    * Thread pada Ghost.
    */
-  private Thread gThread;
+  private Thread ghostThread;
 
   /**
    * Nama pada Thread.
@@ -137,9 +137,9 @@ public class GhostController implements Runnable {
    * Method untuk memulai pergerakan Ghost.
    */
   public void start() {
-    if (gThread == null) {
-      gThread = new Thread(this, threadName);
-      gThread.start();
+    if (ghostThread == null) {
+      ghostThread = new Thread(this, threadName);
+      ghostThread.start();
     }
   }
 

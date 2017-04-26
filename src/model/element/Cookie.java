@@ -8,19 +8,17 @@ import model.GameElement;
 public class Cookie extends GameElement {
 
   /**
+   * Atribut statis banyaknya Cookie yang tersisa.
+   */
+  private static int cookieLeft = 0;
+  /**
    * Atribut Cookie ada pada Arena atau tidak.
    */
   protected boolean available;
-
   /**
    * Atribut nilai Cookie yang akan ditambahkan ke score Player.
    */
   protected int value;
-
-  /**
-   * Atribut statis banyaknya Cookie yang tersisa.
-   */
-  private static int cookieLeft = 0;
 
   /**
    * <p>
@@ -62,14 +60,22 @@ public class Cookie extends GameElement {
    * </p>
    *
    * @param sprite Path direktori sprite Cookie.
-   * @param value Nilai Cookie yang akan ditambahkan ke score Player apabila Cookie tersebut
-   * dimakan.
+   * @param value Nilai Cookie yang akan ditambah ke score Player apabila Cookie tersebut dimakan.
    */
   public Cookie(String sprite, int value) {
     super(sprite);
     available = true;
     this.value = value;
     cookieLeft++;
+  }
+
+  /**
+   * Fungsi getter jumlah cookie yang tersisa.
+   *
+   * @return Nilai cookieLeft.
+   */
+  public static int getCookieLeft() {
+    return cookieLeft;
   }
 
   /**
@@ -91,15 +97,6 @@ public class Cookie extends GameElement {
   }
 
   /**
-   * Menghapus Cookie pada arena.
-   * Cookie dihapus dengan mengubah nilai atribut available.
-   */
-  public void remove() {
-    available = false;
-    cookieLeft--;
-  }
-
-  /**
    * Memasang value pada Cookie.
    *
    * @param value Nilai Cookie.
@@ -109,11 +106,11 @@ public class Cookie extends GameElement {
   }
 
   /**
-   * Fungsi getter jumlah cookie yang tersisa.
-   *
-   * @return Nilai cookieLeft.
+   * Menghapus Cookie pada arena.
+   * Cookie dihapus dengan mengubah nilai atribut available.
    */
-  public static int getCookieLeft() {
-    return cookieLeft;
+  public void remove() {
+    available = false;
+    cookieLeft--;
   }
 }

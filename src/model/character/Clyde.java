@@ -1,8 +1,7 @@
 package model.character;
 
+import java.awt.Point;
 import model.Arena;
-
-import java.awt.*;
 
 /**
  * Kelas Clyde mendefinisikan Ghost Clyde pada permainan.

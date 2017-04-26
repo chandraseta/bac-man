@@ -1,8 +1,7 @@
 package model.character;
 
-import model.Arena;
-
 import java.awt.Point;
+import model.Arena;
 
 /**
  * Kelas Pinky mendefinisikan Ghost Pinky pada permainan.
@@ -58,6 +57,8 @@ public class Pinky extends Ghost {
         break;
       case 'w':
         destJ = Math.max(destJ - 4, 0);
+        break;
+      default:
         break;
     }
 

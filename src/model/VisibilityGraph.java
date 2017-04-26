@@ -17,7 +17,7 @@ public class VisibilityGraph {
   private static boolean[][] accessibilityMatrix;
 
   /**
-   * Grid merupakan landmark atau tidak untuk setiap Grid dalam Arena
+   * Grid merupakan landmark atau tidak untuk setiap Grid dalam Arena.
    */
   private static int[][] landmarkMatrix;
 
@@ -152,8 +152,8 @@ public class VisibilityGraph {
           boolean left = accessibilityMatrix[i][j - 1];
           boolean right = accessibilityMatrix[i][j + 1];
 
-          int connectedTiles = (up ? 1 : 0) + (down ? 1 : 0) +
-              (left ? 1 : 0) + (right ? 1 : 0);
+          int connectedTiles = (up ? 1 : 0) + (down ? 1 : 0)
+              + (left ? 1 : 0) + (right ? 1 : 0);
           if (connectedTiles >= 3) {
             isLandmark = true;
           } else if (connectedTiles == 2) {

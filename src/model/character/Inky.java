@@ -1,8 +1,7 @@
 package model.character;
 
+import java.awt.Point;
 import model.Arena;
-
-import java.awt.*;
 
 /**
  * Kelas Inky mendefinisikan Ghost Inky pada permainan.
@@ -59,13 +58,15 @@ public class Inky extends Ghost {
       case 'w':
         destJ -= 2;
         break;
+      default:
+        break;
     }
 
-    int dI = destI - Blinky.getBlinkyI();
-    int dJ = destJ - Blinky.getBlinkyJ();
+    int deltaI = destI - Blinky.getBlinkyI();
+    int deltaJ = destJ - Blinky.getBlinkyJ();
 
-    destI = Math.min(Math.max(destI + dI, 0), Arena.getMapWidth() - 1);
-    destJ = Math.min(Math.max(destJ + dJ, 0), Arena.getMapLength() - 1);
+    destI = Math.min(Math.max(destI + deltaI, 0), Arena.getMapWidth() - 1);
+    destJ = Math.min(Math.max(destJ + deltaJ, 0), Arena.getMapLength() - 1);
 
     destination.setLocation(destI, destJ);
   }

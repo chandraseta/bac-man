@@ -16,7 +16,7 @@ public class PlayerController implements Runnable {
   /**
    * Thread pada objek Player.
    */
-  private Thread pThread;
+  private Thread playerThread;
 
   /**
    * Nama pada Thread Player.
@@ -112,10 +112,6 @@ public class PlayerController implements Runnable {
       BacMan.addScore(Arena.getGrid(player.getI(), player.getJ()).getCookie().getValue());
       Arena.getGrid(player.getI(), player.getJ()).removeCookie();
     }
-    //////// DEBUG /////////
-//    System.out.println("Player position: " + player.getI() + " " + player.getJ());
-//    System.out.println("Player orientation: " + Player.getOrientation());
-    ////////////////////////
   }
 
   /**
@@ -136,9 +132,9 @@ public class PlayerController implements Runnable {
    * Memulai jalannya Thread pada Player.
    */
   public void start() {
-    if (pThread == null) {
-      pThread = new Thread(this, threadName);
-      pThread.start();
+    if (playerThread == null) {
+      playerThread = new Thread(this, threadName);
+      playerThread.start();
     }
   }
 

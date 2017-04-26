@@ -1,8 +1,7 @@
 package model.character;
 
+import java.awt.Point;
 import model.Arena;
-
-import java.awt.*;
 
 /**
  * Kelas Blinky mendefinisikan Ghost Blinky pada permainan.
@@ -54,19 +53,19 @@ public class Blinky extends Ghost {
   }
 
   /**
-   * Menentukan titik target yang akan dicapai Blinky.
-   */
-  public void getNextDestination() {
-    destination = Player.getPosition();
-  }
-
-  /**
    * Getter posisi y Blinky.
    *
    * @return posisi y Blinky.
    */
   public static int getBlinkyI() {
     return blinkyI;
+  }
+
+  /**
+   * Setter posisi y Blinky.
+   */
+  public static void setBlinkyI(int newI) {
+    blinkyI = newI;
   }
 
   /**
@@ -79,16 +78,16 @@ public class Blinky extends Ghost {
   }
 
   /**
-   * Setter posisi y Blinky.
-   */
-  public static void setBlinkyI(int newI) {
-    blinkyI = newI;
-  }
-
-  /**
    * Setter posisi x Blinky.
    */
   public static void setBlinkyJ(int newJ) {
     blinkyJ = newJ;
+  }
+
+  /**
+   * Menentukan titik target yang akan dicapai Blinky.
+   */
+  public void getNextDestination() {
+    destination = Player.getPosition();
   }
 }

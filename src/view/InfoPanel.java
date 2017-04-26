@@ -1,12 +1,17 @@
 package view;
 
 import controller.BacMan;
-import model.character.Player;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import model.character.Player;
 
 /**
  * Kelas InfoPanel mendefinisikan panel yang berisi info permainan.
@@ -45,16 +50,16 @@ public class InfoPanel extends JComponent {
   /**
    * Fungsi mengembalikan sebuah gambar. Skala ukuran menjadi parameter gambar.
    *
-   * @param image_path Path direktori gambar.
+   * @param imagePath Path direktori gambar.
    * @param widthScale Skala lebar gambar.
    * @param heightScale Skala panjang gambar.
    * @return Gambar yang telah diatur skalanya dari parameter input.
    */
-  private Image getBacbacImage(String image_path, int widthScale, int heightScale) {
-    URL img_path = getClass().getResource(image_path);
-    ImageIcon imageIcon = new ImageIcon(img_path);
+  private Image getBacbacImage(String imagePath, int widthScale, int heightScale) {
+    URL imgPath = getClass().getResource(imagePath);
+    ImageIcon imageIcon = new ImageIcon(imgPath);
     Image image = imageIcon.getImage();
-    if (MapPanel.isGIF(image_path)) {
+    if (MapPanel.isGif(imagePath)) {
       return image;
     } else {
       return MapPanel.getScaledImage(image, widthScale, heightScale);

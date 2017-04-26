@@ -1,13 +1,12 @@
 package model.character;
 
-import model.VisibilityGraph;
-
-import java.awt.*;
+import java.awt.Point;
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
+import model.VisibilityGraph;
 
 /**
  * Kelas PathFinder mendefinisikan kelas untu mencari jalur Ghost ke suatu titik.
@@ -15,127 +14,41 @@ import java.util.concurrent.ThreadLocalRandom;
 public class PathFinder {
 
   /**
-   * Kelas Node mendefinisikan struktur data yang terdiri dari Path yang dilalui, cost, dan
-   * heuristic.
-   */
-  private class Node {
-
-    /**
-     * Path dari titik yang dilalui dan dihitung untuk menghitung jarak menuju titik yang ingin
-     * dicapai.
-     */
-    private Deque<Integer> path;
-
-    /**
-     * Cost dari path yang dilalui.
-     */
-    private int cost;
-
-    /**
-     * Heuristic cost menuju titik yang ingin dicapai.
-     */
-    private int heuristic;
-
-    /**
-     * Constructor Node dengan parameter currNode dan initCost.
-     *
-     * @param currNode Node yang akan di-expand.
-     * @param initCost Cost mula-mula Node dari Ghost mencapai titik pada Node.
-     */
-    Node(int currNode, int initCost) {
-      path = new LinkedList<>();
-      path.add(currNode);
-      cost = initCost;
-      if (currNode != END) {
-        heuristic = manhattanDistance(VisibilityGraph.getLandmarks().elementAt(currNode),
-            destination);
-      } else {
-        heuristic = 0;
-      }
-    }
-
-    /**
-     * Constructor Node dengan parameter parent, currNode, dan addCost.
-     *
-     * @param parent Parent Node pada Node yang akan di-expand.
-     * @param currNode Node yang aan di-expand.
-     * @param addCost Cost yang ditambahkan pada Node.
-     */
-    Node(Node parent, int currNode, int addCost) {
-      path = new LinkedList<>(parent.path);
-      cost = parent.cost + addCost;
-      path.add(currNode);
-      if (currNode != END) {
-        heuristic = manhattanDistance(VisibilityGraph.getLandmarks().elementAt(currNode),
-            destination);
-      } else {
-        heuristic = 0;
-      }
-    }
-
-    /**
-     * Fungsi mengembalikan :
-     * -1 jika total cost objek node lebih kecil dari node yang dibandingkan.
-     * 0 jika total cost objek node sama dengan node yang dibandingkan.
-     * 1 jika total cost objek node lebih besar dari node yang dibandingkan.
-     *
-     * @param n2 Node yang dibandingkan.
-     * @return Integer
-     */
-    int compareTo(Node n2) {
-      if (this.cost + this.heuristic < n2.cost + n2.heuristic) {
-        return -1;
-      } else if (this.cost + this.heuristic > n2.cost + n2.heuristic) {
-        return 1;
-      } else {
-        return 0;
-      }
-    }
-  }
-  /**
    * Konstanta banyaknya landmark pada Arena.
    */
-  private final int END = VisibilityGraph.getNumOfLandmarks();
-
+  private final int end = VisibilityGraph.getNumOfLandmarks();
   /**
    * Titik mula-mula.
    */
   private Point origin;
-
   /**
    * Titik yang ingin dituju.
    */
   private Point destination;
-
   /**
    * Jarak dari titik origin ke setiap landmark yang segaris dengan origin.
    * Bila tidak segaris, jarak bernilai 0.
    */
   private int[] fromOriginDistance;
-
   /**
    * Pergerakan dari titik origin ke setiap landmark yang segaris dengan origin.
    * Bila tidak segaris, movement bernilai 0.
    */
   private int[] fromOriginMovement;
-
   /**
    * Jarak dari setiap landmark ke titik tujuan yang segaris dengan landmark itu sendiri.
    * Bila tidak segaris, jarak bernilai 0.
    */
   private int[] toDestinationDistance;
-
   /**
    * Pergerakan dari setiap landmark ke titik tujuan yang segaris dengan landmark itu sendiri.
    * Bila tidak segaris, movement bernilai 0.
    */
   private int[] toDestinationMovement;
-
   /**
    * Matriks aksesibilitas Arena.
    */
   private boolean[][] accessibilityMatrix;
-
   /**
    * Arah pergerakan Ghost.
    */
@@ -155,6 +68,27 @@ public class PathFinder {
     toDestinationDistance = new int[VisibilityGraph.getNumOfLandmarks()];
     toDestinationMovement = new int[VisibilityGraph.getNumOfLandmarks()];
     accessibilityMatrix = VisibilityGraph.getAccessibilityMatrix();
+  }
+
+  /**
+   * Fungsi mengembalikan Jarak Manhattan dari dua titik yang berbeda.
+   *
+   * @param start Titik mula-mula.
+   * @param end Titik yang dituju.
+   * @return Jarak Manhattan dari kedua titik.
+   */
+  public static int manhattanDistance(Point start, Point end) {
+    if (start.equals(end)) {
+      return 0;
+    } else {
+      int dx = Math.abs(start.x - end.x);
+      int dy = Math.abs(start.y - end.y);
+      if (dy < 0) {
+        dy *= -1;
+      }
+
+      return (dx + dy);
+    }
   }
 
   /**
@@ -281,7 +215,7 @@ public class PathFinder {
       }
 
       Node currNode = aliveNodes.poll();
-      while (currNode.path.getLast() != END) {
+      while (currNode.path.getLast() != end) {
         int u = currNode.path.getLast();
         for (int v = 0; v < n; ++v) {
           if (adjacencyMatrix[u][v] != Integer.MAX_VALUE && !currNode.path.contains(v)) {
@@ -289,7 +223,7 @@ public class PathFinder {
           }
         }
         if (toDestinationDistance[u] != Integer.MAX_VALUE) {
-          aliveNodes.add(new Node(currNode, END, toDestinationDistance[u]));
+          aliveNodes.add(new Node(currNode, end, toDestinationDistance[u]));
         }
         currNode = aliveNodes.poll();
       }
@@ -306,32 +240,90 @@ public class PathFinder {
   }
 
   /**
-   * Fungsi mengembalikan Jarak Manhattan dari dua titik yang berbeda.
-   *
-   * @param start Titik mula-mula.
-   * @param end Titik yang dituju.
-   * @return Jarak Manhattan dari kedua titik.
-   */
-  public static int manhattanDistance(Point start, Point end) {
-    if (start.equals(end)) {
-      return 0;
-    } else {
-      int dx = Math.abs(start.x - end.x);
-      int dy = Math.abs(start.y - end.y);
-      if (dy < 0) {
-        dy *= -1;
-      }
-
-      return (dx + dy);
-    }
-  }
-
-  /**
    * Fungsi mengembalikan pergerakan Ghost.
    *
    * @return Arah pergerakan Ghost.
    */
   public int getMovement() {
     return movement;
+  }
+
+  /**
+   * Kelas Node mendefinisikan struktur data yang terdiri dari Path yang dilalui, cost, dan
+   * heuristic.
+   */
+  private class Node {
+
+    /**
+     * Path dari titik yang dilalui dan dihitung untuk menghitung jarak menuju titik yang ingin
+     * dicapai.
+     */
+    private Deque<Integer> path;
+
+    /**
+     * Cost dari path yang dilalui.
+     */
+    private int cost;
+
+    /**
+     * Heuristic cost menuju titik yang ingin dicapai.
+     */
+    private int heuristic;
+
+    /**
+     * Constructor Node dengan parameter currNode dan initCost.
+     *
+     * @param currNode Node yang akan di-expand.
+     * @param initCost Cost mula-mula Node dari Ghost mencapai titik pada Node.
+     */
+    Node(int currNode, int initCost) {
+      path = new LinkedList<>();
+      path.add(currNode);
+      cost = initCost;
+      if (currNode != end) {
+        heuristic = manhattanDistance(VisibilityGraph.getLandmarks().elementAt(currNode),
+            destination);
+      } else {
+        heuristic = 0;
+      }
+    }
+
+    /**
+     * Constructor Node dengan parameter parent, currNode, dan addCost.
+     *
+     * @param parent Parent Node pada Node yang akan di-expand.
+     * @param currNode Node yang aan di-expand.
+     * @param addCost Cost yang ditambahkan pada Node.
+     */
+    Node(Node parent, int currNode, int addCost) {
+      path = new LinkedList<>(parent.path);
+      cost = parent.cost + addCost;
+      path.add(currNode);
+      if (currNode != end) {
+        heuristic = manhattanDistance(VisibilityGraph.getLandmarks().elementAt(currNode),
+            destination);
+      } else {
+        heuristic = 0;
+      }
+    }
+
+    /**
+     * Fungsi mengembalikan :
+     * -1 jika total cost objek node lebih kecil dari node yang dibandingkan.
+     * 0 jika total cost objek node sama dengan node yang dibandingkan.
+     * 1 jika total cost objek node lebih besar dari node yang dibandingkan.
+     *
+     * @param n2 Node yang dibandingkan.
+     * @return Integer
+     */
+    int compareTo(Node n2) {
+      if (this.cost + this.heuristic < n2.cost + n2.heuristic) {
+        return -1;
+      } else if (this.cost + this.heuristic > n2.cost + n2.heuristic) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
   }
 }

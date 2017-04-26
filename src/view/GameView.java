@@ -1,39 +1,25 @@
 package view;
 
 import controller.PlayerController;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+import javax.swing.WindowConstants;
 import model.character.Blinky;
 import model.character.Clyde;
 import model.character.Inky;
 import model.character.Pinky;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-
 /**
  * Created by Holy on 20-Apr-17.
  */
 public class GameView extends JFrame implements Runnable {
-
-  /**
-   * Panel berisi Arena permainan.
-   */
-  private MapPanel mapPanel;
-
-  /**
-   * Panel berisi info permainan.
-   */
-  private InfoPanel infoPanel;
-
-  /**
-   * Thread untuk menjalankan interface program.
-   */
-  private Thread thread;
-
-  /**
-   * Nama Thread.
-   */
-  private String threadName;
 
   private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
   private static final String MOVE_UP = "move up";
@@ -41,6 +27,22 @@ public class GameView extends JFrame implements Runnable {
   private static final String MOVE_DOWN = "move down";
   private static final String MOVE_LEFT = "move left";
   private static JLabel keyInput = new JLabel();
+  /**
+   * Panel berisi Arena permainan.
+   */
+  private MapPanel mapPanel;
+  /**
+   * Panel berisi info permainan.
+   */
+  private InfoPanel infoPanel;
+  /**
+   * Thread untuk menjalankan interface program.
+   */
+  private Thread thread;
+  /**
+   * Nama Thread.
+   */
+  private String threadName;
   private JPanel gamePanel = new JPanel();
   private GridBagLayout gridBag = new GridBagLayout();
   private GridBagConstraints gbc = new GridBagConstraints();

@@ -1,9 +1,8 @@
 package model.character;
 
+import java.awt.Point;
 import model.Arena;
 import model.GameCharacter;
-
-import java.awt.*;
 
 /**
  * Kelas berisi karakter Player yang dapat dikendalikan pemain.
@@ -75,6 +74,87 @@ public class Player extends GameCharacter {
   }
 
   /**
+   * Fungsi mengembalikan state Player.
+   *
+   * @return State Player.
+   */
+  public static int getStatus() {
+    return state;
+  }
+
+  /**
+   * Method mengubah state Player menjadi state tertentu.
+   *
+   * @param newState State baru Player.
+   */
+  public static void setStatus(int newState) {
+    state = newState;
+  }
+
+  /**
+   * Fungsi mengembalikan orientasi pergerakan Player.
+   *
+   * @return Orientas Player.
+   */
+  public static char getOrientation() {
+    return orientation;
+  }
+
+  /**
+   * Method mengubah orientasi Player.
+   *
+   * @param newOrientation Orientasi baru Player.
+   */
+  public static void setOrientation(char newOrientation) {
+    orientation = newOrientation;
+  }
+
+  /**
+   * Fungsi mengembalikan ordinat Player pada Arena.
+   *
+   * @return Ordinat Player.
+   */
+  public static int getPlayerI() {
+    return playerI;
+  }
+
+  /**
+   * Method mengubah ordinat Player pada Arena.
+   *
+   * @param newI Ordinat baru Player.
+   */
+  public static void setPlayerI(int newI) {
+    playerI = newI;
+  }
+
+  /**
+   * Fungsi mengembalikan absis Player pada Arena.
+   *
+   * @return Absis Player.
+   */
+  public static int getPlayerJ() {
+    return playerJ;
+  }
+
+  /**
+   * Method mengubah absis Player pada Arena.
+   *
+   * @param newJ Absis baru Player.
+   */
+  public static void setPlayerJ(int newJ) {
+    playerJ = newJ;
+  }
+
+  /**
+   * Fungsi mengembalikan posisi Player.
+   *
+   * @return Posisi Player dalam Point.
+   */
+  public static Point getPosition() {
+    return new Point(playerI, playerJ);
+  }
+
+  /**
    * Fungsi mengembalikan nilai kebenaran bahwa Player berada pada state normal.
    *
    * @return Nilai kebenaran apakah Player berada pada state normal.
@@ -99,86 +179,5 @@ public class Player extends GameCharacter {
    */
   public boolean isDead() {
     return state == 2;
-  }
-
-  /**
-   * Fungsi mengembalikan state Player.
-   *
-   * @return State Player.
-   */
-  public static int getStatus() {
-    return state;
-  }
-
-  /**
-   * Fungsi mengembalikan orientasi pergerakan Player.
-   *
-   * @return Orientas Player.
-   */
-  public static char getOrientation() {
-    return orientation;
-  }
-
-  /**
-   * Fungsi mengembalikan ordinat Player pada Arena.
-   *
-   * @return Ordinat Player.
-   */
-  public static int getPlayerI() {
-    return playerI;
-  }
-
-  /**
-   * Fungsi mengembalikan absis Player pada Arena.
-   *
-   * @return Absis Player.
-   */
-  public static int getPlayerJ() {
-    return playerJ;
-  }
-
-  /**
-   * Fungsi mengembalikan posisi Player.
-   *
-   * @return Posisi Player dalam Point.
-   */
-  public static Point getPosition() {
-    return new Point(playerI, playerJ);
-  }
-
-  /**
-   * Method mengubah state Player menjadi state tertentu.
-   *
-   * @param newState State baru Player.
-   */
-  public static void setStatus(int newState) {
-    state = newState;
-  }
-
-  /**
-   * Method mengubah orientasi Player.
-   *
-   * @param newOrientation Orientasi baru Player.
-   */
-  public static void setOrientation(char newOrientation) {
-    orientation = newOrientation;
-  }
-
-  /**
-   * Method mengubah ordinat Player pada Arena.
-   *
-   * @param newI Ordinat baru Player.
-   */
-  public static void setPlayerI(int newI) {
-    playerI = newI;
-  }
-
-  /**
-   * Method mengubah absis Player pada Arena.
-   *
-   * @param newJ Absis baru Player.
-   */
-  public static void setPlayerJ(int newJ) {
-    playerJ = newJ;
   }
 }

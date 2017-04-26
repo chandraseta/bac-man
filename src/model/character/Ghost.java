@@ -1,10 +1,9 @@
 package model.character;
 
-import model.GameCharacter;
-import model.Arena;
-
 import java.awt.Point;
 import java.util.Random;
+import model.Arena;
+import model.GameCharacter;
 
 /**
  * Kelas abstract Ghost yang menjadi dasar berbagai tipe Ghost.
@@ -14,7 +13,7 @@ import java.util.Random;
 public abstract class Ghost extends GameCharacter {
 
   /**
-   * Artibut yang berisi informasi status Ghost :
+   * Atribut yang berisi informasi status Ghost.
    * 0 = Normal
    * 1 = Vulnerable
    * 2 = Dead
