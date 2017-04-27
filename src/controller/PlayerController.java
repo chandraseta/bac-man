@@ -85,8 +85,7 @@ public class PlayerController implements Runnable {
       if ((player.getI() == Arena.getTunnelRow() && (player.getJ() == Arena.getMapLength() - 1))) {
         player.teleport(player.getI(), 0);
         Player.setPlayerJ(0);
-      }
-      else if (Arena.getGrid(player.getI(), player.getJ() + 1).isAccessible()) {
+      } else if (Arena.getGrid(player.getI(), player.getJ() + 1).isAccessible()) {
         player.moveRight();
         Player.setPlayerJ(player.getJ() + 1);
       }
