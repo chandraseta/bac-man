@@ -85,7 +85,7 @@ public class BacMan {
    * 2. Player dan Ghost berada pada petak yang sama.
    */
   public static void updateGameEnd() {
-    boolean gameEnd = (Cookie.getCookieLeft() == 0);
+    gameEnd = (Cookie.getCookieLeft() == 0);
     for (Ghost ghost : ghosts.getGhosts()) {
       gameEnd =
           gameEnd || (Player.getPlayerI() == ghost.getI() && Player.getPlayerJ() == ghost.getJ());
@@ -156,6 +156,5 @@ public class BacMan {
     gameOverView.setVisible(false);
     gameOverView.dispose();
     creditsView.setVisible(true);
-    creditsView.dispose();
   }
 }
